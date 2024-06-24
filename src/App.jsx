@@ -16,12 +16,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Warehouse />} />
           <Route path="/add" element={<WarehouseAdd />} />
-          <Route path="/:warehouseId" element={<WarehouseDetails />} />
-          <Route path="/:warehouseId/edit" element={<WarehouseEdit />} />
+          {/* remember to change warehouseId to :warehouseId when we have the data */}
+          <Route path="/warehouseId" element={<WarehouseDetails />} />
+          <Route path="/warehouseId/edit" element={<WarehouseEdit />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/inventory/add" element={<InventoryAdd />} />
-          <Route path="/inventory/:itemId" element={<InventoryDetails />} />
-          <Route path="/inventory/:itemId/edit" element={<InventoryEdit />} />
+          {/* remember to change item to :itemId when we have the data */}
+          <Route path="/inventory/item" element={<InventoryDetails />} />
+          <Route path="/inventory/item/edit" element={<InventoryEdit />} />
         </Routes>
       </BrowserRouter>
     </>
