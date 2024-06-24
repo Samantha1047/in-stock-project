@@ -1,0 +1,88 @@
+@use './variables' as *;
+@use './typography' as *;
+
+
+// Breakpoints
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
+      @content;
+    }
+  }
+  
+  @mixin desktop {
+    @media screen and (min-width: $desktop-breakpoint) {
+      @content;
+    }
+  }
+
+  // Mobile Fonts
+  @mixin mobile-h1-page-header {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+  }
+
+  @mixin mobile-h2-subheader {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  @mixin mobile-h3-labels-links-buttons {
+    font-size: .8125rem;
+    line-height: 1.25rem;
+  }
+
+  @mixin mobile-h4-table-header {
+    font-size: .6875rem;
+    line-height: 1rem;
+  }
+
+  @mixin mobile-p1-body-large {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  @mixin mobile-p2-body-medium {
+    font-size: .8125rem;
+    line-height: 1.25rem;
+  }
+
+  @mixin mobile-p3-body-small {
+    font-size: .6875rem;
+    line-height: 1rem;
+  }
+
+  // Tablet and Desktop Fonts
+  @mixin h1-page-header {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  @mixin h2-subheader {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  @mixin h3-labels-links-buttons {
+    font-size: .875rem;
+    line-height: 1.375rem;
+  }
+
+  @mixin h4-table-header {
+    font-size: .75rem;
+    line-height: 1.125rem;
+  }
+
+  @mixin p1-body-large {
+    font-size: 16px;
+    line-height: 1.75rem;
+  }
+
+  @mixin p2-body-medium {
+    font-size: .875rem;
+    line-height: 1.375rem;
+  }
+
+  @mixin p3-body-small {
+    font-size: .75rem;
+    line-height: 1.125rem;
+  }
