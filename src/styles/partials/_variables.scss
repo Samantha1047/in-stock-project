@@ -1,20 +1,20 @@
 // Breakpoints 
-$tablet-breakpoint: 768px;
-$desktop-breakpoint: 1280px;
+$tablet-breakpoint: 48em;
+$desktop-breakpoint: 80em;
 
 // Primary Colors
-$instock-black: #13182C;
-$instock-indigo: #2E66E5;
-$white: #FFFFFF;
+$primary-dark: #13182C;
+$primary-color: #2E66E5;
+$primary-light: #FFFFFF;
 
 // Secondary Colors
-$slate: #5C667E;
-$cloud: #BDC5D5;
+$secondary-dark: #5C667E;
+$secondary-light: #BDC5D5;
 
 // Background Colors
-$graphite: #232940;
-$light-grey: #F7F8F9;
+$background-dark: #232940;
+$background-light: #F7F8F9;
 
 // Supporting Colors
-$green: #158463;
-$red: #C94515;
+$success-color: #158463;
+$error-color: #C94515;
