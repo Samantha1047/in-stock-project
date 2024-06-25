@@ -1,31 +1,4 @@
 @use "../../styles/partials/variables" as *;
-
-// .title-nav {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   padding-top: 1.5rem;
-//   padding-bottom: 1.5rem;
-//   &--left {
-//     display: flex;
-//     gap: 1rem;
-//   }
-//   &__edit-container {
-//     border-radius: 50%;
-//     height: 2.25rem;
-//     width: 2.25rem;
-//     background-color: $primary-color;
-//     position: relative;
-//     z-index: 1;
-//   }
-
-//   &__edit-icon {
-//     position: absolute;
-//     z-index: 2;
-//   }
-// }
-
-@use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
 .title-nav {
@@ -39,6 +12,7 @@
 
     @include tablet {
       padding: 1.5rem 4rem;
+      @include section-max-width;
     }
   }
 

@@ -1,5 +1,33 @@
 import "./WarehouseForm.scss";
-const WarehouseForm = () => {
+import { useState } from "react";
+
+const initialValues = {
+  warehouse_name: "",
+  address: "",
+  city: "",
+  country: "",
+  contact_name: "",
+  contact_position: "",
+  contact_phone: "",
+  contact_email: "",
+};
+
+const WarehouseForm = ({ onWarehouseFormSubmit }) => {
+  const [values, setValues] = useState(initialValues);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onWarehouseFormSubmit(values);
+  };
+
   return (
     <div className="warehouse-form">
       <section className="warehouse-form__details-section">
@@ -17,7 +45,9 @@ const WarehouseForm = () => {
               type="text"
               id="warehouseName"
               placeholder="Washington"
-              name="warehouseName"
+              name="warehouse_name"
+              onChange={handleInputChange}
+              value={values.warehouse_name}
             />
           </fieldset>
           <fieldset className="warehouse-form__input-container">
@@ -30,6 +60,8 @@ const WarehouseForm = () => {
               id="address"
               placeholder="33 Pearl Street SW"
               name="address"
+              onChange={handleInputChange}
+              value={values.address}
             />
           </fieldset>
           <fieldset className="warehouse-form__input-container">
@@ -42,6 +74,8 @@ const WarehouseForm = () => {
               id="city"
               placeholder="33 Pearl Street SW"
               name="city"
+              onChange={handleInputChange}
+              value={values.city}
             />
           </fieldset>
           <fieldset className="warehouse-form__input-container">
@@ -54,6 +88,8 @@ const WarehouseForm = () => {
               id="country"
               placeholder="USA"
               name="country"
+              onChange={handleInputChange}
+              value={values.country}
             />
           </fieldset>
         </div>
@@ -74,6 +110,8 @@ const WarehouseForm = () => {
               id="contact_name"
               placeholder="Graeme Lyon"
               name="contact_name"
+              onChange={handleInputChange}
+              value={values.contact_name}
             />
           </fieldset>
           <fieldset className="warehouse-form__input-container">
@@ -89,6 +127,8 @@ const WarehouseForm = () => {
               id="contact_position"
               placeholder="Graeme Lyon"
               name="contact_position"
+              onChange={handleInputChange}
+              value={values.contact_position}
             />
           </fieldset>
           <fieldset className="warehouse-form__input-container">
@@ -104,6 +144,8 @@ const WarehouseForm = () => {
               id="contact_phone"
               placeholder="Graeme Lyon"
               name="contact_phone"
+              onChange={handleInputChange}
+              value={values.contact_phone}
             />
           </fieldset>
           <fieldset className="warehouse-form__input-container">
@@ -119,6 +161,8 @@ const WarehouseForm = () => {
               id="contact_email"
               placeholder="Graeme Lyon"
               name="contact_email"
+              value={values.contact_email}
+              onChange={handleInputChange}
             />
           </fieldset>
         </div>
