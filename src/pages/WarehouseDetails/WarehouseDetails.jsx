@@ -1,7 +1,12 @@
 import "./WarehouseDetails.scss";
+import WarehouseDetail from "../../components/WarehouseDetail/WarehouseDetail";
 
 const WarehouseDetails = () => {
-  return <div>WarehouseDetails</div>;
+  return (
+    <main>
+      <WarehouseDetail />
+    </main>
+  );
 };
 
 export default WarehouseDetails;
