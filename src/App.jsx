@@ -9,6 +9,8 @@ import InventoryAdd from "./pages/InventoryAdd/InventoryAdd";
 import InventoryDetails from "./pages/InventoryDetails/InventoryDetails";
 import InventoryEdit from "./pages/InventoryEdit/InventoryEdit";
 
+import Footer from "./Component/Footer/Footer";
+
 function App() {
   return (
     <>
@@ -25,6 +27,7 @@ function App() {
           <Route path="/inventory/item" element={<InventoryDetails />} />
           <Route path="/inventory/item/edit" element={<InventoryEdit />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );
