@@ -1,5 +1,5 @@
 import "./WarehouseDetails.scss";
-import WarehouseDetail from "../../Component/WarehouseDetail/WarehouseDetail";
+import WarehouseDetail from "../../Components/WarehouseDetail/WarehouseDetail";
 
 const WarehouseDetails = () => {
   return <WarehouseDetail />;

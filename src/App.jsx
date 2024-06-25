@@ -9,7 +9,7 @@ import InventoryAdd from "./pages/InventoryAdd/InventoryAdd";
 import InventoryDetails from "./pages/InventoryDetails/InventoryDetails";
 import InventoryEdit from "./pages/InventoryEdit/InventoryEdit";
 
-import Footer from "./Component/Footer/Footer";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
