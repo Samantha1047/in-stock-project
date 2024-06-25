@@ -1,0 +1,15 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.warehouse-form {
+  &__input-container {
+    border: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input-label {
+    @include h3-labels-links-buttons;
+    margin-bottom: 0.25rem;
+  }
+}
