@@ -8,6 +8,10 @@
     justify-content: space-between;
     border-bottom: 1px solid $secondary-light;
     padding: 1.5rem 2.5rem;
+
+    @include tablet {
+      padding: 1.5rem 4rem;
+    }
   }
 
   &__title-wrap {
@@ -18,6 +22,10 @@
     h1 {
       @include mobile-h1-page-header;
       padding: 0 0.5rem;
+
+      @include tablet {
+        @include h1-page-header;
+      }
     }
   }
 
@@ -34,6 +42,10 @@
     background-size: cover;
     margin-left: 1.5rem;
     margin-top: 0.2rem;
+
+    @include tablet {
+      margin-left: 0;
+    }
   }
 
   &__edit-button {
@@ -46,32 +58,75 @@
     justify-content: center;
     border: none;
     cursor: pointer;
+
+    @include tablet {
+      border-radius: 1.25rem;
+      height: 2.375rem;
+      width: 5.0625rem;
+    }
+
+    span {
+      display: none;
+
+      @include tablet {
+        display: inline;
+        color: $primary-light;
+        margin-left: 0.2rem;
+        font-weight: 600;
+      }
+    }
   }
 
   &__details {
     padding: 1rem 2.5rem;
     border-bottom: 1px solid $secondary-light;
 
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.5rem 4rem;
+    }
+
     h4 {
       @include mobile-h4-table-header;
       color: $secondary-dark;
       padding-bottom: 0.3rem;
       font-weight: 600;
+
+      @include tablet {
+        @include h4-table-header;
+      }
     }
 
     p {
       @include mobile-p2-body-medium;
       color: $primary-dark;
       font-weight: 400;
+
+      @include tablet {
+        @include p2-body-medium;
+      }
     }
   }
 
   &__details-address {
     padding-bottom: 2rem;
+
+    @include tablet {
+      width: 35vh;
+      padding-bottom: 0;
+    }
   }
 
   &__contact-info {
     display: flex;
     justify-content: space-between;
+
+    @include tablet {
+      gap: 2.5rem;
+      padding-left: 3rem;
+      border-left: 1px solid $secondary-light;
+      height: auto;
+    }
   }
 }
