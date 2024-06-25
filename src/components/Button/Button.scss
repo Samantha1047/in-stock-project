@@ -1,0 +1,47 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.button {
+  //   height: 2.25rem;
+  //   width: 8.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 1.25rem;
+
+  &__text {
+    @include h3-labels-links-buttons;
+  }
+
+  &--primary {
+    background-color: $primary-color;
+  }
+
+  &--primary-text {
+    color: $background-light;
+  }
+  &--secondary-text {
+    color: $secondary-dark;
+  }
+
+  &--secondary {
+    border: $border-default;
+    background-color: $primary-light;
+  }
+
+  &--form {
+    height: 2.25rem;
+    width: 8.75rem;
+    @include tablet {
+      width: 4.5rem;
+      height: 2.375rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &--default {
+    height: 2.25rem;
+    width: 8.75rem;
+  }
+}
