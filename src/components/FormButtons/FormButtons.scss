@@ -1,0 +1,9 @@
+@use "../../styles/partials/variables" as *;
+
+.form-buttons {
+  display: flex;
+  background-color: $background-light;
+  height: 4.25rem;
+  padding: 1rem 1.5rem;
+  justify-content: space-around;
+}
