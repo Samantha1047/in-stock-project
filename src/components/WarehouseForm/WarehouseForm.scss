@@ -2,6 +2,15 @@
 @use "../../styles/partials/mixins" as *;
 
 .warehouse-form {
+  &__details-section {
+    border-bottom: $border-default;
+  }
+
+  &__title {
+    @include mobile-h2-subheader;
+    margin-bottom: 0.5rem;
+  }
+
   &__input-container {
     border: none;
     display: flex;
@@ -11,5 +20,19 @@
   &__input-label {
     @include h3-labels-links-buttons;
     margin-bottom: 0.25rem;
+    margin-top: 1rem;
+    font-weight: 600;
   }
+
+  &__input {
+    height: 2.25rem;
+    border-radius: 1.25rem;
+    border: $border-default;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+.wrapper {
+  padding: 1.5rem;
 }
