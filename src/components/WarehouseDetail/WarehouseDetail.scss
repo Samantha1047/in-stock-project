@@ -2,6 +2,17 @@
 @use "../../styles/partials/mixins" as *;
 
 .warehouse-detail {
+  margin: 0 1rem;
+  background-color: $primary-light;
+
+  @include tablet {
+    margin: 0 2rem;
+  }
+
+  @include desktop {
+    margin: 0 8.125rem;
+  }
+
   &__header {
     display: flex;
     align-items: center;
@@ -40,7 +51,6 @@
     justify-content: center;
     padding: 0;
     background-size: cover;
-    margin-left: 1.5rem;
     margin-top: 0.2rem;
 
     @include tablet {
@@ -51,8 +61,8 @@
   &__edit-button {
     background-color: $primary-color;
     border-radius: 50%;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2.25rem;
+    width: 2.25rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,6 +140,7 @@
     }
 
     @include desktop {
+      gap: 6.5rem;
       padding-right: 13rem;
     }
   }
