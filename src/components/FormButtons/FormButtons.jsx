@@ -1,8 +1,11 @@
+import Button from "../Button/Button";
+import "./FormButtons.scss";
+
 const FormButtons = () => {
   return (
     <section className="form-buttons">
-      <button type="reset">Cancel</button>
-      <button type="submit">Save</button>
+      <Button location="form" text="Cancel" isPrimary={false} />
+      <Button location="form" text="Save" isPrimary={true} />
     </section>
   );
 };
