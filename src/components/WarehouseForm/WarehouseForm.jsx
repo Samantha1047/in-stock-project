@@ -1,34 +1,6 @@
 import "./WarehouseForm.scss";
-import { useState } from "react";
-
-// const initialformValues = {
-//   warehouse_name: "",
-//   address: "",
-//   city: "",
-//   country: "",
-//   contact_name: "",
-//   contact_position: "",
-//   contact_phone: "",
-//   contact_email: "",
-// };
 
 const WarehouseForm = ({ formValues, handleInputChange }) => {
-  // const [formValues, setformValues] = useState(initialformValues);
-
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setformValues({
-  //     ...formValues,
-  //     [name]: value,
-  //   });
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Assuming `formValues` is the state in WarehouseForm holding the form formValues
-  //   onWarehouseFormSubmit(formValues);
-  // };
-
   return (
     <div className="warehouse-form">
       <section className="warehouse-form__details-section">
