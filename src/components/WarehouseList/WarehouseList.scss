@@ -1,0 +1,123 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.warehouse-list {
+  margin: 2rem 1rem;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-bottom: 1px solid $secondary-light;
+
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__title {
+    @include mobile-h1-page-header;
+  }
+
+  &__search {
+    border-radius: 1.25rem;
+    border: 1px solid $secondary-light;
+    height: 2.25rem;
+    margin: 1rem auto;
+    width: 100%;
+
+    &::placeholder {
+      color: $secondary-dark;
+      padding: 0.5rem 1rem;
+      @include mobile-h3-labels-links-buttons;
+    }
+  }
+
+  &__button {
+    border-radius: 1.25rem;
+    color: $primary-light;
+    background-color: $primary-color;
+    border: none;
+    height: 2.25rem;
+    padding: 0.5rem 5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__table-headers {
+    color: $secondary-dark;
+  }
+
+  &__header-column {
+  }
+
+  &__table-body {
+    box-shadow: 0 2px 5px rgba(19, 24, 44, 0.1);
+  border-radius: 2px;
+  }
+
+  &__table-row {
+    padding: 0.5rem;
+   border-bottom: 1px solid $secondary-light;
+  }
+
+  &__information {
+    display: flex;
+  }
+
+  &__table-cell {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+
+    &--bottom {
+        display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    justify-content: space-between;
+    }
+  }
+
+  &__cell--left {
+    display: flex;
+    flex-direction: column;
+  }
+  &__cell--right {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  &__header--mobile {
+color: $secondary-dark;
+@include mobile-h4-table-header;
+  }
+  &__link {
+    text-decoration: none;
+    @include mobile-h3-labels-links-buttons;
+    font-weight: 600;
+    color: $primary-color;
+  }
+
+  &__item {
+    @include mobile-p2-body-medium;
+    text-wrap: wrap;
+    
+    color: $primary-dark;
+  }
+
+  &__edit-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  &__delete-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .hidden {
+    display:none;
+}
+}
