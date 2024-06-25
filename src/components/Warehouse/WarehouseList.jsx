@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react-router-dom'
 import TableHeader from '../TableHeader/TableHeader'
 import editIcon from '../../assets/icons/edit-24px.svg'
 import chevRight from '../../assets/icons/chevron_right-24px.svg'
+import deleteIcon from '../../assets/icons/delete-outline-24px.svg'
 import './WarehouseList.scss'
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
@@ -27,7 +28,9 @@ const WarehouseList = ({ setCurrentWarehouse }) => {
     const item = { id, warehouse_name, city, country, contact_name, contact_phone, contact_email }
 
     return (
-        <section></section>
+        <section>
+            <TableHeader columns={tableHeaders} />
+        </section>
     )
 }
 
