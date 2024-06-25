@@ -36,7 +36,7 @@ const WarehouseList = ({ setCurrentWarehouse }) => {
                 <button className='warehouse-list__button'>+ Add New Warehouse</button>
             </div>
             <div className='warehouse-list__table'>
-                <div className='warehouse-list__table-headers hidden'>
+                <div className='warehouse-list__table-headers warehouse-list__table-headers--hidden'>
                     {tableHeaders.map((header, index) => (
                         <div key={index} className='warehouse-list__header-column'>
                             <p>{header}</p>

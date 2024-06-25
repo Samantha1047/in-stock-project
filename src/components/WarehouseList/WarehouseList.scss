@@ -12,6 +12,7 @@
 
     @include tablet {
       flex-direction: row;
+      justify-content: space-around;
     }
   }
 
@@ -25,6 +26,11 @@
     height: 2.25rem;
     margin: 1rem auto;
     width: 100%;
+
+    @include tablet {
+        width: 30%;
+        margin: 0;
+    }
 
     &::placeholder {
       color: $secondary-dark;
@@ -45,6 +51,13 @@
 
   &__table-headers {
     color: $secondary-dark;
+    &--hidden {
+        display: none;
+        @include tablet {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    }
   }
 
   &__header-column {
@@ -53,15 +66,25 @@
   &__table-body {
     box-shadow: 0 2px 5px rgba(19, 24, 44, 0.1);
   border-radius: 2px;
+
+ 
   }
 
   &__table-row {
     padding: 0.5rem;
    border-bottom: 1px solid $secondary-light;
+
+   @include tablet {
+    flex-direction: row;;
+}
   }
 
   &__information {
     display: flex;
+
+    @include tablet {
+        // flex-direction: row;;
+    }
   }
 
   &__table-cell {
@@ -69,27 +92,48 @@
     flex-direction: column;
     padding: 0.5rem;
 
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
     &--bottom {
         display: flex;
     flex-direction: row;
     padding: 0.5rem;
     justify-content: space-between;
+
+    @include tablet {
+        justify-content: flex-end;
+    }
     }
   }
 
   &__cell--left {
     display: flex;
     flex-direction: column;
+
+    @include tablet {
+        flex-direction: row;
+    }
   }
   &__cell--right {
     display: flex;
     flex-direction: column;
+
+    @include tablet {
+        flex-direction: row;
+    }
   }
 
 
   &__header--mobile {
 color: $secondary-dark;
 @include mobile-h4-table-header;
+
+@include tablet {
+    display: none;
+}
   }
   &__link {
     text-decoration: none;
@@ -101,7 +145,6 @@ color: $secondary-dark;
   &__item {
     @include mobile-p2-body-medium;
     text-wrap: wrap;
-    
     color: $primary-dark;
   }
 
@@ -117,7 +160,5 @@ color: $secondary-dark;
     cursor: pointer;
   }
 
-  .hidden {
-    display:none;
-}
+  
 }
