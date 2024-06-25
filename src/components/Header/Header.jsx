@@ -4,20 +4,18 @@ import logo from '../../assets/logo/InStock-Logo.svg'
 import './Header.scss'
 
 const Header = () => {
-    const [activeLink, setActiveLink] = useState('warehouses')
 
     return (
         <header className='header'>
-            <NavLink to='/' onClick={() => setActiveLink('warehouses')}>
+            <NavLink to='/'>
                 <img src={logo} alt='InStock Logo' className='header__logo' />
             </NavLink>
             <nav className='header__nav'>
                 <NavLink
                     to='/warehouses'
                     className={({ isActive }) =>
-                        `header__nav-link ${isActive || activeLink === "warehouses" ? 'header__nav-link--active' : ''}`
+                        `header__nav-link ${isActive || window.location.pathname === '/' ? 'header__nav-link--active' : ''}`
                     }
-                    onClick={() => setActiveLink('warehouses')}
                 >
                     Warehouses
                 </NavLink>
