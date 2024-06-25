@@ -1,6 +1,38 @@
-@use "../../styles/partials/variables" as *;
-@use "../../styles/partials/mixins" as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
 
 .header {
-    background-color: $background-dark;
+  background-color: $background-dark;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__logo {
+    padding: 1.5rem;
+  }
+
+  &__nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      margin-bottom: 1.5rem;
+
+    &-link {
+      text-decoration: none;
+      @include mobile-h3-labels-links-buttons;
+      color: $secondary-light;
+      padding: .5rem;
+      border-radius: 2rem;
+      width: 10rem;
+      text-align: center;
+      cursor: pointer;
+
+      &--active {
+        background-color: $primary-dark;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }

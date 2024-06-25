@@ -9,10 +9,10 @@ const Header = () => {
                 <img src={logo} alt="inStock logo" className="header__logo" />
             </Link>
             <nav className="header__nav">
-                <NavLink to="/warehouses" className={({ isActive }) => (isActive ? "active-link" : "")}>
+                <NavLink to="/warehouses" className={({ isActive }) => (isActive ? "header__nav-link header__nav-link--active" : "header__nav-link")}>
                     Warehouses
                 </NavLink>
-                <NavLink to="/inventory" className={({ isActive }) => (isActive ? "active-link" : "")}>
+                <NavLink to="/inventory" className={({ isActive }) => (isActive ? "header__nav-link header__nav-link--active" : "header__nav-link")}>
                     Inventory
                 </NavLink>
             </nav>
