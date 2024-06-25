@@ -1,20 +1,25 @@
-// Breakpoints 
+// Breakpoints
 $tablet-breakpoint: 48em;
 $desktop-breakpoint: 80em;
 
 // Primary Colors
-$primary-dark: #13182C;
-$primary-color: #2E66E5;
-$primary-light: #FFFFFF;
+$primary-dark: #13182c;
+$primary-color: #2e66e5;
+$primary-light: #ffffff;
 
 // Secondary Colors
-$secondary-dark: #5C667E;
-$secondary-light: #BDC5D5;
+$secondary-dark: #5c667e;
+$secondary-light: #bdc5d5;
 
 // Background Colors
 $background-dark: #232940;
-$background-light: #F7F8F9;
+$background-light: #f7f8f9;
 
 // Supporting Colors
 $success-color: #158463;
-$error-color: #C94515;
+$error-color: #c94515;
+
+// Border Colors
+$border-default: 1px solid $secondary-light;
+$border-active: 1px solid $primary-color;
+$border-error: 1px solid $error-color;
