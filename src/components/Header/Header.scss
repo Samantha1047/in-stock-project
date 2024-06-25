@@ -7,8 +7,18 @@
   flex-direction: column;
   align-items: center;
 
+  @include tablet {
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+  }
+
   &__logo {
     padding: 1.5rem;
+
+    @include tablet {
+        padding: 2rem;
+    }
   }
 
   &__nav {
@@ -16,6 +26,11 @@
       flex-direction: row;
       justify-content: space-evenly;
       margin-bottom: 1.5rem;
+
+      @include tablet {
+        align-items: center;
+        margin-bottom: 0;
+      }
 
     &-link {
       text-decoration: none;
@@ -27,11 +42,18 @@
       text-align: center;
       cursor: pointer;
 
+      @include tablet {
+        @include h3-labels-links-buttons;
+        width: 7rem;
+      }
+
       &--active {
         background-color: $primary-dark;
+        color: $primary-light;
       }
       &:hover {
         text-decoration: underline;
+        color: $primary-light;
       }
     }
   }
