@@ -13,7 +13,7 @@ const initialValues = {
   country: "",
   contact_name: "",
   contact_position: "",
-  contact_phone: "+",
+  contact_phone: "",
   contact_email: "",
 };
 
@@ -29,28 +29,15 @@ const Form = ({ page }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === "contact_phone") {
-      const isValidPhone = validatePhoneNumber(value);
-      setFormValues({
-        ...formValues,
-        [name]: value,
-      });
-      setErrors({
-        ...errors,
-        [name]: isValidPhone
-          ? ""
-          : "Phone number must be in the format +1 (646) 123-1234",
-      });
-    } else {
-      setFormValues({
-        ...formValues,
-        [name]: value,
-      });
-      setErrors({
-        ...errors,
-        [name]: "",
-      });
-    }
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+
+    setErrors({
+      ...errors,
+      [name]: "",
+    });
   };
 
   const validatePhoneNumber = (phoneNumber) => {
@@ -92,13 +79,6 @@ const Form = ({ page }) => {
       newErrors.contact_phone = "Invalid phone number";
     }
 
-    if (isValidPhoneNumber) {
-      setFormValues((prevValues) => ({
-        ...prevValues,
-        contact_phone: isValidPhoneNumber,
-      }));
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -106,6 +86,7 @@ const Form = ({ page }) => {
   const handleSubmit = (values) => {
     if (validateForm()) {
       editWarehouse(values);
+      console.log("Form submitted successfully");
       setTimeout(() => {
         navigate("/");
         setFormValues(initialValues);

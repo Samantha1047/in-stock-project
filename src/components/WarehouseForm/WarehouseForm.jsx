@@ -131,29 +131,19 @@ const WarehouseForm = ({ formValues, handleInputChange, errors }) => {
               Phone Number
             </label>
 
-            {/* helps to format the phone number */}
-            {/* not sure if this is the best way to do it */}
-            <InputMask
-              mask="+1 (999) 999-9999"
-              alwaysShowMask={true}
+            <input
+              className={`warehouse-form__input ${
+                errors.contact_phone ? "error-border" : ""
+              }`}
+              type="tel"
+              id="contact_phone"
+              placeholder="+1 (647) 504-0911"
+              name="contact_phone"
               value={formValues.contact_phone}
               onChange={handleInputChange}
-              className="warehouse-form__input"
-            >
-              {(inputProps) => (
-                <input
-                  className={`warehouse-form__input ${
-                    errors.contact_phone ? "error-border" : ""
-                  }`}
-                  type="tel"
-                  id="contact_phone"
-                  placeholder="+1 (647) 504-0911"
-                  name="contact_phone"
-                  {...inputProps}
-                />
-              )}
-            </InputMask>
-            {errors.contact_phone && <ErrorText text={errors.contact_phone} />}
+            />
+
+            {errors.contact_phone && <ErrorText />}
           </fieldset>
           <fieldset className="warehouse-form__input-container">
             <label
