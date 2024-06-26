@@ -1,7 +1,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-
 .form-buttons {
   display: flex;
   background-color: $background-light;
@@ -19,5 +18,4 @@
       width: 1.25rem;
     }
   }
-
 }

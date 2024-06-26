@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<Warehouse />} />
           <Route path="/add" element={<WarehouseAdd />} />
           {/* remember to change warehouseId to :warehouseId when we have the data */}
-          <Route path="/warehouseId" element={<WarehouseDetails />} />
+          <Route path="/:warehouseId" element={<WarehouseDetails />} />
           <Route path="/:warehouseId/edit" element={<WarehouseEdit />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/inventory/add" element={<InventoryAdd />} />
