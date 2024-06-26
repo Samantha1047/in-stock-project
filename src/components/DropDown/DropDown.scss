@@ -1,0 +1,32 @@
+@use "../../styles/partials/variables" as *;
+.drop-down {
+  border: $border-default;
+  border-radius: 1.25rem;
+  position: relative;
+  justify-content: space-between;
+  height: 2.375rem;
+
+  &__icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &__input {
+    position: absolute;
+    width: 93%;
+    margin-left: 11px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 2rem;
+    margin-top: 2px;
+    border: hidden;
+    &:focus {
+      outline: none;
+    }
+  }
+  &.focused {
+    border: $border-active;
+  }
+}
