@@ -1,0 +1,8 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.warehouse-edit {
+  margin-inline: 1rem;
+  position: relative;
+  top: -3.125rem;
+}

@@ -1,0 +1,81 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.title-nav {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $secondary-light;
+    padding: 1.5rem 2.5rem;
+    background-color: $primary-light;
+
+    @include tablet {
+      padding: 1.5rem 4rem;
+      @include section-max-width;
+    }
+  }
+
+  &__title-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      @include mobile-h1-page-header;
+      padding: 0 0.5rem;
+
+      @include tablet {
+        @include h1-page-header;
+      }
+    }
+  }
+
+  &__back-button {
+    background: url("../../assets/icons/arrow_back-24px.svg") no-repeat center;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-size: cover;
+    margin-left: 1.5rem;
+    margin-top: 0.2rem;
+
+    @include tablet {
+      margin-left: 0;
+    }
+  }
+
+  &__edit-button {
+    background-color: $primary-color;
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+
+    @include tablet {
+      border-radius: 1.25rem;
+      height: 2.375rem;
+      width: 5.0625rem;
+    }
+
+    span {
+      display: none;
+
+      @include tablet {
+        display: inline;
+        color: $primary-light;
+        margin-left: 0.2rem;
+        font-weight: 600;
+      }
+    }
+  }
+}

@@ -1,12 +1,14 @@
 import "./ErrorText.scss";
 import errorIcon from "../../assets/icons/error-24px.svg";
 
-const ErrorText = ({ isDisplayed }) => {
-  const text = !isDisplayed ? "This field is required" : "";
+
+const ErrorText = ({ text }) => {
+  const errorText = text ? text : "This field is required";
   return (
-    <div className={`error-text ${!isDisplayed ? "error-text--hidden" : ""} `}>
+    <div className={`error-text `}>
       <img className="error-text__icon" src={errorIcon} alt="error icon" />
-      <p className="error-text__body">{text}</p>
+      <p className="error-text__body">{errorText}</p>
+
     </div>
   );
 };

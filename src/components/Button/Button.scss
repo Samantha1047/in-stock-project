@@ -2,8 +2,10 @@
 @use "../../styles/partials/mixins" as *;
 
 .button {
+
   height: 2.25rem;
   width: 8.75rem;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,4 +31,21 @@
     border: $border-default;
     background-color: $primary-light;
   }
+
+
+  &--form {
+    height: 2.25rem;
+    width: 8.75rem;
+    @include tablet {
+      width: 4.5rem;
+      height: 2.375rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &--default {
+    height: 2.25rem;
+    width: 8.75rem;
+  }
+
 }
