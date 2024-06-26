@@ -1,14 +1,18 @@
 import "./DeleteModal.scss";
 import Button from "../Button/Button";
 
-const DeleteModal = ({ WarehouseName /* onclose, onConfirm */ }) => {
+const DeleteModal = ({ isWarehouse, name /* onclose, onConfirm */ }) => {
   return (
     <section className="modal">
       <div className="modal__container">
         <i className="modal__closeIcon" /*  onClick={onclose} */ />
         <div className="modal__content">
-          <h1>Delete {WarehouseName} warehouse?</h1>
-          <p>Please confirm that you’d like to delete the {WarehouseName} from the list of warehouses. You won’t be able to undo this action.</p>
+          <h1>
+            Delete {name} {isWarehouse ? "warehouse" : "inventory item"}?
+          </h1>
+          <p>
+            Please confirm that you’d like to delete the {name} from {isWarehouse ? "the list of warehouses" : "the inventory list"}. You won’t be able to undo this action.
+          </p>
         </div>
 
         <div className="modal__buttons">
