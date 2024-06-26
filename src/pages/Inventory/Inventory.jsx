@@ -1,7 +1,8 @@
 import "./Inventory.scss";
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
 const Inventory = () => {
-  return <div>Inventory</div>;
+  return <DeleteModal WarehouseName={"Washington"} />;
 };
 
 export default Inventory;

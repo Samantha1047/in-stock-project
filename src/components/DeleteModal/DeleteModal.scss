@@ -1,0 +1,56 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.modal {
+  padding: 1rem;
+  padding-top: 3.75rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $primary-light;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+
+  h1 {
+    @include mobile-h1-page-header;
+  }
+
+  p {
+    @include mobile-p1-body-large;
+    font-size: 0.9375rem;
+    padding: 1rem 0;
+    font-weight: 400;
+  }
+
+  &__closeIcon {
+    background-image: url("../../assets/icons/close-24px.svg");
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  &__buttons {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__delete-button {
+    height: 2.25rem;
+    width: 8.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 1.25rem;
+    background-color: $error-color;
+    color: $primary-light;
+  }
+}
