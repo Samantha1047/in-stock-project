@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -17,7 +16,7 @@ const initialValues = {
   contact_email: "",
 };
 
-const Form = ({ page }) => {
+const Form = ({ page, mode }) => {
   const { warehouseId } = useParams();
   const API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -45,12 +44,11 @@ const Form = ({ page }) => {
     return phonePattern.test(phoneNumber);
   };
 
-  const editWarehouse = async (warehouse) => {
+  const submitWarehouseDate = async (warehouse, url, method) => {
+    console.log(warehouse, url, method);
     try {
-      const response = await axios.put(
-        `${API_URL}/api/warehouses/${warehouseId}`,
-        warehouse
-      );
+      const response = await axios[method](`${API_URL}${url}`, warehouse);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(error + "Error editing warehouse");
@@ -85,8 +83,10 @@ const Form = ({ page }) => {
 
   const handleSubmit = (values) => {
     if (validateForm()) {
-      editWarehouse(values);
-      console.log("Form submitted successfully");
+      const url = mode === "add" ? "/api/warehouses" : `/api/warehouses/${warehouseId}`;
+      const method = mode === "add" ? "post" : "put";
+      submitWarehouseDate(values, url, method);
+
       setTimeout(() => {
         navigate("/");
         setFormValues(initialValues);
@@ -106,19 +106,11 @@ const Form = ({ page }) => {
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit(formValues);
-      }}
-    >
-      {page === "warehouse" && (
-        <WarehouseForm
-          formValues={formValues}
-          handleInputChange={handleInputChange}
-          errors={errors}
-        />
-      )}
-      {page === "inventory" && <h1>Inventory Form</h1>}
+      }}>
+      {page === "warehouse" && <WarehouseForm formValues={formValues} handleInputChange={handleInputChange} errors={errors} mode={mode} />}
+      {page === "inventory" && <WarehouseForm formValues={formValues} handleInputChange={handleInputChange} errors={errors} />}
 
-      <FormButtons handleSubmit={() => handleWarehouseFormSubmit(formValues)} />
-
+      <FormButtons mode={mode} page={page} handleSubmit={() => handleWarehouseFormSubmit(formValues)} />
     </form>
   );
 };
