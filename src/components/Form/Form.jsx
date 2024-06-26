@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -17,7 +16,7 @@ const initialValues = {
   contact_email: "",
 };
 
-const Form = ({ page }) => {
+const Form = ({ page, pageType }) => {
   const { warehouseId } = useParams();
   const API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -136,8 +135,11 @@ const Form = ({ page }) => {
       )}
       {page === "inventory" && <h1>Inventory Form</h1>}
 
-      <FormButtons handleSubmit={() => handleWarehouseFormSubmit(formValues)} />
-
+      <FormButtons
+        pageType={pageType}
+        page={page}
+        handleSubmit={() => handleWarehouseFormSubmit(formValues)}
+      />
     </form>
   );
 };
