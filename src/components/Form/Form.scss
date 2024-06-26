@@ -2,10 +2,12 @@
 @use "../../styles/partials/mixins" as *;
 
 .form {
+
   box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1);
   border-radius: 2px;
 
   @include tablet {
     @include section-max-width;
   }
+
 }

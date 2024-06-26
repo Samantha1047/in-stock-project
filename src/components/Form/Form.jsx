@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -136,6 +137,7 @@ const Form = ({ page }) => {
       {page === "inventory" && <h1>Inventory Form</h1>}
 
       <FormButtons handleSubmit={() => handleWarehouseFormSubmit(formValues)} />
+
     </form>
   );
 };

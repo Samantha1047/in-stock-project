@@ -2,8 +2,10 @@
 @use "../../styles/partials/mixins" as *;
 
 .button {
-  //   height: 2.25rem;
-  //   width: 8.75rem;
+
+  height: 2.25rem;
+  width: 8.75rem;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,6 +32,7 @@
     background-color: $primary-light;
   }
 
+
   &--form {
     height: 2.25rem;
     width: 8.75rem;
@@ -44,4 +47,5 @@
     height: 2.25rem;
     width: 8.75rem;
   }
+
 }

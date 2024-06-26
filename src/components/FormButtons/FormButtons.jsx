@@ -1,6 +1,7 @@
 import Button from "../Button/Button";
 import "./FormButtons.scss";
 
+
 const FormButtons = ({ handleSubmit }) => {
   return (
     <section className="form-buttons">
@@ -12,6 +13,7 @@ const FormButtons = ({ handleSubmit }) => {
         type="submit"
         handleSubmit={handleSubmit}
       />
+
     </section>
   );
 };
