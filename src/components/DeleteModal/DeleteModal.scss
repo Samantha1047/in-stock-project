@@ -2,19 +2,36 @@
 @use "../../styles/partials/mixins" as *;
 
 .modal {
-  padding: 1rem;
-  padding-top: 3.75rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: $primary-light;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
+  @include card-shadow;
+
+  @include tablet {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  &__container {
+    padding: 1rem;
+    padding-top: 3.75rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $primary-light;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+
+    @include tablet {
+      position: relative;
+      width: 42rem;
+      height: 16.375rem;
+      padding: 2rem 4rem 2rem 3rem;
+    }
+  }
 
   h1 {
     @include mobile-h1-page-header;
@@ -25,6 +42,10 @@
     font-size: 0.9375rem;
     padding: 1rem 0;
     font-weight: 400;
+
+    @include tablet {
+      padding-right: 4rem;
+    }
   }
 
   &__closeIcon {
@@ -40,6 +61,18 @@
     width: 100%;
     display: flex;
     gap: 1rem;
+
+    @include tablet {
+      justify-content: flex-end;
+
+      p {
+        padding: 0;
+      }
+
+      .button {
+        width: 4.4375rem;
+      }
+    }
   }
 
   &__delete-button {
@@ -52,5 +85,9 @@
     border-radius: 1.25rem;
     background-color: $error-color;
     color: $primary-light;
+
+    @include tablet {
+      width: 4.4375rem;
+    }
   }
 }
