@@ -1,11 +1,12 @@
 import "./TitleNav.scss";
 
 const TitleNav = ({ title, page, edit }) => {
+  const titleText = title ? title : "Washington";
   return (
     <div className="title-nav__header">
       <div className="title-nav__title-wrap">
         <button className="title-nav__back-button"></button>
-        <h1>Washington</h1>
+        <h1>{titleText}</h1>
       </div>
       <button className="title-nav__edit-button">
         <svg
