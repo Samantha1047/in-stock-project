@@ -52,6 +52,10 @@
     border: $border-default;
     padding-right: 1rem;
     padding-left: 1rem;
+
+    &:focus {
+      outline: $border-active;
+    }
   }
 }
 
@@ -61,4 +65,8 @@
   @include tablet {
     padding: 0 2rem;
   }
+}
+
+.error-border {
+  border: 1px solid $error-color;
 }
