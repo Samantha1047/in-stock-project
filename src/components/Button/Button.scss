@@ -29,4 +29,19 @@
     border: $border-default;
     background-color: $primary-light;
   }
+
+  &--form {
+    height: 2.25rem;
+    width: 8.75rem;
+    @include tablet {
+      width: auto;
+      height: 2.375rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &--default {
+    height: 2.25rem;
+    width: 8.75rem;
+  }
 }

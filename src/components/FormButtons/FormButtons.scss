@@ -1,4 +1,5 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .form-buttons {
   display: flex;
@@ -6,4 +7,15 @@
   height: 4.25rem;
   padding: 1rem 1.5rem;
   justify-content: space-around;
+
+  @include tablet {
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  &__button {
+    @include tablet {
+      width: 1.25rem;
+    }
+  }
 }

@@ -1,170 +1,79 @@
 import "./WarehouseForm.scss";
-import { useState } from "react";
+import FormField from "../FormField/FormField";
 
-const initialValues = {
-  warehouse_name: "",
-  address: "",
-  city: "",
-  country: "",
-  contact_name: "",
-  contact_position: "",
-  contact_phone: "",
-  contact_email: "",
-};
-
-const WarehouseForm = ({ onWarehouseFormSubmit }) => {
-  const [values, setValues] = useState(initialValues);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onWarehouseFormSubmit(values);
-  };
-
+const WarehouseForm = ({ formValues, handleInputChange, errors }) => {
   return (
     <div className="warehouse-form">
       <section className="warehouse-form__details-section">
         <div className="wrapper">
           <h2 className="warehouse-form__title">Warehouse Details</h2>
-          <fieldset className="warehouse-form__input-container">
-            <label
-              className="warehouse-form__input-label"
-              htmlFor="warehouseName"
-            >
-              Warehouse Name
-            </label>
-            <input
-              className="warehouse-form__input"
-              type="text"
-              id="warehouseName"
-              placeholder="Washington"
-              name="warehouse_name"
-              onChange={handleInputChange}
-              value={values.warehouse_name}
-            />
-          </fieldset>
-          <fieldset className="warehouse-form__input-container">
-            <label className="warehouse-form__input-label" htmlFor="address">
-              Street Address
-            </label>
-            <input
-              className="warehouse-form__input"
-              type="text"
-              id="address"
-              placeholder="33 Pearl Street SW"
-              name="address"
-              onChange={handleInputChange}
-              value={values.address}
-            />
-          </fieldset>
-          <fieldset className="warehouse-form__input-container">
-            <label className="warehouse-form__input-label" htmlFor="city">
-              City
-            </label>
-            <input
-              className="warehouse-form__input"
-              type="text"
-              id="city"
-              placeholder="33 Pearl Street SW"
-              name="city"
-              onChange={handleInputChange}
-              value={values.city}
-            />
-          </fieldset>
-          <fieldset className="warehouse-form__input-container">
-            <label className="warehouse-form__input-label" htmlFor="city">
-              Country
-            </label>
-            <input
-              className="warehouse-form__input"
-              type="text"
-              id="country"
-              placeholder="USA"
-              name="country"
-              onChange={handleInputChange}
-              value={values.country}
-            />
-          </fieldset>
+          <FormField
+            label="Warehouse Name"
+            type="text"
+            name="warehouse_name"
+            value={formValues.warehouse_name}
+            onChange={handleInputChange}
+            placeholder="Washington"
+            error={errors.warehouse_name}
+          />
+
+          <FormField
+            label="Street Address"
+            type="text"
+            name="address"
+            value={formValues.address}
+            onChange={handleInputChange}
+            placeholder="33 Pearl Street SW"
+            error={errors.address}
+          />
+
+          <FormField label="City" type="text" name="city" value={formValues.city} onChange={handleInputChange} placeholder="Washington" error={errors.city} />
+
+          <FormField label="Country" type="text" name="country" value={formValues.country} onChange={handleInputChange} placeholder="USA" error={errors.country} />
         </div>
       </section>
       <section className="warehouse-form__contact-section">
         <div className="wrapper">
           <h2 className="warehouse-form__title">Contact Details</h2>
-          <fieldset className="warehouse-form__input-container">
-            <label
-              className="warehouse-form__input-label"
-              htmlFor="contact_name"
-            >
-              Contact Name
-            </label>
-            <input
-              type="text"
-              className="warehouse-form__input"
-              id="contact_name"
-              placeholder="Graeme Lyon"
-              name="contact_name"
-              onChange={handleInputChange}
-              value={values.contact_name}
-            />
-          </fieldset>
-          <fieldset className="warehouse-form__input-container">
-            <label
-              className="warehouse-form__input-label"
-              htmlFor="contact_position"
-            >
-              Position
-            </label>
-            <input
-              className="warehouse-form__input"
-              type="text"
-              id="contact_position"
-              placeholder="Graeme Lyon"
-              name="contact_position"
-              onChange={handleInputChange}
-              value={values.contact_position}
-            />
-          </fieldset>
-          <fieldset className="warehouse-form__input-container">
-            <label
-              className="warehouse-form__input-label"
-              htmlFor="contact_phone"
-            >
-              Phone Number
-            </label>
-            <input
-              className="warehouse-form__input"
-              type="tel"
-              id="contact_phone"
-              placeholder="Graeme Lyon"
-              name="contact_phone"
-              onChange={handleInputChange}
-              value={values.contact_phone}
-            />
-          </fieldset>
-          <fieldset className="warehouse-form__input-container">
-            <label
-              className="warehouse-form__input-label"
-              htmlFor="contact_email"
-            >
-              Email
-            </label>
-            <input
-              className="warehouse-form__input"
-              type="email"
-              id="contact_email"
-              placeholder="Graeme Lyon"
-              name="contact_email"
-              value={values.contact_email}
-              onChange={handleInputChange}
-            />
-          </fieldset>
+          <FormField
+            label="Contact Name"
+            type="text"
+            name="contact_name"
+            value={formValues.contact_name}
+            onChange={handleInputChange}
+            placeholder="Graeme Lyon"
+            error={errors.contact_name}
+          />
+
+          <FormField
+            label="Position"
+            type="text"
+            name="contact_position"
+            value={formValues.contact_position}
+            onChange={handleInputChange}
+            placeholder="Warehouse Manager"
+            error={errors.contact_position}
+          />
+
+          <FormField
+            label="Phone Number"
+            type="tel"
+            name="contact_phone"
+            value={formValues.contact_phone}
+            onChange={handleInputChange}
+            placeholder="+1 (647) 504-0911"
+            error={errors.contact_phone}
+          />
+
+          <FormField
+            label="Email"
+            type="email"
+            name="contact_email"
+            value={formValues.contact_email}
+            onChange={handleInputChange}
+            placeholder="glyon@instock.com"
+            error={errors.contact_email}
+          />
         </div>
       </section>
     </div>

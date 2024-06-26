@@ -4,10 +4,10 @@ import TitleNav from "../../components/TitleNav/TitleNav";
 
 const WarehouseEdit = () => {
   return (
-    <div className="warehouse-edit">
-      <TitleNav title="Edit" page="Warehouse" edit={false} />
-      <Form page="warehouse" />
-    </div>
+    <article className="warehouse-edit">
+      <TitleNav title="Edit Warehouse" page="Warehouse" edit={false} />
+      <Form mode="edit" page="warehouse" />
+    </article>
   );
 };
 
