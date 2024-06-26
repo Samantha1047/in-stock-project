@@ -1,13 +1,13 @@
 import Button from "../Button/Button";
 import "./FormButtons.scss";
 
-const FormButtons = ({ handleSubmit, pageType, page }) => {
+const FormButtons = ({ handleSubmit, mode, page }) => {
   const buttonText =
     page === "warehouse"
-      ? pageType === "add"
+      ? mode === "add"
         ? "+ Add Warehouse"
         : "Save"
-      : pageType === "add"
+      : mode === "add"
       ? "+ Add Item"
       : "Save";
   return (
