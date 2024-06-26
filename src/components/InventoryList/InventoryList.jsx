@@ -6,6 +6,7 @@ import chevRight from '../../assets/icons/chevron_right-24px.svg'
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg'
 import searchIcon from '../../assets/icons/search-24px.svg'
 import sortIcon from '../../assets/icons/sort-24px.svg'
+import Button from '../Button/Button'
 import './InventoryList.scss'
 
 const API_URL = import.meta.env.VITE_APP_API_URL
@@ -126,7 +127,7 @@ const InventoryList = () => {
                                             <p className='inventory-list__header--mobile'>
                                                 STATUS
                                             </p>
-                                            <p className='inventory-list__item'>{status}</p>
+                                            <p className={`inventory-list__item inventory-list__item--status ${status === 'In Stock' ? 'inventory-list__item--green' : 'inventory-list__item--red'}`}>{status}</p>
                                         </div>
                                         <div className='inventory-list__table-cell'>
                                             <p className='inventory-list__header--mobile'>
@@ -134,20 +135,26 @@ const InventoryList = () => {
                                             </p>
                                             <p className='inventory-list__item'>{quantity}</p>
                                         </div>
+                                        <div className='inventory-list__table-cell'>
+                                            <p className='inventory-list__header--mobile'>
+                                                WAREHOUSE
+                                            </p>
+                                            <p className='inventory-list__item'>{warehouse_name}</p>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div className='inventory-list__table-cell--bottom'>
+                                    {/* // may need to adjust when delete modal is completed  */}
                                     <button className='inventory-list__delete-button'>
                                         <img
-                                            onClick={() => navigate(`/${itemId}/delete`)}
+                                            onClick={() => navigate(`inventory/${itemId}/delete`)}
                                             src={deleteIcon}
                                             alt='Delete'
                                         />
                                     </button>
                                     <button
-                                        // may need to adjust when delete modal is completed
-                                        onClick={() => navigate(`inventory/${itemId}/edit`)}
+                                        onClick={() => navigate(`/inventory/${itemId}/edit`)}
                                         className='inventory-list__edit-button'
                                     >
                                         <img src={editIcon} alt='Edit' />

@@ -1,5 +1,5 @@
-@use "../../styles/partials/variables" as *;
-@use "../../styles/partials/mixins" as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
 
 .inventory-list {
   margin: 2rem 1rem;
@@ -162,7 +162,7 @@
 
     @include tablet {
       width: 50%;
-      justify-content: space-evenly;
+      justify-content: flex-start;
     }
     &--tablet {
       @include tablet {
@@ -235,6 +235,43 @@
     @include mobile-p2-body-medium;
     text-wrap: wrap;
     color: $primary-dark;
+
+    &--status {
+      border-radius: 1.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include mobile-h4-table-header;
+      text-transform: uppercase;
+      font-weight: 600;
+
+      @include tablet {}
+    }
+
+    &--green {
+      height: 1.5rem;
+      width: 3.8125rem;
+      background-color: rgba(21, 132, 99, 0.07);
+      color: $success-color;
+
+      @include tablet {
+        height: 1.625rem;
+        width: 4.0625rem;
+        @include h4-table-header;
+      }
+    }
+
+    &--red {
+      height: 1.5rem;
+      width: 5.375rem;
+      background-color: rgba(201, 69, 21, 0.07);
+      color: $error-color;
+
+      @include tablet {
+        height: 1.625rem;
+        width: 6rem;
+      }
+    }
   }
 
   &__edit-button {
