@@ -1,7 +1,10 @@
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import WarehouseForm from "../WarehouseForm/WarehouseForm";
 import FormButtons from "../FormButtons/FormButtons";
 import "./Form.scss";
-import WarehouseForm from "../WarehouseForm/WarehouseForm";
-import { useState } from "react";
+
 const initialValues = {
   warehouse_name: "",
   address: "",
@@ -9,44 +12,110 @@ const initialValues = {
   country: "",
   contact_name: "",
   contact_position: "",
-  contact_phone: "",
+  contact_phone: "+",
   contact_email: "",
 };
 
 const Form = ({ page }) => {
+  const { warehouseId } = useParams();
+  const API_URL = import.meta.env.VITE_APP_API_URL;
+
   const [formValues, setFormValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
 
+  const navigate = useNavigate();
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
-    setErrors({
-      ...errors,
-      [name]: "",
-    });
+
+    if (name === "contact_phone") {
+      const isValidPhone = validatePhoneNumber(value);
+      setFormValues({
+        ...formValues,
+        [name]: value,
+      });
+      setErrors({
+        ...errors,
+        [name]: isValidPhone
+          ? ""
+          : "Phone number must be in the format +1 (646) 123-1234",
+      });
+    } else {
+      setFormValues({
+        ...formValues,
+        [name]: value,
+      });
+      setErrors({
+        ...errors,
+        [name]: "",
+      });
+    }
+  };
+
+  const validatePhoneNumber = (phoneNumber) => {
+    const phonePattern = /^\+1 \(\d{3}\) \d{3}-\d{4}$/;
+    return phonePattern.test(phoneNumber);
+  };
+
+  const editWarehouse = async (warehouse) => {
+    try {
+      const response = await axios.put(
+        `${API_URL}/api/warehouses/${warehouseId}`,
+        warehouse
+      );
+      return response.data;
+    } catch (error) {
+      console.error(error + "Error editing warehouse");
+    }
+  };
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
   };
 
   const validateForm = () => {
     const newErrors = {};
     Object.keys(formValues).forEach((key) => {
       if (!formValues[key]) {
-        newErrors[key] = `The field ${key} is required`;
+        newErrors[key] = "This field is required";
       }
     });
+
+    if (formValues.contact_email && !validateEmail(formValues.contact_email)) {
+      newErrors.contact_email = "Invalid email address";
+    }
+
+    const isValidPhoneNumber = validatePhoneNumber(formValues.contact_phone);
+    if (!isValidPhoneNumber) {
+      newErrors.contact_phone = "Invalid phone number";
+    }
+
+    if (isValidPhoneNumber) {
+      setFormValues((prevValues) => ({
+        ...prevValues,
+        contact_phone: isValidPhoneNumber,
+      }));
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (values) => {
     if (validateForm()) {
-      //to be submiteed to back end
-      console.log("Form submitted with values:", values);
+      editWarehouse(values);
+      setTimeout(() => {
+        navigate("/");
+        setFormValues(initialValues);
+      }, 2000);
     } else {
       console.error("Form has errors");
     }
+  };
+
+  const handleWarehouseFormSubmit = () => {
+    handleSubmit(formValues);
   };
 
   return (
@@ -61,6 +130,7 @@ const Form = ({ page }) => {
         <WarehouseForm
           formValues={formValues}
           handleInputChange={handleInputChange}
+          errors={errors}
         />
       )}
       {page === "inventory" && <h1>Inventory Form</h1>}

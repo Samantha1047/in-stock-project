@@ -1,6 +1,7 @@
 import "./WarehouseForm.scss";
-
-const WarehouseForm = ({ formValues, handleInputChange }) => {
+import ErrorText from "../ErrorText/ErrorText";
+import InputMask from "react-input-mask";
+const WarehouseForm = ({ formValues, handleInputChange, errors }) => {
   return (
     <div className="warehouse-form">
       <section className="warehouse-form__details-section">
@@ -14,7 +15,9 @@ const WarehouseForm = ({ formValues, handleInputChange }) => {
               Warehouse Name
             </label>
             <input
-              className="warehouse-form__input"
+              className={`warehouse-form__input ${
+                errors.warehouse_name ? "error-border" : ""
+              }`}
               type="text"
               id="warehouseName"
               placeholder="Washington"
@@ -22,13 +25,16 @@ const WarehouseForm = ({ formValues, handleInputChange }) => {
               onChange={handleInputChange}
               value={formValues.warehouse_name}
             />
+            {errors.warehouse_name && <ErrorText />}
           </fieldset>
           <fieldset className="warehouse-form__input-container">
             <label className="warehouse-form__input-label" htmlFor="address">
               Street Address
             </label>
             <input
-              className="warehouse-form__input"
+              className={`warehouse-form__input ${
+                errors.address ? "error-border" : ""
+              }`}
               type="text"
               id="address"
               placeholder="33 Pearl Street SW"
@@ -36,27 +42,33 @@ const WarehouseForm = ({ formValues, handleInputChange }) => {
               onChange={handleInputChange}
               value={formValues.address}
             />
+            {errors.address && <ErrorText />}
           </fieldset>
           <fieldset className="warehouse-form__input-container">
             <label className="warehouse-form__input-label" htmlFor="city">
               City
             </label>
             <input
-              className="warehouse-form__input"
+              className={`warehouse-form__input ${
+                errors.city ? "error-border" : ""
+              }`}
               type="text"
               id="city"
-              placeholder="33 Pearl Street SW"
+              placeholder="Washington"
               name="city"
               onChange={handleInputChange}
               value={formValues.city}
             />
+            {errors.city && <ErrorText />}
           </fieldset>
           <fieldset className="warehouse-form__input-container">
             <label className="warehouse-form__input-label" htmlFor="city">
               Country
             </label>
             <input
-              className="warehouse-form__input"
+              className={`warehouse-form__input ${
+                errors.country ? "error-border" : ""
+              }`}
               type="text"
               id="country"
               placeholder="USA"
@@ -64,6 +76,7 @@ const WarehouseForm = ({ formValues, handleInputChange }) => {
               onChange={handleInputChange}
               value={formValues.country}
             />
+            {errors.country && <ErrorText />}
           </fieldset>
         </div>
       </section>
@@ -79,13 +92,16 @@ const WarehouseForm = ({ formValues, handleInputChange }) => {
             </label>
             <input
               type="text"
-              className="warehouse-form__input"
+              className={`warehouse-form__input ${
+                errors.contact_name ? "error-border" : ""
+              }`}
               id="contact_name"
               placeholder="Graeme Lyon"
               name="contact_name"
               onChange={handleInputChange}
               value={formValues.contact_name}
             />
+            {errors.contact_name && <ErrorText />}
           </fieldset>
           <fieldset className="warehouse-form__input-container">
             <label
@@ -95,14 +111,17 @@ const WarehouseForm = ({ formValues, handleInputChange }) => {
               Position
             </label>
             <input
-              className="warehouse-form__input"
+              className={`warehouse-form__input ${
+                errors.contact_position ? "error-border" : ""
+              }`}
               type="text"
               id="contact_position"
-              placeholder="Graeme Lyon"
+              placeholder="Warehouse Manager"
               name="contact_position"
               onChange={handleInputChange}
               value={formValues.contact_position}
             />
+            {errors.contact_position && <ErrorText />}
           </fieldset>
           <fieldset className="warehouse-form__input-container">
             <label
@@ -111,15 +130,30 @@ const WarehouseForm = ({ formValues, handleInputChange }) => {
             >
               Phone Number
             </label>
-            <input
-              className="warehouse-form__input"
-              type="tel"
-              id="contact_phone"
-              placeholder="Graeme Lyon"
-              name="contact_phone"
-              onChange={handleInputChange}
+
+            {/* helps to format the phone number */}
+            {/* not sure if this is the best way to do it */}
+            <InputMask
+              mask="+1 (999) 999-9999"
+              alwaysShowMask={true}
               value={formValues.contact_phone}
-            />
+              onChange={handleInputChange}
+              className="warehouse-form__input"
+            >
+              {(inputProps) => (
+                <input
+                  className={`warehouse-form__input ${
+                    errors.contact_phone ? "error-border" : ""
+                  }`}
+                  type="tel"
+                  id="contact_phone"
+                  placeholder="+1 (647) 504-0911"
+                  name="contact_phone"
+                  {...inputProps}
+                />
+              )}
+            </InputMask>
+            {errors.contact_phone && <ErrorText text={errors.contact_phone} />}
           </fieldset>
           <fieldset className="warehouse-form__input-container">
             <label
@@ -129,14 +163,17 @@ const WarehouseForm = ({ formValues, handleInputChange }) => {
               Email
             </label>
             <input
-              className="warehouse-form__input"
+              className={`warehouse-form__input ${
+                errors.contact_email ? "error-border" : ""
+              }`}
               type="email"
               id="contact_email"
-              placeholder="Graeme Lyon"
+              placeholder="glyon@instock.com"
               name="contact_email"
               value={formValues.contact_email}
               onChange={handleInputChange}
             />
+            {errors.contact_email && <ErrorText />}
           </fieldset>
         </div>
       </section>
