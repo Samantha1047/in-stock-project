@@ -6,7 +6,7 @@ const WarehouseEdit = () => {
   return (
     <article className="warehouse-edit">
       <TitleNav title="Edit Warehouse" page="Warehouse" edit={false} />
-      <Form page="warehouse" />
+      <Form pageType="edit" page="warehouse" />
     </article>
   );
 };
