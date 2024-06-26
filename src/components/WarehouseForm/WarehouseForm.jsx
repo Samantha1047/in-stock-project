@@ -1,6 +1,5 @@
 import "./WarehouseForm.scss";
 import ErrorText from "../ErrorText/ErrorText";
-import InputMask from "react-input-mask";
 const WarehouseForm = ({ formValues, handleInputChange, errors }) => {
   return (
     <div className="warehouse-form">
