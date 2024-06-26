@@ -83,6 +83,7 @@ const Form = ({ page, mode }) => {
 
   const handleSubmit = (values) => {
     if (validateForm()) {
+
       const url =
         mode === "add" ? "/api/warehouses" : `/api/warehouses/${warehouseId}`;
       const method = mode === "add" ? "post" : "put";

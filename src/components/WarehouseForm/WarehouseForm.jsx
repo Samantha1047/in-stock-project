@@ -1,6 +1,6 @@
 import "./WarehouseForm.scss";
-
 import FormField from "../FormField/FormField";
+
 
 const WarehouseForm = ({ formValues, handleInputChange, errors }) => {
   return (
@@ -90,7 +90,7 @@ const WarehouseForm = ({ formValues, handleInputChange, errors }) => {
             onChange={handleInputChange}
             placeholder="glyon@instock.com"
             error={errors.contact_email}
-          />
+
         </div>
       </section>
     </div>
