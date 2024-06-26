@@ -16,7 +16,7 @@ const initialValues = {
   contact_email: "",
 };
 
-const Form = ({ page, pageType }) => {
+const Form = ({ page, mode }) => {
   const { warehouseId } = useParams();
   const API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -44,12 +44,11 @@ const Form = ({ page, pageType }) => {
     return phonePattern.test(phoneNumber);
   };
 
-  const editWarehouse = async (warehouse) => {
+  const submitWarehouseDate = async (warehouse, url, method) => {
+    console.log(warehouse, url, method);
     try {
-      const response = await axios.put(
-        `${API_URL}/api/warehouses/${warehouseId}`,
-        warehouse
-      );
+      const response = await axios[method](`${API_URL}${url}`, warehouse);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(error + "Error editing warehouse");
@@ -78,20 +77,17 @@ const Form = ({ page, pageType }) => {
       newErrors.contact_phone = "Invalid phone number";
     }
 
-    if (isValidPhoneNumber) {
-      setFormValues((prevValues) => ({
-        ...prevValues,
-        contact_phone: isValidPhoneNumber,
-      }));
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (values) => {
     if (validateForm()) {
-      editWarehouse(values);
+      const url =
+        mode === "add" ? "/api/warehouses" : `/api/warehouses/${warehouseId}`;
+      const method = mode === "add" ? "post" : "put";
+      submitWarehouseDate(values, url, method);
+
       setTimeout(() => {
         navigate("/");
         setFormValues(initialValues);
@@ -118,12 +114,19 @@ const Form = ({ page, pageType }) => {
           formValues={formValues}
           handleInputChange={handleInputChange}
           errors={errors}
+          mode={mode}
         />
       )}
-      {page === "inventory" && <h1>Inventory Form</h1>}
+      {page === "inventory" && (
+        <WarehouseForm
+          formValues={formValues}
+          handleInputChange={handleInputChange}
+          errors={errors}
+        />
+      )}
 
       <FormButtons
-        pageType={pageType}
+        mode={mode}
         page={page}
         handleSubmit={() => handleWarehouseFormSubmit(formValues)}
       />
