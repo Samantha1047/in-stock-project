@@ -12,7 +12,7 @@ const initialValues = {
   country: "",
   contact_name: "",
   contact_position: "",
-  contact_phone: "+",
+  contact_phone: "",
   contact_email: "",
 };
 
@@ -28,28 +28,15 @@ const Form = ({ page, pageType }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === "contact_phone") {
-      const isValidPhone = validatePhoneNumber(value);
-      setFormValues({
-        ...formValues,
-        [name]: value,
-      });
-      setErrors({
-        ...errors,
-        [name]: isValidPhone
-          ? ""
-          : "Phone number must be in the format +1 (646) 123-1234",
-      });
-    } else {
-      setFormValues({
-        ...formValues,
-        [name]: value,
-      });
-      setErrors({
-        ...errors,
-        [name]: "",
-      });
-    }
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+
+    setErrors({
+      ...errors,
+      [name]: "",
+    });
   };
 
   const validatePhoneNumber = (phoneNumber) => {
