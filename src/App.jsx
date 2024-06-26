@@ -19,6 +19,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Warehouse />} />
+          <Route path="/warehouses" element={<Warehouse />} />
           <Route path="/add" element={<WarehouseAdd />} />
           {/* remember to change warehouseId to :warehouseId when we have the data */}
           <Route path="/warehouseId" element={<WarehouseDetails />} />

@@ -3,24 +3,51 @@
 
 .warehouse-list {
   margin: 2rem 1rem;
+  position: relative;
+  top: -100px;
+  background-color: white;
+  padding-top: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgba(44, 25, 19, 0.1);
+  border-radius: 3px;
+
+  @include tablet {
+    margin: 0 2rem;
+    top: -100px;
+  }
+
+  @include desktop {
+    margin: 0 8.125rem;
+  }
 
   &__header {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     border-bottom: 1px solid $secondary-light;
+    padding: 1.5rem;
 
     @include tablet {
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-between;
+    }
+
+    @include desktop {
+        padding: 2rem 2.5rem 1.5rem 2.5rem;
     }
   }
 
   &__title {
     @include mobile-h1-page-header;
+    // padding-top: 1rem;
+  }
+
+  &__nav {
+
   }
 
   &__search {
+    position: relative;
     border-radius: 1.25rem;
     border: 1px solid $secondary-light;
     height: 2.25rem;
@@ -28,14 +55,36 @@
     width: 100%;
 
     @include tablet {
-        width: 30%;
-        margin: 0;
+      width: 11.5625rem;
+      height: 2.375rem;
+      margin: 0 0.5rem;
+    }
+
+    @include desktop {
+      width: 17.125rem;
+      margin: 0 0.5rem;
     }
 
     &::placeholder {
       color: $secondary-dark;
       padding: 0.5rem 1rem;
       @include mobile-h3-labels-links-buttons;
+    }
+  }
+
+  &__search-icon {
+    position: absolute;
+    right: 38px;
+    top: 98px;
+
+    @include tablet {
+      right: 230px;
+      top: 47px;
+    }
+
+    @include desktop {
+      right: 245px;
+        top: 55px;
     }
   }
 
@@ -47,43 +96,68 @@
     height: 2.25rem;
     padding: 0.5rem 5rem;
     margin-bottom: 1rem;
+
+    @include tablet {
+      width: 10.5rem;
+      height: 2.375rem;
+      padding: 0;
+      margin: 0 0.5rem;
+      @include h3-labels-links-buttons;
+    }
   }
 
   &__table-headers {
     color: $secondary-dark;
     &--hidden {
-        display: none;
-        @include tablet {
-            display: flex;
-            justify-content: space-evenly;
-        }
+      display: none;
+
+      @include tablet {
+        display: flex;
+        justify-content: space-evenly;
+        background-color: $background-light;
+        @include h4-table-header;
+        height: 2.5rem;
+      }
     }
   }
 
   &__header-column {
+    @include tablet {
+      width: 20%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding-left: 2rem;
+    }
+
+    @include desktop {
+        justify-content: center;
+    }
+  }
+
+  &__sort-icon {
+    height: 1rem;
+    width: 1rem;
   }
 
   &__table-body {
-    box-shadow: 0 2px 5px rgba(19, 24, 44, 0.1);
-  border-radius: 2px;
-
- 
   }
 
   &__table-row {
     padding: 0.5rem;
-   border-bottom: 1px solid $secondary-light;
+    border-bottom: 1px solid $secondary-light;
 
-   @include tablet {
-    flex-direction: row;;
-}
+    @include tablet {
+      display: flex;
+        flex-direction: row;
+    }
   }
 
   &__information {
     display: flex;
 
     @include tablet {
-        // flex-direction: row;;
+      width: 85%;
     }
   }
 
@@ -93,53 +167,68 @@
     padding: 0.5rem;
 
     @include tablet {
+    width: 50%;
+    justify-content: space-evenly;
+    }
+    &--tablet {
         flex-direction: row;
-        justify-content: space-evenly;
     }
 
     &--bottom {
-        display: flex;
-    flex-direction: row;
-    padding: 0.5rem;
-    justify-content: space-between;
+      display: flex;
+      flex-direction: row;
+      padding: 0 1.5rem;
+      justify-content: space-between;
 
-    @include tablet {
-        justify-content: flex-end;
-    }
+      @include tablet {
+        width: 15%;
+        justify-content: space-around;
+        // padding: 0;
+      }
     }
   }
 
   &__cell--left {
     display: flex;
     flex-direction: column;
+    width: 50%;
+    padding: 1rem;
 
     @include tablet {
-        flex-direction: row;
+      flex-direction: row;
     }
   }
   &__cell--right {
     display: flex;
     flex-direction: column;
+    width: 50%;
+    padding: 1rem;
 
     @include tablet {
-        flex-direction: row;
+      flex-direction: row;
     }
   }
 
-
   &__header--mobile {
-color: $secondary-dark;
-@include mobile-h4-table-header;
+    color: $secondary-dark;
+    @include mobile-h4-table-header;
+    padding: 0.25rem 0;
 
-@include tablet {
-    display: none;
-}
+    @include tablet {
+      display: none;
+    }
   }
   &__link {
     text-decoration: none;
     @include mobile-h3-labels-links-buttons;
     font-weight: 600;
     color: $primary-color;
+    display: flex;
+  }
+
+  &__chevron {
+    height: 1.25rem;
+    width: 1.25rem;
   }
 
   &__item {
@@ -159,6 +248,4 @@ color: $secondary-dark;
     background: none;
     cursor: pointer;
   }
-
-  
 }

@@ -5,6 +5,7 @@ import editIcon from '../../assets/icons/edit-24px.svg'
 import chevRight from '../../assets/icons/chevron_right-24px.svg'
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg'
 import searchIcon from '../../assets/icons/search-24px.svg'
+import sortIcon from '../../assets/icons/sort-24px.svg'
 import './WarehouseList.scss'
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
@@ -32,14 +33,19 @@ const WarehouseList = ({ setCurrentWarehouse }) => {
         <section className='warehouse-list'>
             <div className='warehouse-list__header'>
                 <h1 className='warehouse-list__title'>Warehouses</h1>
-                <input type='text' placeholder='Search...' className='warehouse-list__search' />
-                <button className='warehouse-list__button'>+ Add New Warehouse</button>
+                <div className="warehouse-list__nav">
+                    <input type='text' placeholder='Search...' className='warehouse-list__search' />
+                    <img className="warehouse-list__search-icon" src={searchIcon} alt='search icon' />
+                    {/* <Button /> */}
+                    <button className='warehouse-list__button'>+ Add New Warehouse</button>
+                </div>
             </div>
             <div className='warehouse-list__table'>
                 <div className='warehouse-list__table-headers warehouse-list__table-headers--hidden'>
                     {tableHeaders.map((header, index) => (
                         <div key={index} className='warehouse-list__header-column'>
                             <p>{header}</p>
+                            <img className="warehouse-list__sort-icon" src={sortIcon} alt="sort icon" />
                         </div>
                     ))}
                 </div>
@@ -50,10 +56,11 @@ const WarehouseList = ({ setCurrentWarehouse }) => {
                             <article key={id} className='warehouse-list__table-row' onClick={() => setCurrentWarehouse(item)}>
                                 <div className='warehouse-list__information'>
                                     <div className='warehouse-list__cell--left'>
-                                        <div className='warehouse-list__table-cell'>
+                                        <div className='warehouse-list__table-cell warehouse-list__table-cell--tablet'>
                                             <p className='warehouse-list__header--mobile'>WAREHOUSE</p>
                                             <Link to={`/warehouse/${id}`} className='warehouse-list__link'>
-                                                {warehouse_name}
+                                                <p> {warehouse_name}</p>
+                                                <img className="warehouse-list__chevron" src={chevRight} alt='chevron right icon' />
                                             </Link>
                                         </div>
                                         <div className='warehouse-list__table-cell'>
