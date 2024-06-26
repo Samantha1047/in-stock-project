@@ -39,11 +39,6 @@
 
   &__title {
     @include mobile-h1-page-header;
-    // padding-top: 1rem;
-  }
-
-  &__nav {
-
   }
 
   &__search {
@@ -96,6 +91,7 @@
     height: 2.25rem;
     padding: 0.5rem 5rem;
     margin-bottom: 1rem;
+    cursor: pointer;
 
     @include tablet {
       width: 10.5rem;
@@ -140,9 +136,6 @@
     width: 1rem;
   }
 
-  &__table-body {
-  }
-
   &__table-row {
     padding: 0.5rem;
     border-bottom: 1px solid $secondary-light;
@@ -171,7 +164,9 @@
     justify-content: space-evenly;
     }
     &--tablet {
+      @include tablet{
         flex-direction: row;
+      }
     }
 
     &--bottom {
@@ -186,26 +181,27 @@
         // padding: 0;
       }
     }
-  }
 
-  &__cell--left {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    padding: 1rem;
-
-    @include tablet {
-      flex-direction: row;
+    &--left {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      padding: 1rem;
+  
+      @include tablet {
+        flex-direction: row;
+      }
     }
-  }
-  &__cell--right {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    padding: 1rem;
 
-    @include tablet {
-      flex-direction: row;
+    &--right {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      padding: 1rem;
+  
+      @include tablet {
+        flex-direction: row;
+      }
     }
   }
 
@@ -218,6 +214,7 @@
       display: none;
     }
   }
+  
   &__link {
     text-decoration: none;
     @include mobile-h3-labels-links-buttons;
