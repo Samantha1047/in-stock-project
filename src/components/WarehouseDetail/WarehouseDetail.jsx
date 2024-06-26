@@ -1,25 +1,26 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 import "./WarehouseDetail.scss";
 
-const WarehouseDetail = () => {
-  const [warehouse, setWarehouse] = useState({
-    id: 1,
-    warehouse_name: "Manhattan",
-    address: "503 Broadway",
-    city: "New York",
-    country: "USA",
-    contact_name: "Parmin Aujla",
-    contact_position: "Warehouse Manager",
-    contact_phone: "+1 (646) 123-1234",
-    contact_email: "paujla@instock.com",
-  });
+const API_URL = import.meta.env.VITE_APP_API_URL;
 
-  const { warehouse_name, address, city, country, contact_name, contact_position, contact_phone, contact_email } = warehouse;
+const WarehouseDetail = () => {
+  const [warehouse, setWarehouse] = useState({});
+  const { warehouseId } = useParams();
 
   useEffect(() => {
-    //axios calls with id params, update later
-  }, []);
+    axios
+      .get(`${API_URL}/api/warehouses/${warehouseId}`)
+      .then((response) => {
+        setWarehouse(response.data[0]);
+      })
+      .catch((err) => {
+        console.log("Cannot fetch warehouse", err.message);
+      });
+  }, [warehouseId]);
+
+  const { warehouse_name, address, city, country, contact_name, contact_position, contact_phone, contact_email } = warehouse;
 
   if (!warehouse) {
     return <div>Loading...</div>;
@@ -34,7 +35,7 @@ const WarehouseDetail = () => {
 
   const handleEdit = () => {
     //need to navigate to corresponding warehouse edit page, may need to update
-    navigate(`/${warehouse.id}/edit`);
+    navigate(`/${warehouseId}/edit`);
   };
 
   return (
