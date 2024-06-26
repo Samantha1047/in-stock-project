@@ -8,16 +8,11 @@ const Button = ({ text, icon, isPrimary, type, location }) => {
   const buttonLocation =
     location === "form" ? "button--form" : "button--default";
 
-  // function handleClick(e) {
-  //   e.preventDefault();
-  //   handleSubmit();
-  // }
   //Might need to be adjusted if we include edit button
   return (
     <button
       type={type}
       className={`button ${isPrimaryClass} ${buttonLocation}`}
-      // onClick={handleClick}
     >
       <div className="button__icon-container">
         <img className="button__icon" alt={icon} src={icon} />
