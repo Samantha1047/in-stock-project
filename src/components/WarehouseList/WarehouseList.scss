@@ -33,7 +33,7 @@
     }
 
     @include desktop {
-        padding: 2rem 2.5rem 1.5rem 2.5rem;
+      padding: 2rem 2.5rem 1.5rem 2.5rem;
     }
   }
 
@@ -79,7 +79,7 @@
 
     @include desktop {
       right: 245px;
-        top: 55px;
+      top: 55px;
     }
   }
 
@@ -127,7 +127,7 @@
     }
 
     @include desktop {
-        justify-content: center;
+      justify-content: center;
     }
   }
 
@@ -142,7 +142,7 @@
 
     @include tablet {
       display: flex;
-        flex-direction: row;
+      flex-direction: row;
     }
   }
 
@@ -160,11 +160,11 @@
     padding: 0.5rem;
 
     @include tablet {
-    width: 50%;
-    justify-content: space-evenly;
+      width: 50%;
+      justify-content: space-evenly;
     }
     &--tablet {
-      @include tablet{
+      @include tablet {
         flex-direction: row;
       }
     }
@@ -187,7 +187,7 @@
       flex-direction: column;
       width: 50%;
       padding: 1rem;
-  
+
       @include tablet {
         flex-direction: row;
       }
@@ -198,7 +198,7 @@
       flex-direction: column;
       width: 50%;
       padding: 1rem;
-  
+
       @include tablet {
         flex-direction: row;
       }
@@ -214,7 +214,7 @@
       display: none;
     }
   }
-  
+
   &__link {
     text-decoration: none;
     @include mobile-h3-labels-links-buttons;

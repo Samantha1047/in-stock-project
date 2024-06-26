@@ -12,7 +12,7 @@ const Header = () => {
             </NavLink>
             <nav className='header__nav'>
                 <NavLink
-                    to='/warehouses'
+                    to='/'
                     className={({ isActive }) =>
                         `header__nav-link ${isActive || window.location.pathname === '/' ? 'header__nav-link--active' : ''}`
                     }

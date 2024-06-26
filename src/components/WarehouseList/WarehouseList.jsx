@@ -11,7 +11,7 @@ import './WarehouseList.scss'
 const API_URL = import.meta.env.VITE_APP_API_URL
 console.log('API URL:', API_URL)
 
-const WarehouseList = ({ setCurrentWarehouse }) => {
+const WarehouseList = ({ setCurrentWarehouse, onDelete }) => {
     const [warehouseList, setWarehouseList] = useState([])
     const navigate = useNavigate()
 
@@ -19,8 +19,17 @@ const WarehouseList = ({ setCurrentWarehouse }) => {
         const fetchWarehouses = async () => {
             try {
                 const response = await axios.get(`${API_URL}/api/warehouses`)
-                console.log('API response:', response)
-                setWarehouseList(response.data)
+                const transformedData = response.data.map(item => ({
+                    warehouseId: item.id,
+                    warehouse_name: item.warehouse_name,
+                    address: item.address,
+                    city: item.city,
+                    country: item.country,
+                    contact_name: item.contact_name,
+                    contact_phone: item.contact_phone,
+                    contact_email: item.contact_email,
+                }))
+                setWarehouseList(transformedData)
             } catch (error) {
                 console.error('Error fetching warehouse data: ', error)
             }
@@ -80,7 +89,7 @@ const WarehouseList = ({ setCurrentWarehouse }) => {
                 <div>
                     {warehouseList.map(item => {
                         const {
-                            id,
+                            warehouseId,
                             warehouse_name,
                             address,
                             city,
@@ -91,7 +100,7 @@ const WarehouseList = ({ setCurrentWarehouse }) => {
                         } = item
                         return (
                             <article
-                                key={id}
+                                key={warehouseId}
                                 className='warehouse-list__table-row'
                                 onClick={() => setCurrentWarehouse(item)}
                             >
@@ -102,7 +111,7 @@ const WarehouseList = ({ setCurrentWarehouse }) => {
                                                 WAREHOUSE
                                             </p>
                                             <Link
-                                                to={`/warehouses/${id}`}
+                                                to={`${warehouseId}`}
                                                 className='warehouse-list__link'
                                             >
                                                 <p> {warehouse_name}</p>
@@ -146,7 +155,7 @@ const WarehouseList = ({ setCurrentWarehouse }) => {
                                         />
                                     </button>
                                     <button
-                                        onClick={() => navigate(`/warehouse/${id}/edit`)}
+                                        onClick={() => navigate(`/${warehouseId}/edit`)}
                                         className='warehouse-list__edit-button'
                                     >
                                         <img src={editIcon} alt='Edit' />
