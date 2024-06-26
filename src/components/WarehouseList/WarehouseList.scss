@@ -1,5 +1,5 @@
-@use '../../styles/partials/variables' as *;
-@use '../../styles/partials/mixins' as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .warehouse-list {
   margin: 2rem 1rem;
@@ -89,9 +89,9 @@
     background-color: $primary-color;
     border: none;
     height: 2.25rem;
-    padding: 0.5rem 5rem;
     margin-bottom: 1rem;
     cursor: pointer;
+    width: 100%;
 
     @include tablet {
       width: 10.5rem;
@@ -121,7 +121,7 @@
     @include tablet {
       width: 20%;
       display: flex;
-      justify-content:center;
+      justify-content: center;
       align-items: center;
       padding-left: 2rem;
       weight: 600;
@@ -178,7 +178,7 @@
 
       @include tablet {
         width: 10%;
-      
+
         img {
           padding: 0.5rem;
         }
