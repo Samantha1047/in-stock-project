@@ -83,9 +83,7 @@ const Form = ({ page, mode }) => {
 
   const handleSubmit = (values) => {
     if (validateForm()) {
-
-      const url =
-        mode === "add" ? "/api/warehouses" : `/api/warehouses/${warehouseId}`;
+      const url = mode === "add" ? "/api/warehouses" : `/api/warehouses/${warehouseId}`;
       const method = mode === "add" ? "post" : "put";
       submitWarehouseDate(values, url, method);
 
@@ -108,29 +106,11 @@ const Form = ({ page, mode }) => {
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit(formValues);
-      }}
-    >
-      {page === "warehouse" && (
-        <WarehouseForm
-          formValues={formValues}
-          handleInputChange={handleInputChange}
-          errors={errors}
-          mode={mode}
-        />
-      )}
-      {page === "inventory" && (
-        <WarehouseForm
-          formValues={formValues}
-          handleInputChange={handleInputChange}
-          errors={errors}
-        />
-      )}
+      }}>
+      {page === "warehouse" && <WarehouseForm formValues={formValues} handleInputChange={handleInputChange} errors={errors} mode={mode} />}
+      {page === "inventory" && <WarehouseForm formValues={formValues} handleInputChange={handleInputChange} errors={errors} />}
 
-      <FormButtons
-        mode={mode}
-        page={page}
-        handleSubmit={() => handleWarehouseFormSubmit(formValues)}
-      />
+      <FormButtons mode={mode} page={page} handleSubmit={() => handleWarehouseFormSubmit(formValues)} />
     </form>
   );
 };

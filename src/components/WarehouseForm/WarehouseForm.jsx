@@ -1,7 +1,6 @@
 import "./WarehouseForm.scss";
 import FormField from "../FormField/FormField";
 
-
 const WarehouseForm = ({ formValues, handleInputChange, errors }) => {
   return (
     <div className="warehouse-form">
@@ -28,25 +27,9 @@ const WarehouseForm = ({ formValues, handleInputChange, errors }) => {
             error={errors.address}
           />
 
-          <FormField
-            label="City"
-            type="text"
-            name="city"
-            value={formValues.city}
-            onChange={handleInputChange}
-            placeholder="Washington"
-            error={errors.city}
-          />
+          <FormField label="City" type="text" name="city" value={formValues.city} onChange={handleInputChange} placeholder="Washington" error={errors.city} />
 
-          <FormField
-            label="Country"
-            type="text"
-            name="country"
-            value={formValues.country}
-            onChange={handleInputChange}
-            placeholder="USA"
-            error={errors.country}
-          />
+          <FormField label="Country" type="text" name="country" value={formValues.country} onChange={handleInputChange} placeholder="USA" error={errors.country} />
         </div>
       </section>
       <section className="warehouse-form__contact-section">
@@ -90,7 +73,7 @@ const WarehouseForm = ({ formValues, handleInputChange, errors }) => {
             onChange={handleInputChange}
             placeholder="glyon@instock.com"
             error={errors.contact_email}
-
+          />
         </div>
       </section>
     </div>
