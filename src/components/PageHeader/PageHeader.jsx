@@ -29,7 +29,7 @@ const PageHeader = ({ title, buttonText, buttonLink }) => {
                 </div>
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default PageHeader;
+export default PageHeader

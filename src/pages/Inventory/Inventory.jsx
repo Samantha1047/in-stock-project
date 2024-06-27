@@ -1,4 +1,4 @@
-import "./Inventory.scss";
+import './Inventory.scss'
 import InventoryList from '../../components/InventoryList/InventoryList'
 import PageHeader from '../../components/PageHeader/PageHeader'
 import axios from 'axios'
@@ -30,14 +30,16 @@ const Inventory = () => {
     fetchInventory()
   }, [])
 
-  return <>
-    <PageHeader
-      title="Inventory"
-      buttonText="+ Add New Item"
-      buttonLink="/inventory/add"
-    />
-    <InventoryList inventoryList={inventoryList} showWarehouse={true} />
-  </>
-};
+  return (
+    <>
+      <PageHeader
+        title='Inventory'
+        buttonText='+ Add New Item'
+        buttonLink='/inventory/add'
+      />
+      <InventoryList inventoryList={inventoryList} showWarehouse={true} />
+    </>
+  )
+}
 
-export default Inventory;
+export default Inventory

@@ -1,10 +1,8 @@
 import { NavLink } from 'react-router-dom'
-import { useState } from 'react'
 import logo from '../../assets/logo/InStock-Logo.svg'
 import './Header.scss'
 
 const Header = () => {
-
     return (
         <header className='header'>
             <NavLink to='/'>
@@ -14,7 +12,10 @@ const Header = () => {
                 <NavLink
                     to='/'
                     className={({ isActive }) =>
-                        `header__nav-link ${isActive || window.location.pathname === '/' ? 'header__nav-link--active' : ''}`
+                        `header__nav-link ${isActive || window.location.pathname === '/'
+                            ? 'header__nav-link--active'
+                            : ''
+                        }`
                     }
                 >
                     Warehouses
