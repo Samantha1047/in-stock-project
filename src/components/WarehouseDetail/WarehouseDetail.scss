@@ -1,22 +1,7 @@
-@use "../../styles/partials/variables" as *;
-@use "../../styles/partials/mixins" as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
 
 .warehouse-detail {
-  margin: 0 1rem;
-  background-color: $primary-light;
-  position: relative;
-  top: -3.125rem;
-  box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1);
-  border-radius: 2px;
-
-  @include tablet {
-    margin: 0 2rem;
-  }
-
-  @include desktop {
-    margin: 0 8.125rem;
-  }
-
   &__header {
     display: flex;
     align-items: center;
@@ -45,7 +30,7 @@
   }
 
   &__back-button {
-    background: url("../../assets/icons/arrow_back-24px.svg") no-repeat center;
+    background: url('../../assets/icons/arrow_back-24px.svg') no-repeat center;
     height: 1.5rem;
     width: 1.5rem;
     border: none;

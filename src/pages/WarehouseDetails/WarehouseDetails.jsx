@@ -35,7 +35,7 @@ const WarehouseDetails = () => {
   }, [warehouseId])
 
   return (
-    <main>
+    <main className='warehouse-details'>
       <WarehouseDetail />
       <InventoryList inventoryList={inventoryList} showWarehouse={false} />
     </main>

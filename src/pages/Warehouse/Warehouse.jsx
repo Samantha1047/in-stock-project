@@ -2,12 +2,14 @@ import './Warehouse.scss'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import WarehouseList from '../../components/WarehouseList/WarehouseList'
-import PageHeader from '../../components/PageHeader/PageHeader'
+import searchIcon from '../../assets/icons/search-24px.svg'
+import { useNavigate } from 'react-router-dom'
 
 const API_URL = import.meta.env.VITE_APP_API_URL
 
 const Warehouse = () => {
   const [warehouseList, setWarehouseList] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchWarehouses = async () => {
@@ -32,14 +34,30 @@ const Warehouse = () => {
   }, [])
 
   return (
-    <>
-      <PageHeader
-        title='Warehouses'
-        buttonText='+ Add New Warehouse'
-        buttonLink='/add'
-      />
+    <main className='warehouse'>
+      <div className='warehouse__header'>
+        <h1 className='warehouse__title'>Warehouses</h1>
+        <div>
+          <input
+            type='text'
+            placeholder='Search...'
+            className='warehouse__search'
+          />
+          <img
+            className='warehouse__search-icon'
+            src={searchIcon}
+            alt='search icon'
+          />
+          <button
+            onClick={() => navigate('/add')}
+            className='warehouse__button'
+          >
+            + Add New Warehouse
+          </button>
+        </div>
+      </div>
       <WarehouseList warehouseList={warehouseList} />
-    </>
+    </main>
   )
 }
 
