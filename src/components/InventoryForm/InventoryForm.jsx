@@ -177,32 +177,14 @@ const InventoryForm = ({ mode }) => {
               <label className="inventory-form__label" htmlFor="category">
                 Category
               </label>
-              <div
-                tabIndex="0"
-                className={`drop-down ${isFocused ? "focused" : ""}`}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-              >
-                <select
-                  className="drop-down__input"
-                  value={formValues.category}
-                  onChange={handleInputChange}
-                  name="category"
-                >
-                  {categoryOptions.map((item) => (
-                    <option key={item.id} value={item.name}>
-                      {item.name}
-                    </option>
-                  ))}
-                </select>
-                <img
-                  className="drop-down__icon"
-                  src={chevronDown}
-                  alt="Drop down button"
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                />
-              </div>
+              <DropDown
+                name="category"
+                handleInputChange={handleInputChange}
+                value={formValues.category}
+                errors={errors.category}
+                categoryList={categoryOptions}
+                valueKey="name"
+              />
               {errors.category && <ErrorText />}
             </fieldset>
           </div>
@@ -271,6 +253,7 @@ const InventoryForm = ({ mode }) => {
                 handleInputChange={handleInputChange}
                 errors={errors.warehouse_id}
                 categoryList={warehouseNames}
+                valueKey="id"
               />
             </fieldset>
           </div>

@@ -3,7 +3,14 @@ import chevronDown from "../../assets/icons/arrow_drop_down-24px.svg";
 
 import "./DropDown.scss";
 import { useState } from "react";
-const DropDown = ({ name, handleInputChange, value, errors, categoryList }) => {
+const DropDown = ({
+  name,
+  handleInputChange,
+  value,
+  errors,
+  categoryList,
+  valueKey,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
@@ -21,9 +28,9 @@ const DropDown = ({ name, handleInputChange, value, errors, categoryList }) => {
         onChange={handleInputChange}
         name={name}
       >
-        {categoryList.map((category) => (
-          <option key={category.id} value={category.id}>
-            {category.name}
+        {categoryList.map((option) => (
+          <option key={option.id} value={option[valueKey]}>
+            {option.name}
           </option>
         ))}
       </select>
