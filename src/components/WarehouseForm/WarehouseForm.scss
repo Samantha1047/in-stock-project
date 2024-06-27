@@ -2,10 +2,14 @@
 @use "../../styles/partials/mixins" as *;
 
 .warehouse-form {
+  box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1);
+  border-radius: 2px;
+
   @include tablet {
     display: flex;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    @include section-max-width;
   }
 
   &__details-section {
