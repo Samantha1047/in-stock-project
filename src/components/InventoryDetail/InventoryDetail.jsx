@@ -69,7 +69,7 @@ const InventoryDetail = () => {
           <div className="flex-container">
             <section className="inventory-detail__status">
               <h4>STATUS:</h4>
-              <span>{status}</span>
+              <span>{status.toUpperCase()}</span>
             </section>
             <section className="inventory-detail__warehouse">
               <h4>WAREHOUSE:</h4>
