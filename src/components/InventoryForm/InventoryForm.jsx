@@ -47,8 +47,6 @@ const InventoryForm = ({ mode }) => {
     setIsFocused(false);
   };
 
-  console.log(formValues);
-
   useEffect(() => {
     const fetchWarehouses = async () => {
       try {
@@ -91,7 +89,6 @@ const InventoryForm = ({ mode }) => {
     });
   };
   const submitData = async (data, url, method) => {
-    console.log("submitData", data, url, method);
     try {
       const response = await axios[method](`${API_URL}${url}`, data);
       return response.data;
@@ -126,7 +123,6 @@ const InventoryForm = ({ mode }) => {
       };
       const { url, method } = modeConfig[mode];
       submitData(values, url, method);
-      console.log("Form submitted");
       setTimeout(() => {
         navigate("/");
         setFormValues(initialValues);

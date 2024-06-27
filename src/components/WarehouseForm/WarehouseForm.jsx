@@ -94,7 +94,6 @@ const WarehouseForm = ({ mode }) => {
       };
       const { url, method } = modeConfig[mode];
       submitWarehouseData(values, url, method);
-      console.log("Form submitted");
       setTimeout(() => {
         navigate("/");
         setFormValues(initialValues);
