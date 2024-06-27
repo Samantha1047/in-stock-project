@@ -26,11 +26,9 @@ function App() {
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/inventory/add" element={<InventoryAdd />} />
           {/* remember to change item to :itemId when we have the data */}
-          <Route path="/inventory/item" element={<InventoryDetails />} />
-          <Route
-            path="/:warehouseId/inventory/:itemId/edit"
-            element={<InventoryEdit />}
-          />
+          <Route path="/inventory/:itemId" element={<InventoryDetails />} />
+          <Route path="/inventory/:itemId/edit" element={<InventoryEdit />} />
+
         </Routes>
         <Footer />
       </BrowserRouter>
