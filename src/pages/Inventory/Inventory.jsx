@@ -1,7 +1,10 @@
 import "./Inventory.scss";
+import InventoryList from '../../components/InventoryList/InventoryList'
 
 const Inventory = () => {
-  return <div>Inventory</div>;
+  return <>
+    <InventoryList />
+  </>;
 };
 
 export default Inventory;
