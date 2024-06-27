@@ -2,10 +2,16 @@
 @use "../../styles/partials/mixins" as *;
 
 .inventory-form {
-  @include tablet {
-    display: flex;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1);
+  border-radius: 2px;
+
+  &__fields {
+    @include tablet {
+      @include section-max-width;
+      display: flex;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
   }
 
   &__item-section {
