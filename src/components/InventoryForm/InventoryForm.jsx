@@ -13,6 +13,7 @@ import "./InventoryForm.scss";
 import "../../App.scss";
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
+
 const initialValues = {
   warehouse_id: "",
   item_name: "",
@@ -46,8 +47,30 @@ const InventoryForm = ({ mode }) => {
         console.error(error + "Error fetching warehouse data");
       }
     };
+
+    const fetchItemData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${API_URL}/api/inventories/${itemId}`
+        );
+        const item = data[0];
+        setFormValues({
+          warehouse_id: item.warehouse_id,
+          item_name: item.item_name,
+          description: item.description,
+          category: item.category,
+          status: item.status,
+          quantity: item.quantity,
+        });
+      } catch (error) {
+        console.error(error + " Error fetching item data");
+      }
+    };
+    if (itemId) {
+      fetchItemData();
+    }
     fetchWarehouses();
-  }, []);
+  }, [itemId]);
 
   const warehouseNames = warehouses.map((warehouse) => ({
     name: warehouse.warehouse_name,
