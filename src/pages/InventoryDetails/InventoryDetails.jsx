@@ -1,7 +1,12 @@
 import "./InventoryDetails.scss";
+import InventoryDetail from "../../components/InventoryDetail/InventoryDetail";
 
 const InventoryDetails = () => {
-  return <div>InventoryDetails</div>;
+  return (
+    <main>
+      <InventoryDetail />
+    </main>
+  );
 };
 
 export default InventoryDetails;
