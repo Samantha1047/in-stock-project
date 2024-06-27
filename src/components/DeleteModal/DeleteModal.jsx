@@ -1,9 +1,16 @@
 import "./DeleteModal.scss";
 import Button from "../Button/Button";
+import { useEffect } from "react";
 
 const DeleteModal = ({ isWarehouse, name, onClose, onConfirmDelete, isActive }) => {
-  if (!isActive) return null;
+  useEffect(() => {
+    document.body.style.overflow = isActive ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isActive]);
 
+  if (!isActive) return null;
   return (
     <section className="modal">
       <div className="modal__container">
