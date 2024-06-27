@@ -67,9 +67,9 @@ const InventoryDetail = () => {
 
         <div className="inventory-detail__stock-info">
           <div className="flex-container">
-            <section className="inventory-detail__status">
+            <section className={`inventory-detail_status ${status === "In Stock" ? "inventory-detail__status--green" : "inventory-detail__status--red"}`}>
               <h4>STATUS:</h4>
-              <span>{status.toUpperCase()}</span>
+              <span>{status ? status.toUpperCase() : null}</span>
             </section>
             <section className="inventory-detail__warehouse">
               <h4>WAREHOUSE:</h4>
