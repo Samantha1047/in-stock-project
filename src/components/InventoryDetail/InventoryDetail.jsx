@@ -82,14 +82,16 @@ const InventoryDetail = () => {
         </div>
 
         <div className="inventory-detail__stock-info">
-          <section className="inventory-detail__status">
-            <h4>STATUS:</h4>
-            <span>{status}</span>
-          </section>
-          <section className="inventory-detail__warehouse">
-            <h4>WAREHOUSE:</h4>
-            <p>{warehouse_name}</p>
-          </section>
+          <div className="flex-container">
+            <section className="inventory-detail__status">
+              <h4>STATUS:</h4>
+              <span>{status.toLocaleUpperCase()}</span>
+            </section>
+            <section className="inventory-detail__warehouse">
+              <h4>WAREHOUSE:</h4>
+              <p>{warehouse_name}</p>
+            </section>
+          </div>
           <section className="inventory-detail__quantity">
             <h4>QUANTITY:</h4>
             <p>{quantity}</p>
