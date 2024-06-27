@@ -15,15 +15,25 @@ const WarehouseList = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [warehouseList, setWarehouseList] = useState([]);
   const [currentWarehouse, setcurrentWarehouse] = useState("");
+  const [currentWarehouseId, setcurrentWarehouseId] = useState("");
+
   const navigate = useNavigate();
 
-  const handleClick = (name) => {
+  const handleClick = (name, id) => {
     setModalOpen(true);
     setcurrentWarehouse(name);
-    console.log("button click", name);
+    setcurrentWarehouseId(id);
   };
 
-  const handleDelete = () => {};
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`${API_URL}/api/warehouses/${currentWarehouseId}`);
+      setWarehouseList(warehouseList.filter((warehouse) => warehouse.warehouseId !== currentWarehouseId));
+      setModalOpen(false);
+    } catch (err) {
+      console.error("Failed to delete the warehouse:", err);
+    }
+  };
 
   useEffect(() => {
     const fetchWarehouses = async () => {
@@ -105,7 +115,7 @@ const WarehouseList = () => {
                 </div>
 
                 <div className="warehouse-list__table-cell--bottom">
-                  <button className="warehouse-list__delete-button" onClick={() => handleClick(warehouse_name)}>
+                  <button className="warehouse-list__delete-button" onClick={() => handleClick(warehouse_name, warehouseId)}>
                     <img src={deleteIcon} alt="Delete" />
                   </button>
                   <button onClick={() => navigate(`/${warehouseId}/edit`)} className="warehouse-list__edit-button">
@@ -117,7 +127,7 @@ const WarehouseList = () => {
           })}
         </div>
       </div>
-      <DeleteModal isWarehouse={true} name={currentWarehouse} onClose={() => setModalOpen(false)} onConfirm={handleDelete} isActive={isModalOpen} />
+      <DeleteModal isWarehouse={true} name={currentWarehouse} onClose={() => setModalOpen(false)} onConfirmDelect={handleDelete} isActive={isModalOpen} />
     </section>
   );
 };
