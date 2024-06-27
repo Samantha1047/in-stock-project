@@ -6,48 +6,48 @@ import chevRight from '../../assets/icons/chevron_right-24px.svg'
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg'
 import searchIcon from '../../assets/icons/search-24px.svg'
 import sortIcon from '../../assets/icons/sort-24px.svg'
-import Button from '../Button/Button'
+import PageHeader from '../PageHeader/PageHeader'
 import './InventoryList.scss'
 
-const API_URL = import.meta.env.VITE_APP_API_URL
+// const API_URL = import.meta.env.VITE_APP_API_URL
 
-const InventoryList = () => {
-    const [inventoryList, setInventoryList] = useState([])
+const InventoryList = ({ inventoryList, showWarehouse }) => {
+    // const [inventoryList, setInventoryList] = useState([])
     const navigate = useNavigate()
 
-    useEffect(() => {
-        const fetchInventorys = async () => {
-            try {
-                const response = await axios.get(`${API_URL}/api/inventories`)
-                const transformedData = response.data.map(item => ({
-                    itemId: item.id,
-                    warehouse_name: item.warehouse_name,
-                    item_name: item.item_name,
-                    category: item.category,
-                    status: item.status,
-                    quantity: item.quantity
-                }))
+    // useEffect(() => {
+    //     const fetchInventorys = async () => {
+    //         try {
+    //             const response = await axios.get(`${API_URL}/api/inventories`)
+    //             const transformedData = response.data.map(item => ({
+    //                 itemId: item.id,
+    //                 warehouse_name: item.warehouse_name,
+    //                 item_name: item.item_name,
+    //                 category: item.category,
+    //                 status: item.status,
+    //                 quantity: item.quantity
+    //             }))
 
-                setInventoryList(transformedData)
-            } catch (error) {
-                console.error('Error fetching inventory data: ', error)
-            }
-        }
-        fetchInventorys()
-    }, [])
+    //             setInventoryList(transformedData)
+    //         } catch (error) {
+    //             console.error('Error fetching inventory data: ', error)
+    //         }
+    //     }
+    //     fetchInventorys()
+    // }, [])
 
     const tableHeaders = [
         'INVENTORY NAME',
         'CATEGORY',
         'STATUS',
         'QTY',
-        'WAREHOUSE',
+        showWarehouse ? 'WAREHOUSE' : null,
         'ACTIONS'
-    ]
+    ].filter(Boolean)
 
     return (
         <section className='inventory-list'>
-            <div className='inventory-list__header'>
+            {/* <div className='inventory-list__header'>
                 <h1 className='inventory-list__title'>Inventory</h1>
                 <div>
                     <input
@@ -67,7 +67,7 @@ const InventoryList = () => {
                         + Add New Item
                     </button>
                 </div>
-            </div>
+            </div> */}
             <div className='inventory-list__table'>
                 <div className='inventory-list__table-headers inventory-list__table-headers--hidden'>
                     {tableHeaders.map((header, index) => (
@@ -135,12 +135,14 @@ const InventoryList = () => {
                                             </p>
                                             <p className='inventory-list__item'>{quantity}</p>
                                         </div>
-                                        <div className='inventory-list__table-cell'>
-                                            <p className='inventory-list__header--mobile'>
-                                                WAREHOUSE
-                                            </p>
-                                            <p className='inventory-list__item'>{warehouse_name}</p>
-                                        </div>
+                                        {showWarehouse && (
+                                            <div className='inventory-list__table-cell'>
+                                                <p className='inventory-list__header--mobile'>
+                                                    WAREHOUSE
+                                                </p>
+                                                <p className='inventory-list__item'>{warehouse_name}</p>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
 

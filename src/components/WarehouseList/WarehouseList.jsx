@@ -46,7 +46,7 @@ const WarehouseList = () => {
 
     return (
         <section className='warehouse-list'>
-            <div className='warehouse-list__header'>
+            {/* <div className='warehouse-list__header'>
                 <h1 className='warehouse-list__title'>Warehouses</h1>
                 <div>
                     <input
@@ -66,7 +66,7 @@ const WarehouseList = () => {
                         + Add New Warehouse
                     </button>
                 </div>
-            </div>
+            </div> */}
             <div className='warehouse-list__table'>
                 <div className='warehouse-list__table-headers warehouse-list__table-headers--hidden'>
                     {tableHeaders.map((header, index) => (
