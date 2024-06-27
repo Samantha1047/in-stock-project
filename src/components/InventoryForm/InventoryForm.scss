@@ -1,12 +1,11 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.warehouse-form {
+.inventory-form {
   box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1);
   border-radius: 2px;
   @include section-max-width;
-
-  &__fields {
+  &__inputs {
     @include tablet {
       @include section-max-width;
       display: flex;
@@ -15,7 +14,7 @@
     }
   }
 
-  &__details-section {
+  &__item-section {
     border-bottom: $border-default;
 
     @include tablet {
@@ -25,7 +24,7 @@
     }
   }
 
-  &__contact-section {
+  &__availability-section {
     @include tablet {
       flex-basis: 50%;
     }
@@ -39,12 +38,28 @@
       margin-bottom: 1rem;
     }
   }
-}
+  &__input-container {
+    border: none;
+    margin-bottom: 0.25rem;
+    margin-top: 1rem;
+  }
 
-.wrapper {
-  padding: 1.5rem;
+  &__label {
+    @include h3-labels-links-buttons;
+    margin-bottom: 0.25rem;
+    margin-top: 1rem;
+    font-weight: 600;
+  }
 
-  @include tablet {
-    padding: 0 2rem;
+  &__radio-container {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  &__radio {
+    margin-right: 0.5rem;
+    cursor: pointer;
   }
 }

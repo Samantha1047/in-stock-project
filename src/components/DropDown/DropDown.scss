@@ -1,0 +1,42 @@
+@use "../../styles/partials/variables" as *;
+
+.drop-down {
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    right: 1rem;
+    top: 30%;
+    cursor: none;
+    pointer-events: none;
+  }
+
+  &__input {
+    position: absolute;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin-top: 2px;
+    margin-top: 0.25rem;
+    border: $border-default;
+    border-radius: 1.25rem;
+    position: relative;
+    justify-content: space-between;
+    height: 2.375rem;
+    padding-left: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.focused {
+    border: $border-active;
+  }
+}

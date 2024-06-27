@@ -8,3 +8,23 @@
   box-sizing: border-box;
   font-family: "Titillium Web", sans-serif;
 }
+
+.wrapper {
+  padding: 1.5rem;
+
+  @include tablet {
+    padding: 0 2rem;
+  }
+}
+
+.text-inactive {
+  color: $secondary-light;
+}
+
+.input-inactive {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  box-shadow: 0 0 0 1px $secondary-light;
+}

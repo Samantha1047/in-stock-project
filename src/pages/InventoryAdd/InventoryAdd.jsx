@@ -1,7 +1,7 @@
 import "./InventoryAdd.scss";
 
 const InventoryAdd = () => {
-  return <div>InventoryAdd</div>;
+  return <section>InventoryAdd</section>;
 };
 
 export default InventoryAdd;

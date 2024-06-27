@@ -22,10 +22,21 @@
     border: $border-default;
     padding-right: 1rem;
     padding-left: 1rem;
-
+    padding-top: 7px;
+    resize: none;
     &:focus {
       outline: $border-active;
     }
+
+    &--small {
+      @include desktop {
+        width: 7.625rem;
+      }
+    }
+  }
+  &--textarea {
+    height: 7.5rem;
+    position: relative;
   }
 }
 

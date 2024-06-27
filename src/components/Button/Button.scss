@@ -9,6 +9,7 @@
   align-items: center;
   border: none;
   border-radius: 1.25rem;
+  cursor: pointer;
 
   &__text {
     @include h3-labels-links-buttons;

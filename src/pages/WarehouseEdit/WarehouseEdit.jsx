@@ -1,12 +1,12 @@
 import "./WarehouseEdit.scss";
-import Form from "../../components/Form/Form";
 import TitleNav from "../../components/TitleNav/TitleNav";
+import WarehouseForm from "../../components/WarehouseForm/WarehouseForm";
 
 const WarehouseEdit = () => {
   return (
     <article className="warehouse-edit">
       <TitleNav title="Edit Warehouse" page="Warehouse" edit={false} />
-      <Form mode="edit" page="warehouse" />
+      <WarehouseForm mode="edit" />
     </article>
   );
 };
