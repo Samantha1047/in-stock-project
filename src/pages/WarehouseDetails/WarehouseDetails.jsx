@@ -1,45 +1,43 @@
-import './WarehouseDetails.scss'
-import WarehouseDetail from '../../components/WarehouseDetail/WarehouseDetail'
-import InventoryList from '../../components/InventoryList/InventoryList'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import "./WarehouseDetails.scss";
+import WarehouseDetail from "../../components/WarehouseDetail/WarehouseDetail";
+import InventoryList from "../../components/InventoryList/InventoryList";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-const API_URL = import.meta.env.VITE_APP_API_URL
+const API_URL = import.meta.env.VITE_APP_API_URL;
 
 const WarehouseDetails = () => {
-  const { warehouseId } = useParams()
-  const [inventoryList, setInventoryList] = useState([])
+  const { warehouseId } = useParams();
+  const [inventoryList, setInventoryList] = useState([]);
 
   useEffect(() => {
     const fetchWarehouseInventory = async () => {
       try {
-        const response = await axios.get(
-          `${API_URL}/api/warehouses/${warehouseId}/inventories`
-        )
-        const transformedData = response.data.map(item => ({
+        const response = await axios.get(`${API_URL}/api/warehouses/${warehouseId}/inventories`);
+        const transformedData = response.data.map((item) => ({
           itemId: item.id,
           warehouse_name: item.warehouse_name,
           item_name: item.item_name,
           category: item.category,
           status: item.status,
-          quantity: item.quantity
-        }))
+          quantity: item.quantity,
+        }));
 
-        setInventoryList(transformedData)
+        setInventoryList(transformedData);
       } catch (error) {
-        console.error('Error fetching warehouse inventory data: ', error)
+        console.error("Error fetching warehouse inventory data: ", error);
       }
-    }
-    fetchWarehouseInventory()
-  }, [warehouseId])
+    };
+    fetchWarehouseInventory();
+  }, [warehouseId]);
 
   return (
-    <main className='warehouse-details'>
+    <main className="warehouse-details">
       <WarehouseDetail />
-      <InventoryList inventoryList={inventoryList} showWarehouse={false} />
+      <InventoryList currentInventoryList={inventoryList} showWarehouse={false} />
     </main>
-  )
-}
+  );
+};
 
-export default WarehouseDetails
+export default WarehouseDetails;

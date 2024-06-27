@@ -12,7 +12,7 @@ import "./InventoryList.scss";
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
-const InventoryList = () => {
+const InventoryList = ({ currentInventoryList, showWarehouse }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [inventoryList, setInventoryList] = useState([]);
   const [currentInventory, setcurrentInventory] = useState("");
@@ -71,7 +71,7 @@ const InventoryList = () => {
           ))}
         </div>
         <div>
-          {inventoryList.map((item) => {
+          {currentInventoryList.map((item) => {
             const { itemId, warehouse_name, item_name, category, status, quantity } = item;
 
             return (
