@@ -55,7 +55,7 @@ const Inventory = () => {
           </button>
         </div>
       </div>
-      <InventoryList inventoryList={inventoryList} showWarehouse={true} />
+      <InventoryList currentInventoryList={inventoryList} showWarehouse={true} />
     </main>
   )
 }
