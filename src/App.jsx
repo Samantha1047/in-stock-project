@@ -28,7 +28,6 @@ function App() {
           {/* remember to change item to :itemId when we have the data */}
           <Route path="/inventory/:itemId" element={<InventoryDetails />} />
           <Route path="/inventory/:itemId/edit" element={<InventoryEdit />} />
-
         </Routes>
         <Footer />
       </BrowserRouter>
