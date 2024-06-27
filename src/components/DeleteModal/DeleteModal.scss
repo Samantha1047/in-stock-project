@@ -4,20 +4,23 @@
 .modal {
   @include card-shadow;
 
-  @include tablet {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &__container {
     padding: 1rem;
     padding-top: 3.75rem;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    height: 100%;
     background-color: $primary-light;
     display: flex;
     flex-direction: column;
@@ -55,6 +58,8 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
+    border: none;
+    background-color: $primary-light;
   }
 
   &__buttons {
@@ -85,6 +90,23 @@
     border-radius: 1.25rem;
     background-color: $error-color;
     color: $primary-light;
+
+    @include tablet {
+      width: 4.4375rem;
+    }
+  }
+
+  &__cancel-button {
+    height: 2.25rem;
+    width: 8.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 1.25rem;
+    color: $secondary-dark;
+    border: $border-default;
+    background-color: $primary-light;
 
     @include tablet {
       width: 4.4375rem;
