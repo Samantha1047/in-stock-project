@@ -1,0 +1,58 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.inventory-form {
+  @include tablet {
+    display: flex;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  &__item-section {
+    border-bottom: $border-default;
+
+    @include tablet {
+      flex-basis: 50%;
+      border-right: $border-default;
+      border-bottom: none;
+    }
+  }
+
+  &__availability-section {
+    @include tablet {
+      flex-basis: 50%;
+    }
+  }
+
+  &__title {
+    @include mobile-h2-subheader;
+    margin-bottom: 0.5rem;
+
+    @include tablet {
+      margin-bottom: 1rem;
+    }
+  }
+  &__input-container {
+    border: none;
+    margin-bottom: 0.25rem;
+    margin-top: 1rem;
+  }
+
+  &__label {
+    @include h3-labels-links-buttons;
+    margin-bottom: 0.25rem;
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+
+  &__radio-container {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  &__radio {
+    margin-right: 0.5rem;
+  }
+}

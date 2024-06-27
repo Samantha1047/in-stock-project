@@ -1,5 +1,6 @@
 @use "../../styles/partials/variables" as *;
 .drop-down {
+  margin-top: 0.25rem;
   border: $border-default;
   border-radius: 1.25rem;
   position: relative;
@@ -15,7 +16,7 @@
   &__input {
     position: absolute;
     width: 93%;
-    margin-left: 11px;
+    margin-left: 1rem;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;

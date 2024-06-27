@@ -1,8 +1,22 @@
+import ErrorText from "../ErrorText/ErrorText";
 import chevronDown from "../../assets/icons/arrow_drop_down-24px.svg";
-const categories = ["Electronics", "Accessories", "Gear", "Apparel", "Health"];
+const categoryOptions = [
+  "Electronics",
+  "Accessories",
+  "Gear",
+  "Apparel",
+  "Health",
+];
+
+//Need to grab warehouse names from the database, use this as a placeholder
+const warehouseOptions = [
+  { warehouse_name: "Manhattan", warehouse_id: 1 },
+  { warehouse_name: "Washington", warehouse_id: 2 },
+  { warehouse_name: "Jersey", warehouse_id: 3 },
+];
 import "./DropDown.scss";
 import { useState } from "react";
-const DropDown = ({ name }) => {
+const DropDown = ({ name, handleInputChange, value, errors }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
@@ -12,15 +26,27 @@ const DropDown = ({ name }) => {
   const handleBlur = () => {
     setIsFocused(false);
   };
-  const options = name === "category" ? categories : [];
+  const dropdownOptions =
+    name === "category" ? categoryOptions : warehouseOptions;
   return (
     <div tabIndex="0" className={`drop-down ${isFocused ? "focused" : ""}`}>
-      <select className="drop-down__input" value={name}>
-        {options.map((category) => (
-          <option key={category} value={category}>
-            {category}
-          </option>
-        ))}
+      <select
+        className="drop-down__input"
+        value={value}
+        onChange={handleInputChange}
+        name={name}
+      >
+        {dropdownOptions.map((option) => {
+          const optionKey = name === "category" ? option : option.warehouse_id;
+          const optionValue =
+            name === "category" ? option : option.warehouse_name;
+
+          return (
+            <option key={optionKey} value={optionKey}>
+              {optionValue}
+            </option>
+          );
+        })}
       </select>
       <img
         className="drop-down__icon"
@@ -29,6 +55,7 @@ const DropDown = ({ name }) => {
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
+      {errors && <ErrorText />}
     </div>
   );
 };

@@ -27,9 +27,25 @@ const WarehouseForm = ({ formValues, handleInputChange, errors }) => {
             error={errors.address}
           />
 
-          <FormField label="City" type="text" name="city" value={formValues.city} onChange={handleInputChange} placeholder="Washington" error={errors.city} />
+          <FormField
+            label="City"
+            type="text"
+            name="city"
+            value={formValues.city}
+            onChange={handleInputChange}
+            placeholder="Washington"
+            error={errors.city}
+          />
 
-          <FormField label="Country" type="text" name="country" value={formValues.country} onChange={handleInputChange} placeholder="USA" error={errors.country} />
+          <FormField
+            label="Country"
+            type="text"
+            name="country"
+            value={formValues.country}
+            onChange={handleInputChange}
+            placeholder="USA"
+            error={errors.country}
+          />
         </div>
       </section>
       <section className="warehouse-form__contact-section">
