@@ -14,7 +14,7 @@ const API_URL = import.meta.env.VITE_APP_API_URL;
 
 const InventoryList = ({ currentInventoryList, showWarehouse }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [inventoryList, setInventoryList] = useState([]);
+  const [inventoryList, setInventoryList] = useState(currentInventoryList);
   const [currentInventory, setcurrentInventory] = useState("");
   const [currentInventoryId, setcurrentInventoryId] = useState("");
   const navigate = useNavigate();
@@ -71,7 +71,7 @@ const InventoryList = ({ currentInventoryList, showWarehouse }) => {
           ))}
         </div>
         <div>
-          {currentInventoryList.map((item) => {
+          {inventoryList.map((item) => {
             const { itemId, warehouse_name, item_name, category, status, quantity } = item;
 
             return (
