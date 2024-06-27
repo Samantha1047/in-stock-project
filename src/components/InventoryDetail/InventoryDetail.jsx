@@ -3,38 +3,22 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./InventoryDetail.scss";
 
-/* {
-    "id": 1,
-    "warehouse_name": "Manhattan",
-    "item_name": "Television",
-    "description": "This 50\", 4K LED TV provides a crystal-clear picture and vivid colors.",
-    "category": "Electronics",
-    "status": "In Stock",
-    "quantity": 500
-  } */
+const API_URL = import.meta.env.VITE_APP_API_URL;
 
 const InventoryDetail = () => {
-  const [inventory, setInventory] = useState({
-    id: 1,
-    warehouse_name: "Manhattan",
-    item_name: "Television",
-    description: 'This 50", 4K LED TV provides a crystal-clear picture and vivid colors.',
-    category: "Electronics",
-    status: "In Stock",
-    quantity: 500,
-  });
-  /*   const { inventoryId } = useParams(); */
+  const [inventory, setInventory] = useState({});
+  const { itemId } = useParams();
 
-  /*   useEffect(() => {
+  useEffect(() => {
     axios
-      .get(`${API_URL}/api/inventories/${inventoryId}`)
+      .get(`${API_URL}/api/inventories/${itemId}`)
       .then((response) => {
         setInventory(response.data[0]);
       })
       .catch((err) => {
         console.log("Cannot fetch inventory", err.message);
       });
-  }, [inventoryId]); */
+  }, [itemId]);
 
   const { id, warehouse_name, item_name, description, category, status, quantity } = inventory;
 
@@ -51,7 +35,7 @@ const InventoryDetail = () => {
 
   const handleEdit = () => {
     //need to navigate to corresponding warehouse edit page, may need to update
-    navigate(`/inventory/${inventoryId}/edit`);
+    navigate(`/inventory/${itemId}/edit`);
   };
 
   return (
@@ -85,7 +69,7 @@ const InventoryDetail = () => {
           <div className="flex-container">
             <section className="inventory-detail__status">
               <h4>STATUS:</h4>
-              <span>{status.toLocaleUpperCase()}</span>
+              <span>{status}</span>
             </section>
             <section className="inventory-detail__warehouse">
               <h4>WAREHOUSE:</h4>
