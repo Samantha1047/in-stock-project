@@ -12,7 +12,7 @@ import "./InventoryList.scss";
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
-const InventoryList = () => {
+const InventoryList = ({ currentInventoryList, showWarehouse }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [inventoryList, setInventoryList] = useState([]);
   const [currentInventory, setcurrentInventory] = useState("");
@@ -57,20 +57,10 @@ const InventoryList = () => {
     fetchInventorys();
   }, []);
 
-  const tableHeaders = ["INVENTORY NAME", "CATEGORY", "STATUS", "QTY", "WAREHOUSE", "ACTIONS"];
+  const tableHeaders = ["INVENTORY NAME", "CATEGORY", "STATUS", "QTY", showWarehouse ? "WAREHOUSE" : null, "ACTIONS"].filter(Boolean);
 
   return (
     <section className="inventory-list">
-      <div className="inventory-list__header">
-        <h1 className="inventory-list__title">Inventory</h1>
-        <div>
-          <input type="text" placeholder="Search..." className="inventory-list__search" />
-          <img className="inventory-list__search-icon" src={searchIcon} alt="search icon" />
-          <button onClick={() => navigate(`/inventory/add`)} className="inventory-list__button">
-            + Add New Item
-          </button>
-        </div>
-      </div>
       <div className="inventory-list__table">
         <div className="inventory-list__table-headers inventory-list__table-headers--hidden">
           {tableHeaders.map((header, index) => (
@@ -81,7 +71,7 @@ const InventoryList = () => {
           ))}
         </div>
         <div>
-          {inventoryList.map((item) => {
+          {currentInventoryList.map((item) => {
             const { itemId, warehouse_name, item_name, category, status, quantity } = item;
 
             return (
@@ -111,10 +101,12 @@ const InventoryList = () => {
                       <p className="inventory-list__header--mobile">QTY</p>
                       <p className="inventory-list__item">{quantity}</p>
                     </div>
-                    <div className="inventory-list__table-cell">
-                      <p className="inventory-list__header--mobile">WAREHOUSE</p>
-                      <p className="inventory-list__item">{warehouse_name}</p>
-                    </div>
+                    {showWarehouse && (
+                      <div className="inventory-list__table-cell">
+                        <p className="inventory-list__header--mobile">WAREHOUSE</p>
+                        <p className="inventory-list__item">{warehouse_name}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
 
