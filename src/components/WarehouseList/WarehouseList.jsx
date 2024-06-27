@@ -127,7 +127,7 @@ const WarehouseList = () => {
           })}
         </div>
       </div>
-      <DeleteModal isWarehouse={true} name={currentWarehouse} onClose={() => setModalOpen(false)} onConfirmDelect={handleDelete} isActive={isModalOpen} />
+      <DeleteModal isWarehouse={true} name={currentWarehouse} onClose={() => setModalOpen(false)} onConfirmDelete={handleDelete} isActive={isModalOpen} />
     </section>
   );
 };

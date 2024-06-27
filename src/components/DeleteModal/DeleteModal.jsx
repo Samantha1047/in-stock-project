@@ -1,13 +1,13 @@
 import "./DeleteModal.scss";
 import Button from "../Button/Button";
 
-const DeleteModal = ({ isWarehouse, name, onClose, onConfirmDelect, isActive }) => {
+const DeleteModal = ({ isWarehouse, name, onClose, onConfirmDelete, isActive }) => {
   if (!isActive) return null;
 
   return (
     <section className="modal">
       <div className="modal__container">
-        <i className="modal__closeIcon" onClick={onClose} />
+        <button className="modal__closeIcon" onClick={onClose} aria-label="close-icon" />
         <div className="modal__content">
           <h1>
             Delete {name} {isWarehouse ? "warehouse" : "inventory item"}?
@@ -21,7 +21,7 @@ const DeleteModal = ({ isWarehouse, name, onClose, onConfirmDelect, isActive }) 
           <button onClick={onClose} className="modal__cancel-button">
             Cancel
           </button>
-          <button onClick={onConfirmDelect} className="modal__delete-button">
+          <button onClick={onConfirmDelete} className="modal__delete-button">
             Delete
           </button>
         </div>

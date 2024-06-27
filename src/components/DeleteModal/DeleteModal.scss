@@ -20,8 +20,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    height: 100%;
     background-color: $primary-light;
     display: flex;
     flex-direction: column;
@@ -59,6 +58,8 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
+    border: none;
+    background-color: $primary-light;
   }
 
   &__buttons {
