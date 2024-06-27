@@ -8,7 +8,6 @@ import FormField from "../FormField/FormField";
 import ErrorText from "../ErrorText/ErrorText";
 import FormButtons from "../FormButtons/FormButtons";
 
-import chevronDown from "../../assets/icons/arrow_drop_down-24px.svg";
 import { INVENTORY_STOCK } from "../../utils/constants";
 import "./InventoryForm.scss";
 import "../../App.scss";
@@ -37,15 +36,6 @@ const InventoryForm = ({ mode }) => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const { itemId } = useParams();
-  const [isFocused, setIsFocused] = useState(false);
-
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
-  };
 
   useEffect(() => {
     const fetchWarehouses = async () => {
