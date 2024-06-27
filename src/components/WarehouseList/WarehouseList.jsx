@@ -9,9 +9,8 @@ import sortIcon from '../../assets/icons/sort-24px.svg'
 import './WarehouseList.scss'
 
 const API_URL = import.meta.env.VITE_APP_API_URL
-console.log('API URL:', API_URL)
 
-const WarehouseList = ({ setCurrentWarehouse, onDelete }) => {
+const WarehouseList = () => {
     const [warehouseList, setWarehouseList] = useState([])
     const navigate = useNavigate()
 
@@ -44,11 +43,6 @@ const WarehouseList = ({ setCurrentWarehouse, onDelete }) => {
         'CONTACT INFORMATION',
         'ACTIONS'
     ]
-
-    const deleteHandler = () => {
-        setCurrentWarehouse(item)
-        onDelete(true)
-    }
 
     return (
         <section className='warehouse-list'>
@@ -102,7 +96,6 @@ const WarehouseList = ({ setCurrentWarehouse, onDelete }) => {
                             <article
                                 key={warehouseId}
                                 className='warehouse-list__table-row'
-                                onClick={() => setCurrentWarehouse(item)}
                             >
                                 <div className='warehouse-list__information'>
                                     <div className='warehouse-list__table-cell--left'>
@@ -149,7 +142,7 @@ const WarehouseList = ({ setCurrentWarehouse, onDelete }) => {
                                 <div className='warehouse-list__table-cell--bottom'>
                                     <button className='warehouse-list__delete-button'>
                                         <img
-                                            onClick={deleteHandler}
+                                            onClick={() => navigate(`/${warehouseId}/delete`)}
                                             src={deleteIcon}
                                             alt='Delete'
                                         />
