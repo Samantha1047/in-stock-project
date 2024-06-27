@@ -166,7 +166,7 @@ const InventoryForm = ({ mode }) => {
               label="Item Name"
               type="text"
               name="item_name"
-              value={formValues.item_Name}
+              value={formValues.item_name}
               onChange={handleInputChange}
               placeholder="Television"
               error={errors.item_Name}
