@@ -2,7 +2,7 @@ import "./WarehouseForm.scss";
 import FormField from "../FormField/FormField";
 import FormButtons from "../FormButtons/FormButtons";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 const API_URL = import.meta.env.VITE_APP_API_URL;
 import "./WarehouseForm.scss";
@@ -38,6 +38,31 @@ const WarehouseForm = ({ mode }) => {
       [name]: "",
     });
   };
+
+  useEffect(() => {
+    const fetchWarehouses = async () => {
+      try {
+        const { data } = await axios.get(`${API_URL}/api/warehouses`);
+        const item = data[0];
+        setFormValues({
+          warehouse_name: item.warehouse_name,
+          address: item.address,
+          city: item.city,
+          country: item.country,
+          contact_name: item.contact_name,
+          contact_position: item.contact_position,
+          contact_phone: item.contact_phone,
+          contact_email: item.contact_email,
+        });
+      } catch (error) {
+        console.error(error + "Error fetching warehouse data");
+      }
+    };
+
+    if (warehouseId) {
+      fetchWarehouses();
+    }
+  }, [warehouseId]);
 
   const validatePhoneNumber = (phoneNumber) => {
     const phonePattern = /^\+1 \(\d{3}\) \d{3}-\d{4}$/;
