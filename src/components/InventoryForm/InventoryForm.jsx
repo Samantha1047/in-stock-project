@@ -8,6 +8,7 @@ import FormField from "../FormField/FormField";
 import ErrorText from "../ErrorText/ErrorText";
 import FormButtons from "../FormButtons/FormButtons";
 
+import chevronDown from "../../assets/icons/arrow_drop_down-24px.svg";
 import { INVENTORY_STOCK } from "../../utils/constants";
 import "./InventoryForm.scss";
 import "../../App.scss";
@@ -36,6 +37,17 @@ const InventoryForm = ({ mode }) => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const { itemId } = useParams();
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
+
+  console.log(formValues);
 
   useEffect(() => {
     const fetchWarehouses = async () => {
@@ -79,6 +91,7 @@ const InventoryForm = ({ mode }) => {
     });
   };
   const submitData = async (data, url, method) => {
+    console.log("submitData", data, url, method);
     try {
       const response = await axios[method](`${API_URL}${url}`, data);
       return response.data;
@@ -164,13 +177,32 @@ const InventoryForm = ({ mode }) => {
               <label className="inventory-form__label" htmlFor="category">
                 Category
               </label>
-              <DropDown
-                name="category"
-                value={formValues.category}
-                handleInputChange={handleInputChange}
-                errors={errors.category}
-                categoryList={categoryOptions}
-              />
+              <div
+                tabIndex="0"
+                className={`drop-down ${isFocused ? "focused" : ""}`}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+              >
+                <select
+                  className="drop-down__input"
+                  value={formValues.category}
+                  onChange={handleInputChange}
+                  name="category"
+                >
+                  {categoryOptions.map((item) => (
+                    <option key={item.id} value={item.name}>
+                      {item.name}
+                    </option>
+                  ))}
+                </select>
+                <img
+                  className="drop-down__icon"
+                  src={chevronDown}
+                  alt="Drop down button"
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                />
+              </div>
               {errors.category && <ErrorText />}
             </fieldset>
           </div>

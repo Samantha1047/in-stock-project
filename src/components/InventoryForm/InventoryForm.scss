@@ -4,8 +4,8 @@
 .inventory-form {
   box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1);
   border-radius: 2px;
-
-  &__fields {
+  @include section-max-width;
+  &__inputs {
     @include tablet {
       @include section-max-width;
       display: flex;

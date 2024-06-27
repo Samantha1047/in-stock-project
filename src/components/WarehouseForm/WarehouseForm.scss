@@ -4,12 +4,15 @@
 .warehouse-form {
   box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1);
   border-radius: 2px;
+  @include section-max-width;
 
-  @include tablet {
-    display: flex;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    @include section-max-width;
+  &__fields {
+    @include tablet {
+      @include section-max-width;
+      display: flex;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
   }
 
   &__details-section {
