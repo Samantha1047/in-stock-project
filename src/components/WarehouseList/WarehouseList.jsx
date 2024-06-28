@@ -100,7 +100,7 @@ const WarehouseList = () => {
               <article key={warehouseId} className='warehouse-list__table-row'>
                 <div className='warehouse-list__information'>
                   <div className='warehouse-list__table-cell--left'>
-                    <div className='warehouse-list__table-cell warehouse-list__table-cell--tablet'>
+                    <div className='warehouse-list__table-cell warehouse-list__table-cell--tablet wh_name'>
                       <p className='warehouse-list__header--mobile'>
                         WAREHOUSE
                       </p>
