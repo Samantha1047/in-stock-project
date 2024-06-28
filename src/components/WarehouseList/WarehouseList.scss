@@ -1,5 +1,5 @@
-@use '../../styles/partials/variables' as *;
-@use '../../styles/partials/mixins' as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .warehouse-list {
   &__table-headers {
@@ -162,6 +162,10 @@
     color: $primary-color;
     display: flex;
     align-items: center;
+
+    &:hover {
+      text-decoration: underline;
+    }
 
     @include tablet {
       @include h3-labels-links-buttons;

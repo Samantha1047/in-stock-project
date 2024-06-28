@@ -96,6 +96,10 @@
     cursor: pointer;
     width: 100%;
 
+    &:hover {
+      background-color: $primary-dark;
+    }
+
     @include tablet {
       width: 10.5rem;
       height: 2.375rem;
