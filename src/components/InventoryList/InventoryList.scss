@@ -26,7 +26,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-left: 2rem;
+      // padding-left: 2rem;
       font-weight: 600;
     }
 
@@ -64,7 +64,7 @@
     padding: 0.5rem;
 
     @include tablet {
-      width: 50%;
+      // width: 50%;
       justify-content: flex-start;
     }
     &--tablet {
@@ -194,7 +194,15 @@
 
   &__record {
     padding-left: 2.2rem;
+    padding-right: 1.5rem;
     display: grid;
-    grid-template-columns: 1.5fr 1.3fr 1.9fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: minmax(150px, 1.5fr) 1.3fr 1.6fr 1fr 1fr;
+
+    &--warehouse {
+      padding-left: 2.2rem;
+      padding-right: 1.5rem;
+      display: grid;
+      grid-template-columns: minmax(150px, 1.4fr) 1.2fr 1.2fr 1fr 1fr 1fr;
+    }
   }
 }

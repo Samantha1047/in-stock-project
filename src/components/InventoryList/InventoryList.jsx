@@ -20,7 +20,7 @@ const InventoryList = ({ currentInventoryList, showWarehouse }) => {
   const [currentInventoryId, setcurrentInventoryId] = useState("");
   const navigate = useNavigate();
 
-  const isAboveMediumScreens = useMediaQuery("(min-width: 720px)");
+  const isAboveMediumScreens = useMediaQuery("(min-width: 767px)");
 
   const handleClick = (name, id) => {
     setModalOpen(true);
@@ -28,6 +28,10 @@ const InventoryList = ({ currentInventoryList, showWarehouse }) => {
     setcurrentInventoryId(id);
     console.log("button clicked!");
   };
+
+  const numOfColumns = showWarehouse
+    ? "inventory-list__record--warehouse"
+    : "inventory-list__record";
 
   const handleDelete = async () => {
     try {
@@ -101,7 +105,7 @@ const InventoryList = ({ currentInventoryList, showWarehouse }) => {
                 } = item;
                 return (
                   <article key={itemId}>
-                    <div className="inventory-list__record">
+                    <div className={`${numOfColumns}`}>
                       <div className="inventory-list__table-cell">
                         <p className="inventory-list__header--mobile">
                           INVENTORY ITEM
