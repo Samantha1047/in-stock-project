@@ -82,7 +82,7 @@ const WarehouseList = () => {
             />
           </div>
           <div className='warehouse-list__header-column'>
-            <p>ContactName</p>
+            <p>Contact Name</p>
             <img
               className='warehouse-list__sort-icon'
               src={sortIcon}
