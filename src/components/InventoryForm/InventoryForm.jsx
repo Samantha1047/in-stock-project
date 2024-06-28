@@ -19,7 +19,7 @@ const initialValues = {
   item_name: "",
   description: "",
   category: "",
-  status: "",
+  status: INVENTORY_STOCK.OUT_OF_STOCK,
   quantity: 0,
 };
 
@@ -39,21 +39,20 @@ const InventoryForm = ({ mode }) => {
   const { itemId } = useParams();
 
   useEffect(() => {
-    const fetchWarehouses = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/api/warehouses`);
-        setWarehouses(response.data);
-      } catch (error) {
-        console.error(error + "Error fetching warehouse data");
-      }
-    };
-
     const fetchItemData = async () => {
       try {
-        const { data } = await axios.get(`${API_URL}/api/inventories/${itemId}`);
+        const { data } = await axios.get(
+          `${API_URL}/api/inventories/${itemId}`
+        );
         const item = data[0];
+
+        const findMatchingWarehouse = warehouses.find(
+          (warehouse) => warehouse.warehouse_name === item.warehouse_name
+        );
+
+        console.log(findMatchingWarehouse);
         setFormValues({
-          warehouse_id: item.warehouse_id,
+          warehouse_id: findMatchingWarehouse?.id,
           item_name: item.item_name,
           description: item.description,
           category: item.category,
@@ -67,19 +66,36 @@ const InventoryForm = ({ mode }) => {
     if (itemId) {
       fetchItemData();
     }
+  }, [itemId, warehouses]);
+
+  useEffect(() => {
+    const fetchWarehouses = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/api/warehouses`);
+        setWarehouses(response.data);
+      } catch (error) {
+        console.error(error + "Error fetching warehouse data");
+      }
+    };
     fetchWarehouses();
-  }, [itemId]);
+  }, []);
+
+  console.log(warehouses);
 
   const warehouseNames = warehouses.map((warehouse) => ({
     name: warehouse.warehouse_name,
     id: warehouse.id,
   }));
 
-  const inStockText = formValues.status === INVENTORY_STOCK.OUT_OF_STOCK ? "text-inactive" : "";
-  const outOfStockText = formValues.status === INVENTORY_STOCK.IN_STOCK ? "text-inactive" : "";
+  const inStockText =
+    formValues.status === INVENTORY_STOCK.OUT_OF_STOCK ? "text-inactive" : "";
+  const outOfStockText =
+    formValues.status === INVENTORY_STOCK.IN_STOCK ? "text-inactive" : "";
 
-  const inStockInput = formValues.status === INVENTORY_STOCK.OUT_OF_STOCK ? "input-inactive " : "";
-  const outOfStockInput = formValues.status === INVENTORY_STOCK.IN_STOCK ? "input-inactive " : "";
+  const inStockInput =
+    formValues.status === INVENTORY_STOCK.OUT_OF_STOCK ? "input-inactive " : "";
+  const outOfStockInput =
+    formValues.status === INVENTORY_STOCK.IN_STOCK ? "input-inactive " : "";
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -152,13 +168,22 @@ const InventoryForm = ({ mode }) => {
         handleSubmit(formValues);
         navigate("/inventory");
         window.scrollTo(0, 0);
-      }}>
+      }}
+    >
       <div className="inventory-form__inputs">
         <section className="inventory-form__item-section">
           <div className="wrapper">
             <h2 className="inventory-form__title">Item Details</h2>
 
-            <FormField label="Item Name" type="text" name="item_name" value={formValues.item_name} onChange={handleInputChange} placeholder="Television" error={errors.item_Name} />
+            <FormField
+              label="Item Name"
+              type="text"
+              name="item_name"
+              value={formValues.item_name}
+              onChange={handleInputChange}
+              placeholder="Item Name"
+              error={errors.item_Name}
+            />
 
             <FormField
               label="Description"
@@ -166,7 +191,7 @@ const InventoryForm = ({ mode }) => {
               name="description"
               value={formValues.description}
               onChange={handleInputChange}
-              placeholder="This 50, 4K LED TV provides a crystal-clear picture and vivid colors."
+              placeholder="Please enter a brief item description..."
               error={errors.description}
               input="textarea"
             />
@@ -174,7 +199,14 @@ const InventoryForm = ({ mode }) => {
               <label className="inventory-form__label" htmlFor="category">
                 Category
               </label>
-              <DropDown name="category" handleInputChange={handleInputChange} value={formValues.category} errors={errors.category} categoryList={categoryOptions} valueKey="name" />
+              <DropDown
+                name="category"
+                handleInputChange={handleInputChange}
+                value={formValues.category}
+                errors={errors.category}
+                categoryList={categoryOptions}
+                valueKey="name"
+              />
               {errors.category && <ErrorText />}
             </fieldset>
           </div>
@@ -187,7 +219,10 @@ const InventoryForm = ({ mode }) => {
                 Status
               </p>
               <section className="inventory-form__radio-container">
-                <div className="inventory-form__radio-input" value={formValues.status}>
+                <div
+                  className="inventory-form__radio-input"
+                  value={formValues.status}
+                >
                   <input
                     className={`inventory-form__radio ${inStockInput}`}
                     type="radio"
@@ -220,16 +255,20 @@ const InventoryForm = ({ mode }) => {
             </fieldset>
 
             {formValues.status === INVENTORY_STOCK.IN_STOCK && (
-              <FormField
-                label="Quantity"
-                type="number"
-                name="quantity"
-                value={formValues.quantity}
-                onChange={handleInputChange}
-                placeholder="0"
-                error={errors.quantity}
-                size="small"
-              />
+              <fieldset className="inventory-form__input-container">
+                <label className="inventory-form__label" htmlFor="category">
+                  Quantity
+                </label>
+                <input
+                  className="inventory-form__input"
+                  type="number"
+                  name="quantity"
+                  value={formValues.quantity}
+                  onChange={handleInputChange}
+                  placeholder="0"
+                />
+                {errors.quantity && <ErrorText />}
+              </fieldset>
             )}
 
             <fieldset className="inventory-form__input-container">
@@ -248,7 +287,12 @@ const InventoryForm = ({ mode }) => {
           </div>
         </section>
       </div>
-      <FormButtons mode={mode} page="inventory" handleSubmit={() => handleFormSubmit(formValues)} handleBack={() => navigate("/inventory")} />
+      <FormButtons
+        mode={mode}
+        page="inventory"
+        handleSubmit={() => handleFormSubmit(formValues)}
+        handleBack={() => navigate("/inventory")}
+      />
     </form>
   );
 };
