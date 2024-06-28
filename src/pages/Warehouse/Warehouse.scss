@@ -1,6 +1,9 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
+body {
+  background-color: $background-light;
+}
 .warehouse {
   margin: 0 1rem;
   position: relative;
