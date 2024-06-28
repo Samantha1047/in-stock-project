@@ -1,0 +1,6 @@
+@use "./styles/partials/mixins" as *;
+@use "./styles/partials/variables" as *;
+
+#root {
+  background-color: $background-light;
+}
