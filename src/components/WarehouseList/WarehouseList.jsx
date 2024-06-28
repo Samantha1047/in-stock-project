@@ -61,28 +61,50 @@ const WarehouseList = () => {
     fetchWarehouses()
   }, [])
 
-  const tableHeaders = [
-    'WAREHOUSE',
-    'ADDRESS',
-    'CONTACT NAME',
-    'CONTACT INFORMATION',
-    'ACTIONS'
-  ]
-
   return (
     <section className='warehouse-list'>
       <div className='warehouse-list__table'>
         <div className='warehouse-list__table-headers warehouse-list__table-headers--hidden'>
-          {tableHeaders.map((header, index) => (
-            <div key={index} className='warehouse-list__header-column'>
-              <p>{header}</p>
-              <img
-                className='warehouse-list__sort-icon'
-                src={sortIcon}
-                alt='sort icon'
-              />
-            </div>
-          ))}
+          <div className='warehouse-list__header-column'>
+            <p>Warehouse</p>
+            <img
+              className='warehouse-list__sort-icon'
+              src={sortIcon}
+              alt='sort icon'
+            />
+          </div>
+          <div className='warehouse-list__header-column'>
+            <p>Address</p>
+            <img
+              className='warehouse-list__sort-icon'
+              src={sortIcon}
+              alt='sort icon'
+            />
+          </div>
+          <div className='warehouse-list__header-column'>
+            <p>ContactName</p>
+            <img
+              className='warehouse-list__sort-icon'
+              src={sortIcon}
+              alt='sort icon'
+            />
+          </div>
+          <div className='warehouse-list__header-column warehouse-list__header-column--contact'>
+            <p>Contact Information</p>
+            <img
+              className='warehouse-list__sort-icon'
+              src={sortIcon}
+              alt='sort icon'
+            />
+          </div>
+          <div className='warehouse-list__header-column warehouse-list__header-column--actions'>
+            <p>Actions</p>
+            <img
+              className='warehouse-list__sort-icon'
+              src={sortIcon}
+              alt='sort icon'
+            />
+          </div>
         </div>
         <div>
           {warehouseList.map(item => {
