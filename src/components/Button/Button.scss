@@ -35,7 +35,8 @@
 
   &--form {
     height: 2.25rem;
-    width: 8.75rem;
+    min-width: 8.75rem;
+    width: 100%;
     @include tablet {
       width: auto;
       height: 2.375rem;
