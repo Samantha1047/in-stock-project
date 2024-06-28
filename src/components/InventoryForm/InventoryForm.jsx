@@ -50,9 +50,7 @@ const InventoryForm = ({ mode }) => {
 
     const fetchItemData = async () => {
       try {
-        const { data } = await axios.get(
-          `${API_URL}/api/inventories/${itemId}`
-        );
+        const { data } = await axios.get(`${API_URL}/api/inventories/${itemId}`);
         const item = data[0];
         setFormValues({
           warehouse_id: item.warehouse_id,
@@ -77,15 +75,11 @@ const InventoryForm = ({ mode }) => {
     id: warehouse.id,
   }));
 
-  const inStockText =
-    formValues.status === INVENTORY_STOCK.OUT_OF_STOCK ? "text-inactive" : "";
-  const outOfStockText =
-    formValues.status === INVENTORY_STOCK.IN_STOCK ? "text-inactive" : "";
+  const inStockText = formValues.status === INVENTORY_STOCK.OUT_OF_STOCK ? "text-inactive" : "";
+  const outOfStockText = formValues.status === INVENTORY_STOCK.IN_STOCK ? "text-inactive" : "";
 
-  const inStockInput =
-    formValues.status === INVENTORY_STOCK.OUT_OF_STOCK ? "input-inactive " : "";
-  const outOfStockInput =
-    formValues.status === INVENTORY_STOCK.IN_STOCK ? "input-inactive " : "";
+  const inStockInput = formValues.status === INVENTORY_STOCK.OUT_OF_STOCK ? "input-inactive " : "";
+  const outOfStockInput = formValues.status === INVENTORY_STOCK.IN_STOCK ? "input-inactive " : "";
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -156,22 +150,15 @@ const InventoryForm = ({ mode }) => {
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit(formValues);
-      }}
-    >
+        navigate("/inventory");
+        window.scrollTo(0, 0);
+      }}>
       <div className="inventory-form__inputs">
         <section className="inventory-form__item-section">
           <div className="wrapper">
             <h2 className="inventory-form__title">Item Details</h2>
 
-            <FormField
-              label="Item Name"
-              type="text"
-              name="item_name"
-              value={formValues.item_name}
-              onChange={handleInputChange}
-              placeholder="Television"
-              error={errors.item_Name}
-            />
+            <FormField label="Item Name" type="text" name="item_name" value={formValues.item_name} onChange={handleInputChange} placeholder="Television" error={errors.item_Name} />
 
             <FormField
               label="Description"
@@ -187,14 +174,7 @@ const InventoryForm = ({ mode }) => {
               <label className="inventory-form__label" htmlFor="category">
                 Category
               </label>
-              <DropDown
-                name="category"
-                handleInputChange={handleInputChange}
-                value={formValues.category}
-                errors={errors.category}
-                categoryList={categoryOptions}
-                valueKey="name"
-              />
+              <DropDown name="category" handleInputChange={handleInputChange} value={formValues.category} errors={errors.category} categoryList={categoryOptions} valueKey="name" />
               {errors.category && <ErrorText />}
             </fieldset>
           </div>
@@ -207,10 +187,7 @@ const InventoryForm = ({ mode }) => {
                 Status
               </p>
               <section className="inventory-form__radio-container">
-                <div
-                  className="inventory-form__radio-input"
-                  value={formValues.status}
-                >
+                <div className="inventory-form__radio-input" value={formValues.status}>
                   <input
                     className={`inventory-form__radio ${inStockInput}`}
                     type="radio"
@@ -271,12 +248,7 @@ const InventoryForm = ({ mode }) => {
           </div>
         </section>
       </div>
-      <FormButtons
-        mode={mode}
-        page="inventory"
-        handleSubmit={() => handleFormSubmit(formValues)}
-        handleBack={() => navigate("/inventory")}
-      />
+      <FormButtons mode={mode} page="inventory" handleSubmit={() => handleFormSubmit(formValues)} handleBack={() => navigate("/inventory")} />
     </form>
   );
 };
