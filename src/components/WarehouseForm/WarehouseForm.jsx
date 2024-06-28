@@ -231,7 +231,9 @@ const WarehouseForm = ({ mode }) => {
       </div>
       <FormButtons
         mode={mode}
+        page="warehouse"
         handleSubmit={() => handleWarehouseFormSubmit(formValues)}
+        handleBack={() => navigate("/warehouse")}
       />
     </form>
   );
