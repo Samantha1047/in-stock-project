@@ -275,6 +275,7 @@ const InventoryForm = ({ mode }) => {
         mode={mode}
         page="inventory"
         handleSubmit={() => handleFormSubmit(formValues)}
+        handleBack={() => navigate("/inventory")}
       />
     </form>
   );

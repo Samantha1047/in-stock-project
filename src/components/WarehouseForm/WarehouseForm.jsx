@@ -233,6 +233,7 @@ const WarehouseForm = ({ mode }) => {
         mode={mode}
         page="warehouse"
         handleSubmit={() => handleWarehouseFormSubmit(formValues)}
+        handleBack={() => navigate("/warehouse")}
       />
     </form>
   );
