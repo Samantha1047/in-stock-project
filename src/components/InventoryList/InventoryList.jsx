@@ -189,7 +189,6 @@ const InventoryList = ({ currentInventoryList, showWarehouse }) => {
                       </div>
                     )}
                     <div className="inventory-list__table-cell--bottom">
-                      {/* // may need to adjust when delete modal is completed  */}
                       <button
                         className="inventory-list__delete-button"
                         onClick={() => handleClick(item_name, itemId)}
