@@ -33,6 +33,10 @@ const InventoryList = ({ currentInventoryList, showWarehouse }) => {
     ? "inventory-list__record--warehouse"
     : "inventory-list__record";
 
+  const numOfHeaders = showWarehouse
+    ? "inventory-list__header2--warehouse"
+    : "inventory-list__header2--no-warehouse";
+
   const handleDelete = async () => {
     try {
       await axios.delete(`${API_URL}/api/inventories/${currentInventoryId}`);
@@ -80,9 +84,11 @@ const InventoryList = ({ currentInventoryList, showWarehouse }) => {
   return (
     <section className="inventory-list">
       <div className="inventory-list__table">
-        <div className="inventory-list__table-headers inventory-list__table-headers--hidden">
+        <div
+          className={`inventory-list__table-headers inventory-list__table-headers--hidden ${numOfHeaders}`}
+        >
           {tableHeaders.map((header, index) => (
-            <div key={index} className="inventory-list__header-column">
+            <div key={index} className={`inventory-list__header-column  `}>
               <p>{header}</p>
               <img
                 className="inventory-list__sort-icon"

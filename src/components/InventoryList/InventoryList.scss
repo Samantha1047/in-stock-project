@@ -5,14 +5,46 @@
   overflow: auto;
   height: 98rem;
 
+  &__headers {
+    @include tablet {
+      &-0 {
+        flex-basis: 25%;
+      }
+      &-1 {
+        flex-basis: 20%;
+      }
+      &-1 {
+        flex-basis: 20%;
+      }
+      &-2 {
+        flex-basis: 24%;
+      }
+      &-3 {
+        flex-basis: 180px;
+        justify-self: flex-end;
+      }
+    }
+  }
+  &__header2 {
+    &--warehouse {
+      grid-template-columns: minmax(150px, 1.7fr) 1.4fr 1.3fr 1.1fr 1.4fr 0.7fr;
+    }
+    &--no-warehouse {
+      grid-template-columns: minmax(150px, 1.6fr) 1.3fr 1.6fr 1fr 1fr;
+    }
+  }
+
   &__table-headers {
     color: $secondary-dark;
     &--hidden {
       display: none;
 
       @include tablet {
-        display: flex;
-        justify-content: space-evenly;
+        display: grid;
+        // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        padding-left: 32px;
+        padding-right: 32px;
+        // justify-content: space-evenly;
         background-color: $background-light;
         @include h4-table-header;
         height: 2.5rem;
@@ -22,16 +54,16 @@
 
   &__header-column {
     @include tablet {
-      width: 15%;
+      // width: 15%;
       display: flex;
-      justify-content: center;
+      // justify-content: center;
       align-items: center;
       // padding-left: 2rem;
       font-weight: 600;
     }
 
     @include desktop {
-      justify-content: center;
+      // justify-content: center;
     }
   }
 
