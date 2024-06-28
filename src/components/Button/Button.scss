@@ -17,6 +17,9 @@
 
   &--primary {
     background-color: $primary-color;
+    &:hover {
+      background-color: $primary-dark;
+    }
   }
 
   &--primary-text {
@@ -24,11 +27,19 @@
   }
   &--secondary-text {
     color: $secondary-dark;
+
+    &:hover {
+      color: $primary-color;
+    }
   }
 
   &--secondary {
     border: $border-default;
     background-color: $primary-light;
+
+    &:hover {
+      border-color: $primary-color;
+    }
   }
 
   &--form {
