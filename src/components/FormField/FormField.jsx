@@ -9,10 +9,8 @@ const FormField = ({
   placeholder,
   error,
   input,
-  size,
 }) => {
   const inputType = input === "textarea" ? "form-field--textarea" : "";
-  const inputSize = size === "small" ? "form-field__input--small" : "";
 
   return (
     <fieldset className={`form-field__input-container `}>
@@ -23,7 +21,7 @@ const FormField = ({
         type={type}
         className={`form-field__input ${
           error ? "error-border" : ""
-        } ${inputSize} ${inputType} `}
+        } ${inputType} `}
         id={name}
         placeholder={placeholder}
         name={name}

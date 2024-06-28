@@ -9,6 +9,25 @@
   font-family: "Titillium Web", sans-serif;
 }
 
+#root,
+.app-container {
+  background-color: $background-light;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .wrapper {
   padding: 1.5rem;
 

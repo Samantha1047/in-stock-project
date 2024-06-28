@@ -42,7 +42,9 @@
   &__input-container {
     border: none;
     margin-bottom: 0.25rem;
-    margin-top: 1rem;
+    // margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
   }
 
   &__label {
@@ -62,5 +64,20 @@
   &__radio {
     margin-right: 0.5rem;
     cursor: pointer;
+  }
+
+  &__input {
+    height: 2.375rem;
+    width: 100%;
+    border-radius: 1.25rem;
+    border: $border-default;
+    padding-left: 1rem;
+    margin-top: 0.25rem;
+    &:focus {
+      outline: $border-active;
+    }
+    @include desktop {
+      width: 7.625rem;
+    }
   }
 }

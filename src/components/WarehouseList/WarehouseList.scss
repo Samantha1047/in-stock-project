@@ -4,15 +4,21 @@
 .warehouse-list {
   &__table-headers {
     color: $secondary-dark;
+    text-transform: uppercase;
+    background-color: $background-light;
+    height: 2.5rem;
+    @include h4-table-header;
+    padding-left: 2rem;
+
     &--hidden {
       display: none;
 
       @include tablet {
         display: flex;
-        justify-content: space-evenly;
-        background-color: $background-light;
-        @include h4-table-header;
-        height: 2.5rem;
+      }
+
+      @include desktop {
+        padding-left: 2.5rem;
       }
     }
   }
@@ -21,14 +27,27 @@
     @include tablet {
       width: 20%;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding-left: 2rem;
       font-weight: 600;
     }
 
     @include desktop {
+      width: 22%;
+    }
+
+    &--contact {
+      @include tablet {
+        width: 22%;
+      }
+    }
+
+    &--actions {
       justify-content: center;
+      width: 12%;
+
+      @include tablet {
+        width: 15%;
+      }
     }
   }
 
@@ -38,31 +57,41 @@
   }
 
   &__table-row {
-    padding: 0.5rem;
     border-bottom: 1px solid $secondary-light;
 
     @include tablet {
       display: flex;
       flex-direction: row;
+      padding: 1rem 0 1rem 2rem;
+    }
+
+    @include desktop {
+      padding: 1rem 0 1rem 2.5rem;
     }
   }
 
   &__information {
     display: flex;
+    justify-content: flex-start;
+    padding: 1rem 1rem 1rem 1.5rem;
 
     @include tablet {
-      width: 85%;
+      width: 80%;
+      padding: 0;
+    }
+
+    @include desktop {
+      width: 88%;
     }
   }
 
   &__table-cell {
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
 
     @include tablet {
       width: 50%;
-      justify-content: space-evenly;
+      flex: 1;
     }
     &--tablet {
       @include tablet {
@@ -70,29 +99,16 @@
       }
     }
 
-    &--bottom {
-      display: flex;
-      flex-direction: row;
-      padding: 0 1.5rem;
-      justify-content: space-between;
-
-      @include tablet {
-        width: 10%;
-
-        img {
-          padding: 0.5rem;
-        }
-      }
-    }
-
     &--left {
       display: flex;
       flex-direction: column;
       width: 50%;
-      padding: 1rem;
+      padding-right: 1rem;
 
       @include tablet {
+        flex: 1;
         flex-direction: row;
+        padding-right: 0;
       }
     }
 
@@ -100,10 +116,31 @@
       display: flex;
       flex-direction: column;
       width: 50%;
-      padding: 1rem 2rem 1rem 1rem;
 
       @include tablet {
         flex-direction: row;
+        flex: 1;
+      }
+    }
+
+    &--bottom {
+      display: flex;
+      flex-direction: row;
+      padding: 0 1.5rem 1.5rem 1.5rem;
+      justify-content: space-between;
+
+      @include tablet {
+        justify-content: center;
+        padding: 0;
+        flex: 1;
+
+        @include desktop {
+          width: 12%;
+        }
+
+        img {
+          padding: 0.5rem;
+        }
       }
     }
   }
@@ -124,6 +161,11 @@
     font-weight: 600;
     color: $primary-color;
     display: flex;
+    align-items: center;
+
+    @include tablet {
+      @include h3-labels-links-buttons;
+    }
   }
 
   &__chevron {
@@ -135,6 +177,11 @@
     @include mobile-p2-body-medium;
     text-wrap: wrap;
     color: $primary-dark;
+
+    @include tablet {
+      @include p2-body-medium;
+      padding-right: 1rem;
+    }
   }
 
   &__edit-button {
