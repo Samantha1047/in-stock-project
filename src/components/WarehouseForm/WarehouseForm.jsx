@@ -137,8 +137,7 @@ const WarehouseForm = ({ mode }) => {
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit(formValues);
-      }}
-    >
+      }}>
       <div className="warehouse-form__fields">
         <section className="warehouse-form__details-section">
           <div className="wrapper">
@@ -163,25 +162,9 @@ const WarehouseForm = ({ mode }) => {
               error={errors.address}
             />
 
-            <FormField
-              label="City"
-              type="text"
-              name="city"
-              value={formValues.city}
-              onChange={handleInputChange}
-              placeholder="City"
-              error={errors.city}
-            />
+            <FormField label="City" type="text" name="city" value={formValues.city} onChange={handleInputChange} placeholder="City" error={errors.city} />
 
-            <FormField
-              label="Country"
-              type="text"
-              name="country"
-              value={formValues.country}
-              onChange={handleInputChange}
-              placeholder="Country"
-              error={errors.country}
-            />
+            <FormField label="Country" type="text" name="country" value={formValues.country} onChange={handleInputChange} placeholder="Country" error={errors.country} />
           </div>
         </section>
         <section className="warehouse-form__contact-section">
@@ -229,12 +212,14 @@ const WarehouseForm = ({ mode }) => {
           </div>
         </section>
       </div>
+
       <FormButtons
         mode={mode}
         page="warehouse"
         handleSubmit={() => handleWarehouseFormSubmit(formValues)}
         handleBack={() => navigate("/")}
       />
+
     </form>
   );
 };
