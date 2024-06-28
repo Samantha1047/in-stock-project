@@ -27,9 +27,9 @@
     padding-left: 1rem;
     cursor: pointer;
 
-    option:first-child {
-      color: $secondary-dark;
-    }
+    // option:first-child {
+    //   color: $secondary-dark;
+    // }
 
     &:hover {
       cursor: pointer;
@@ -43,4 +43,19 @@
   &.focused {
     border: $border-active;
   }
+  &[disabled] {
+    color: red;
+  }
+}
+
+select {
+  color: $secondary-dark;
+}
+
+select:focus {
+  color: $primary-dark;
+}
+
+#dropdown option:checked {
+  color: $primary-dark;
 }
