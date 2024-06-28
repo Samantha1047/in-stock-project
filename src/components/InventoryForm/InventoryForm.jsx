@@ -218,6 +218,7 @@ const InventoryForm = ({ mode }) => {
                     name="status"
                     value={INVENTORY_STOCK.IN_STOCK}
                     onChange={handleInputChange}
+                    checked={formValues.status === INVENTORY_STOCK.IN_STOCK}
                   />
                   <label className={`${inStockText}`} htmlFor="inStock">
                     In Stock
@@ -231,6 +232,7 @@ const InventoryForm = ({ mode }) => {
                     name="status"
                     value={INVENTORY_STOCK.OUT_OF_STOCK}
                     onChange={handleInputChange}
+                    checked={formValues.status === INVENTORY_STOCK.OUT_OF_STOCK}
                   />
                   <label className={`${outOfStockText}`} htmlFor="outOfStock">
                     Out of Stock
