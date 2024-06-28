@@ -4,9 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevRight from "../../assets/icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
-import searchIcon from "../../assets/icons/search-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
-import Button from "../Button/Button";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import "./InventoryList.scss";
 import useMediaQuery from "../../hooks/useMediaQuery";
@@ -36,6 +34,10 @@ const InventoryList = ({ currentInventoryList, showWarehouse }) => {
   const numOfColumns = showWarehouse
     ? "inventory-list__record--warehouse"
     : "inventory-list__record";
+
+  const numOfHeaders = showWarehouse
+    ? "inventory-list__header2--warehouse"
+    : "inventory-list__header2--no-warehouse";
 
   const handleDelete = async () => {
     try {
