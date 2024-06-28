@@ -2,14 +2,10 @@ import "./Button.scss";
 
 const Button = ({ text, icon, isPrimary, type, location, handleEvent }) => {
   const isPrimaryClass = isPrimary ? "button--primary" : "button--secondary";
-  const isPrimaryText = isPrimary
-    ? "button--primary-text"
-    : "button--secondary-text";
 
   const buttonLocation =
     location === "form" ? "button--form" : "button--default";
 
-  //Might need to be adjusted if we include edit button
   return (
     <button
       type={type}
@@ -19,7 +15,7 @@ const Button = ({ text, icon, isPrimary, type, location, handleEvent }) => {
       <div className="button__icon-container">
         <img className="button__icon" alt={icon} src={icon} />
       </div>
-      <p className={`button__text ${isPrimaryText}`}>{text}</p>
+      <p className={`button__text`}>{text}</p>
     </button>
   );
 };
