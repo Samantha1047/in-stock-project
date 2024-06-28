@@ -5,12 +5,13 @@
   margin: 0 1rem;
   background-color: $primary-light;
   position: relative;
-  top: -5.55rem;
+  top: -3.5rem;
   box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1);
   border-radius: 2px;
 
   @include tablet {
     margin: 0 2rem;
+    top: -5.5rem;
   }
 
   @include desktop {
@@ -157,8 +158,8 @@
   }
 
   &__status {
-    padding-bottom: 1rem;
     &--green {
+      margin-bottom: 1rem;
       span {
         font-size: 0.6875rem;
         font-weight: 600;
@@ -170,6 +171,7 @@
     }
 
     &--red {
+      margin-bottom: 1rem;
       span {
         font-size: 0.6875rem;
         font-weight: 600;
