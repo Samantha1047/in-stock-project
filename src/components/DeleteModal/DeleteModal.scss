@@ -60,6 +60,7 @@
     right: 1rem;
     border: none;
     background-color: $primary-light;
+    cursor: pointer;
   }
 
   &__buttons {
@@ -90,6 +91,7 @@
     border-radius: 1.25rem;
     background-color: $error-color;
     color: $primary-light;
+    cursor: pointer;
 
     @include tablet {
       width: 4.4375rem;
@@ -107,6 +109,7 @@
     color: $secondary-dark;
     border: $border-default;
     background-color: $primary-light;
+    cursor: pointer;
 
     @include tablet {
       width: 4.4375rem;
