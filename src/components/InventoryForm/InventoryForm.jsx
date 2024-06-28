@@ -45,7 +45,6 @@ const InventoryForm = ({ mode }) => {
           `${API_URL}/api/inventories/${itemId}`
         );
         const item = data[0];
-
         const findMatchingWarehouse = warehouses.find(
           (warehouse) => warehouse.warehouse_name === item.warehouse_name
         );
@@ -80,8 +79,6 @@ const InventoryForm = ({ mode }) => {
     fetchWarehouses();
   }, []);
 
-  console.log(warehouses);
-
   const warehouseNames = warehouses.map((warehouse) => ({
     name: warehouse.warehouse_name,
     id: warehouse.id,
@@ -99,7 +96,10 @@ const InventoryForm = ({ mode }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    const updatedValue = name === "quantity" ? Number(value) : value;
+    let updatedValue = value;
+    if (name === "quantity") {
+      updatedValue = value === "" ? "" : Number(value);
+    }
 
     setFormValues({
       ...formValues,
@@ -111,6 +111,7 @@ const InventoryForm = ({ mode }) => {
       [name]: "",
     });
   };
+
   const submitData = async (data, url, method) => {
     try {
       const response = await axios[method](`${API_URL}${url}`, data);
@@ -146,11 +147,8 @@ const InventoryForm = ({ mode }) => {
       };
       const { url, method } = modeConfig[mode];
       submitData(values, url, method);
-
-      setTimeout(() => {
-        navigate("/");
-        setFormValues(initialValues);
-      }, 2000);
+      navigate("/inventory");
+      setFormValues(initialValues);
     } else {
       console.error("Form has errors", newErrors);
     }

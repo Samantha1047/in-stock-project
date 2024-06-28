@@ -42,8 +42,10 @@ const WarehouseForm = ({ mode }) => {
   useEffect(() => {
     const fetchWarehouses = async () => {
       try {
-        const { data } = await axios.get(`${API_URL}/api/warehouses`);
-        const item = data[0];
+        const response = await axios.get(`${API_URL}/api/warehouses`);
+        const item = response.data.find((item) => item.id == warehouseId);
+
+        console.log(item);
         setFormValues({
           warehouse_name: item.warehouse_name,
           address: item.address,
@@ -210,7 +212,14 @@ const WarehouseForm = ({ mode }) => {
           </div>
         </section>
       </div>
-      <FormButtons mode={mode} page="warehouse" handleSubmit={() => handleWarehouseFormSubmit(formValues)} handleBack={() => navigate("/")} />
+
+      <FormButtons
+        mode={mode}
+        page="warehouse"
+        handleSubmit={() => handleWarehouseFormSubmit(formValues)}
+        handleBack={() => navigate("/")}
+      />
+
     </form>
   );
 };
