@@ -271,6 +271,7 @@ const InventoryForm = ({ mode }) => {
       </div>
       <FormButtons
         mode={mode}
+        page="inventory"
         handleSubmit={() => handleFormSubmit(formValues)}
       />
     </form>
