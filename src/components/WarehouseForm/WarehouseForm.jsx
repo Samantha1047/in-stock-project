@@ -119,10 +119,8 @@ const WarehouseForm = ({ mode }) => {
       };
       const { url, method } = modeConfig[mode];
       submitWarehouseData(values, url, method);
-      setTimeout(() => {
-        navigate("/");
-        setFormValues(initialValues);
-      }, 2000);
+      navigate("/");
+      setFormValues(initialValues);
     } else {
       console.error("Form has errors", newErrors);
     }
@@ -149,7 +147,7 @@ const WarehouseForm = ({ mode }) => {
               name="warehouse_name"
               value={formValues.warehouse_name}
               onChange={handleInputChange}
-              placeholder="Washington"
+              placeholder="Warehouse Name"
               error={errors.warehouse_name}
             />
 
@@ -159,7 +157,7 @@ const WarehouseForm = ({ mode }) => {
               name="address"
               value={formValues.address}
               onChange={handleInputChange}
-              placeholder="33 Pearl Street SW"
+              placeholder="Street Address"
               error={errors.address}
             />
 
@@ -169,7 +167,7 @@ const WarehouseForm = ({ mode }) => {
               name="city"
               value={formValues.city}
               onChange={handleInputChange}
-              placeholder="Washington"
+              placeholder="City"
               error={errors.city}
             />
 
@@ -179,7 +177,7 @@ const WarehouseForm = ({ mode }) => {
               name="country"
               value={formValues.country}
               onChange={handleInputChange}
-              placeholder="USA"
+              placeholder="Country"
               error={errors.country}
             />
           </div>
@@ -193,7 +191,7 @@ const WarehouseForm = ({ mode }) => {
               name="contact_name"
               value={formValues.contact_name}
               onChange={handleInputChange}
-              placeholder="Graeme Lyon"
+              placeholder="Contact Name"
               error={errors.contact_name}
             />
 
@@ -203,7 +201,7 @@ const WarehouseForm = ({ mode }) => {
               name="contact_position"
               value={formValues.contact_position}
               onChange={handleInputChange}
-              placeholder="Warehouse Manager"
+              placeholder="Position"
               error={errors.contact_position}
             />
 
@@ -213,7 +211,7 @@ const WarehouseForm = ({ mode }) => {
               name="contact_phone"
               value={formValues.contact_phone}
               onChange={handleInputChange}
-              placeholder="+1 (647) 504-0911"
+              placeholder="Phone Number"
               error={errors.contact_phone}
             />
 
@@ -223,7 +221,7 @@ const WarehouseForm = ({ mode }) => {
               name="contact_email"
               value={formValues.contact_email}
               onChange={handleInputChange}
-              placeholder="glyon@instock.com"
+              placeholder="Email"
               error={errors.contact_email}
             />
           </div>

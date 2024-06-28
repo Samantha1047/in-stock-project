@@ -28,6 +28,9 @@ const DropDown = ({
         onChange={handleInputChange}
         name={name}
       >
+        <option value="" disabled selected>
+          Please Select
+        </option>
         {categoryList.map((option) => (
           <option key={option.id} value={option[valueKey]}>
             {option.name}
