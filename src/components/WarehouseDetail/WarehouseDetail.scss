@@ -1,5 +1,5 @@
-@use '../../styles/partials/variables' as *;
-@use '../../styles/partials/mixins' as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .warehouse-detail {
   &__header {
@@ -30,7 +30,7 @@
   }
 
   &__back-button {
-    background: url('../../assets/icons/arrow_back-24px.svg') no-repeat center;
+    background: url("../../assets/icons/arrow_back-24px.svg") no-repeat center;
     height: 1.5rem;
     width: 1.5rem;
     border: none;
@@ -84,6 +84,7 @@
       display: flex;
       justify-content: space-between;
       padding: 1.5rem 4rem;
+      border-bottom: none;
     }
 
     h4 {
