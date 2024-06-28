@@ -102,10 +102,8 @@ const InventoryForm = ({ mode }) => {
     });
   };
   const submitData = async (data, url, method) => {
-    console.log("submitData", data, url, method);
     try {
       const response = await axios[method](`${API_URL}${url}`, data);
-      console.log("response", response);
       return response.data;
     } catch (error) {
       console.error(error + "Error submitting form data");
@@ -140,7 +138,6 @@ const InventoryForm = ({ mode }) => {
       submitData(values, url, method);
 
       setTimeout(() => {
-        console.log("Form submitted");
         navigate("/");
         setFormValues(initialValues);
       }, 2000);
