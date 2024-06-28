@@ -89,7 +89,7 @@ const WarehouseList = () => {
               alt='sort icon'
             />
           </div>
-          <div className='warehouse-list__header-column'>
+          <div className='warehouse-list__header-column warehouse-list__header-column--contact'>
             <p>Contact Information</p>
             <img
               className='warehouse-list__sort-icon'

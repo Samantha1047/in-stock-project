@@ -35,9 +35,19 @@
       width: 22%;
     }
 
+    &--contact {
+      @include tablet {
+        width: 22%;
+      }
+    }
+
     &--actions {
       justify-content: center;
       width: 12%;
+
+      @include tablet {
+        width: 15%;
+      }
     }
   }
 
