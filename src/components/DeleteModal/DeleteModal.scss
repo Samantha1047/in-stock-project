@@ -98,6 +98,10 @@
     color: $primary-light;
     cursor: pointer;
 
+    &:hover {
+      background-color: $primary-dark;
+    }
+
     @include tablet {
       width: 4.4375rem;
     }
@@ -116,6 +120,11 @@
     border: $border-default;
     background-color: $primary-light;
     cursor: pointer;
+
+    &:hover {
+      color: $primary-color;
+      border-color: $primary-color;
+    }
 
     @include tablet {
       width: 4.4375rem;
