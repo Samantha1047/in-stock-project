@@ -1,5 +1,5 @@
-@use '../../styles/partials/variables' as *;
-@use '../../styles/partials/mixins' as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 body {
   background-color: $background-light;
@@ -36,6 +36,7 @@ body {
       justify-content: space-between;
       height: 5.875rem;
       padding: 2rem 2rem 1.5rem 2rem;
+      border-bottom: none;
     }
 
     @include desktop {
@@ -97,6 +98,10 @@ body {
     margin-bottom: 1rem;
     cursor: pointer;
     width: 100%;
+
+    &:hover {
+      background-color: $primary-dark;
+    }
 
     @include tablet {
       width: 10.5rem;

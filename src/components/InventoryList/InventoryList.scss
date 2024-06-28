@@ -134,6 +134,10 @@
     font-weight: 600;
     color: $primary-color;
     display: flex;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__chevron {

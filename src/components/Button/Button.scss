@@ -17,18 +17,20 @@
 
   &--primary {
     background-color: $primary-color;
-  }
-
-  &--primary-text {
-    color: $background-light;
-  }
-  &--secondary-text {
-    color: $secondary-dark;
+    color: $primary-light;
+    &:hover {
+      background-color: $background-dark;
+    }
   }
 
   &--secondary {
     border: $border-default;
     background-color: $primary-light;
+    color: $secondary-dark;
+    &:hover {
+      border: $border-active;
+      color: $primary-color;
+    }
   }
 
   &--form {
