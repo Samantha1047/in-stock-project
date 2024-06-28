@@ -1,7 +1,7 @@
 import Button from "../Button/Button";
 import "./FormButtons.scss";
 
-const FormButtons = ({ handleSubmit, mode, page }) => {
+const FormButtons = ({ handleSubmit, mode, page, handleBack }) => {
   const buttonTextMap = {
     "add-inventory": "+ Add Item",
     "add-warehouse": "+ Add Warehouse",
@@ -14,7 +14,12 @@ const FormButtons = ({ handleSubmit, mode, page }) => {
 
   return (
     <section className="form-buttons">
-      <Button location="form" text="Cancel" isPrimary={false} type="reset" />
+      <Button
+        location="form"
+        text="Cancel"
+        isPrimary={false}
+        handleEvent={handleBack}
+      />
       <Button
         location="form"
         text={buttonText}
