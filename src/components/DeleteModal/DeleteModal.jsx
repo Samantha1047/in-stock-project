@@ -1,6 +1,7 @@
 import "./DeleteModal.scss";
 import Button from "../Button/Button";
 import { useEffect } from "react";
+import closeIcon from "../../assets/icons/close-24px.svg";
 
 const DeleteModal = ({ isWarehouse, name, onClose, onConfirmDelete, isActive }) => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const DeleteModal = ({ isWarehouse, name, onClose, onConfirmDelete, isActive }) 
   return (
     <section className="modal">
       <div className="modal__container">
-        <button className="modal__closeIcon" onClick={onClose} aria-label="close-icon" />
+        <Button icon={closeIcon} location={"DeleteModal"} handleEvent={() => onClose()} />
         <div className="modal__content">
           <h1>
             Delete {name} {isWarehouse ? "warehouse" : "inventory item"}?
@@ -25,9 +26,7 @@ const DeleteModal = ({ isWarehouse, name, onClose, onConfirmDelete, isActive }) 
         </div>
 
         <div className="modal__buttons">
-          <button onClick={onClose} className="modal__cancel-button">
-            Cancel
-          </button>
+          <Button handleEvent={() => onClose()} text={"Cancel"} isPrimary={false} />
           <button onClick={onConfirmDelete} className="modal__delete-button">
             Delete
           </button>

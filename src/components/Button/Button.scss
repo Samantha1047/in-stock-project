@@ -48,4 +48,15 @@
     height: 2.25rem;
     width: 8.75rem;
   }
+
+  &__icon {
+    @include icon-button;
+    background-color: $primary-light;
+
+    &--DeleteModal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+  }
 }

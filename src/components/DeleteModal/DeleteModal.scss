@@ -51,18 +51,6 @@
     }
   }
 
-  &__closeIcon {
-    background-image: url("../../assets/icons/close-24px.svg");
-    width: 1.5rem;
-    height: 1.5rem;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    border: none;
-    background-color: $primary-light;
-    cursor: pointer;
-  }
-
   &__buttons {
     width: 100%;
     display: flex;
@@ -87,43 +75,16 @@
 
   &__delete-button {
     flex: 1;
-    height: 2.25rem;
-    width: 8.75rem;
+    @include default-button-styling;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
-    border-radius: 1.25rem;
     background-color: $error-color;
     color: $primary-light;
-    cursor: pointer;
 
     &:hover {
       background-color: $primary-dark;
-    }
-
-    @include tablet {
-      width: 4.4375rem;
-    }
-  }
-
-  &__cancel-button {
-    flex: 1;
-    height: 2.25rem;
-    width: 8.75rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    border-radius: 1.25rem;
-    color: $secondary-dark;
-    border: $border-default;
-    background-color: $primary-light;
-    cursor: pointer;
-
-    &:hover {
-      color: $primary-color;
-      border-color: $primary-color;
     }
 
     @include tablet {
