@@ -47,3 +47,11 @@ body {
   border: 6px solid #fff;
   box-shadow: 0 0 0 1px $secondary-light;
 }
+
+.button {
+  &--primary {
+    @include default-button-styling;
+    background-color: $primary-color;
+    color: $primary-light;
+  }
+}
