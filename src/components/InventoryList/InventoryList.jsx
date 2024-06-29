@@ -35,15 +35,6 @@ const InventoryList = ({ showWarehouse, inventoryList, onDeleteItem }) => {
     ? "inventory-list__record--warehouse"
     : "inventory-list__record";
 
-  const tableHeaders = [
-    "INVENTORY NAME",
-    "CATEGORY",
-    "STATUS",
-    "QTY",
-    showWarehouse ? "WAREHOUSE" : null,
-    "ACTIONS",
-  ].filter(Boolean);
-
   if (!inventoryList) {
     return <div>Loading</div>;
   }
@@ -109,18 +100,98 @@ const InventoryList = ({ showWarehouse, inventoryList, onDeleteItem }) => {
         <div className="inventory-list__table">
           {isAboveMediumScreens
             ? inventoryList.map((item) => {
-                const {
-                  itemId,
-                  warehouse_name,
-                  item_name,
-                  category,
-                  status,
-                  quantity,
-                } = item;
-                return (
-                  <article key={`${itemId}-${item_name}`}>
-                    <div className={`${numOfColumns}`}>
+              const {
+                itemId,
+                warehouse_name,
+                item_name,
+                category,
+                status,
+                quantity,
+              } = item;
+              return (
+                <article key={`${itemId}-${item_name}`}>
+                  <div className={`${numOfColumns}`}>
+                    <div className="inventory-list__table-cell">
+                      <p className="inventory-list__header--mobile">
+                        INVENTORY ITEM
+                      </p>
+                      <Link
+                        to={`/inventory/${itemId}`}
+                        className="inventory-list__link"
+                      >
+                        <p> {item_name}</p>
+                        <img
+                          className="inventory-list__chevron"
+                          src={chevRight}
+                          alt="chevron right icon"
+                        />
+                      </Link>
+                    </div>
+                    <div className="inventory-list__table-cell">
+                      <p className="inventory-list__header--mobile">
+                        CATEGORY
+                      </p>
+                      <p className="inventory-list__item">{category}</p>
+                    </div>
+                    <div className="inventory-list__table-cell">
+                      <p className="inventory-list__header--mobile">STATUS</p>
+                      <p
+                        className={`inventory-list__item inventory-list__item--status ${status === "In Stock"
+                          ? "inventory-list__item--green"
+                          : "inventory-list__item--red"
+                          }`}
+                      >
+                        {status}
+                      </p>
+                    </div>
+                    <div className="inventory-list__table-cell">
+                      <p className="inventory-list__header--mobile">QTY</p>
+                      <p className="inventory-list__item">{quantity}</p>
+                    </div>
+                    {showWarehouse && (
                       <div className="inventory-list__table-cell">
+                        <p className="inventory-list__header--mobile">
+                          WAREHOUSE
+                        </p>
+
+                        <p className="inventory-list__item">
+                          {warehouse_name}
+                        </p>
+                      </div>
+                    )}
+                    <div className="inventory-list__table-cell--bottom">
+                      <button
+                        className="inventory-list__delete-button"
+                        onClick={() => handleClick(item_name, itemId)}
+                      >
+                        <img src={deleteIcon} alt="Delete" />
+                      </button>
+                      <button
+                        onClick={() => navigate(`/inventory/${itemId}/edit`)}
+                        className="inventory-list__edit-button"
+                      >
+                        <img src={editIcon} alt="Edit" />
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              );
+            })
+            : inventoryList.map((item) => {
+              const {
+                itemId,
+                warehouse_name,
+                item_name,
+                category,
+                status,
+                quantity,
+              } = item;
+
+              return (
+                <article key={itemId} className="inventory-list__table-row">
+                  <div className="inventory-list__information">
+                    <div className="inventory-list__table-cell--left">
+                      <div className="inventory-list__table-cell inventory-list__table-cell--tablet">
                         <p className="inventory-list__header--mobile">
                           INVENTORY ITEM
                         </p>
@@ -142,14 +213,17 @@ const InventoryList = ({ showWarehouse, inventoryList, onDeleteItem }) => {
                         </p>
                         <p className="inventory-list__item">{category}</p>
                       </div>
+                    </div>
+                    <div className="inventory-list__table-cell--right">
                       <div className="inventory-list__table-cell">
-                        <p className="inventory-list__header--mobile">STATUS</p>
+                        <p className="inventory-list__header--mobile">
+                          STATUS
+                        </p>
                         <p
-                          className={`inventory-list__item inventory-list__item--status ${
-                            status === "In Stock"
-                              ? "inventory-list__item--green"
-                              : "inventory-list__item--red"
-                          }`}
+                          className={`inventory-list__item inventory-list__item--status ${status === "In Stock"
+                            ? "inventory-list__item--green"
+                            : "inventory-list__item--red"
+                            }`}
                         >
                           {status}
                         </p>
@@ -163,117 +237,31 @@ const InventoryList = ({ showWarehouse, inventoryList, onDeleteItem }) => {
                           <p className="inventory-list__header--mobile">
                             WAREHOUSE
                           </p>
-
                           <p className="inventory-list__item">
                             {warehouse_name}
                           </p>
                         </div>
                       )}
-                      <div className="inventory-list__table-cell--bottom">
-                        <button
-                          className="inventory-list__delete-button"
-                          onClick={() => handleClick(item_name, itemId)}
-                        >
-                          <img src={deleteIcon} alt="Delete" />
-                        </button>
-                        <button
-                          onClick={() => navigate(`/inventory/${itemId}/edit`)}
-                          className="inventory-list__edit-button"
-                        >
-                          <img src={editIcon} alt="Edit" />
-                        </button>
-                      </div>
                     </div>
-                  </article>
-                );
-              })
-            : inventoryList.map((item) => {
-                const {
-                  itemId,
-                  warehouse_name,
-                  item_name,
-                  category,
-                  status,
-                  quantity,
-                } = item;
+                  </div>
 
-                return (
-                  <article key={itemId} className="inventory-list__table-row">
-                    <div className="inventory-list__information">
-                      <div className="inventory-list__table-cell--left">
-                        <div className="inventory-list__table-cell inventory-list__table-cell--tablet">
-                          <p className="inventory-list__header--mobile">
-                            INVENTORY ITEM
-                          </p>
-                          <Link
-                            to={`/inventory/${itemId}`}
-                            className="inventory-list__link"
-                          >
-                            <p> {item_name}</p>
-                            <img
-                              className="inventory-list__chevron"
-                              src={chevRight}
-                              alt="chevron right icon"
-                            />
-                          </Link>
-                        </div>
-                        <div className="inventory-list__table-cell">
-                          <p className="inventory-list__header--mobile">
-                            CATEGORY
-                          </p>
-                          <p className="inventory-list__item">{category}</p>
-                        </div>
-                      </div>
-                      <div className="inventory-list__table-cell--right">
-                        <div className="inventory-list__table-cell">
-                          <p className="inventory-list__header--mobile">
-                            STATUS
-                          </p>
-                          <p
-                            className={`inventory-list__item inventory-list__item--status ${
-                              status === "In Stock"
-                                ? "inventory-list__item--green"
-                                : "inventory-list__item--red"
-                            }`}
-                          >
-                            {status}
-                          </p>
-                        </div>
-                        <div className="inventory-list__table-cell">
-                          <p className="inventory-list__header--mobile">QTY</p>
-                          <p className="inventory-list__item">{quantity}</p>
-                        </div>
-                        {showWarehouse && (
-                          <div className="inventory-list__table-cell">
-                            <p className="inventory-list__header--mobile">
-                              WAREHOUSE
-                            </p>
-                            <p className="inventory-list__item">
-                              {warehouse_name}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="inventory-list__table-cell--bottom">
-                      {/* // may need to adjust when delete modal is completed  */}
-                      <button
-                        className="inventory-list__delete-button"
-                        onClick={() => handleClick(item_name, itemId)}
-                      >
-                        <img src={deleteIcon} alt="Delete" />
-                      </button>
-                      <button
-                        onClick={() => navigate(`/inventory/${itemId}/edit`)}
-                        className="inventory-list__edit-button"
-                      >
-                        <img src={editIcon} alt="Edit" />
-                      </button>
-                    </div>
-                  </article>
-                );
-              })}
+                  <div className="inventory-list__table-cell--bottom">
+                    <button
+                      className="inventory-list__delete-button"
+                      onClick={() => handleClick(item_name, itemId)}
+                    >
+                      <img src={deleteIcon} alt="Delete" />
+                    </button>
+                    <button
+                      onClick={() => navigate(`/inventory/${itemId}/edit`)}
+                      className="inventory-list__edit-button"
+                    >
+                      <img src={editIcon} alt="Edit" />
+                    </button>
+                  </div>
+                </article>
+              );
+            })}
         </div>
       </div>
       <DeleteModal
