@@ -5,7 +5,7 @@ import "./WarehouseDetail.scss";
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
-const WarehouseDetail = () => {
+const WarehouseDetail = ({ warehouses }) => {
   const [warehouse, setWarehouse] = useState({});
   const { warehouseId } = useParams();
 

@@ -17,6 +17,9 @@
   @include desktop {
     margin: 0 8.125rem;
     top: -5.8125rem;
+    height: 37.8125rem;
+    overflow: scroll;
+    @include section-max-width;
   }
 
   &__header {

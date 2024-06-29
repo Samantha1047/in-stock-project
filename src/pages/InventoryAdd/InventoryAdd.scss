@@ -2,9 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .inventory-add {
-  background-color: $primary-light;
-  margin-inline: 1rem;
-  position: relative;
-  top: -3.125rem;
+  @include form-position;
+
   background-color: transparent;
 }

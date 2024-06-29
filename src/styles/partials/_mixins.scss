@@ -91,8 +91,20 @@
 }
 
 @mixin section-max-width {
-  max-width: 1110px;
+  max-width: 63.75rem;
   margin: 0 auto;
+}
+
+
+@mixin form-position {
+  margin-inline: 1rem;
+  position: relative;
+  top: -3.5625rem;
+
+  @include tablet {
+    margin-inline: 2rem;
+    top: -5.5625rem;
+  }
 }
 
 // Inventory List Grid
@@ -111,3 +123,4 @@
       grid-template-columns: minmax(150px, 1.4fr) 1.2fr 1.2fr 1fr 1fr 1fr;
     }
   }
+
