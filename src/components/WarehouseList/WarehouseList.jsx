@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevRight from "../../assets/icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
-import searchIcon from "../../assets/icons/search-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import "./WarehouseList.scss";
