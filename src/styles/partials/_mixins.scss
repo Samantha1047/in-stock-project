@@ -95,6 +95,7 @@
   margin: 0 auto;
 }
 
+
 @mixin form-position {
   margin-inline: 1rem;
   position: relative;
@@ -105,3 +106,21 @@
     top: -5.5625rem;
   }
 }
+
+// Inventory List Grid
+@mixin inventory-grid($warehouse: false, $with-border: true) {
+    padding-left: 2.2rem;
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: minmax(150px, 1.5fr) 1.3fr 1.6fr 1fr 1fr;
+    
+    @if $with-border {
+      border-bottom: 1px solid $secondary-light;
+    }
+
+    @if $warehouse {
+      grid-template-columns: minmax(150px, 1.4fr) 1.2fr 1.2fr 1fr 1fr 1fr;
+    }
+  }
+

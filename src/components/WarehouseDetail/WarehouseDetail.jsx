@@ -78,7 +78,7 @@ const WarehouseDetail = ({ warehouses }) => {
         </button>
       </div>
 
-      <section className="warehouse-detail__details">
+      <section className="warehouse-detail__details warehouse-detail__details--mobile">
         <div className="warehouse-detail__details-address">
           <h4>WAREHOUSE ADDRESS:</h4>
           <p>
