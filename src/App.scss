@@ -26,13 +26,14 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  color: $primary-dark;
 }
 
 .wrapper {
-  padding: 1.5rem;
+  padding: $gap-medium;
 
   @include tablet {
-    padding: 0 2rem;
+    padding: 0 $gap-large;
   }
 }
 
