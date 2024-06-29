@@ -20,7 +20,6 @@ const InventoryList = ({ showWarehouse, inventoryList, onDeleteItem }) => {
   };
 
   const handleDelete = async (currentInventoryId) => {
-    console.log(currentInventoryId);
     onDeleteItem(currentInventoryId);
     setModalOpen(false);
   };
