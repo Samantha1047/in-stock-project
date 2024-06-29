@@ -46,14 +46,10 @@
   }
 
   &__back-button {
+    @include icon-button;
     background: url("../../assets/icons/arrow_back-24px.svg") no-repeat center;
     height: 1.5rem;
     width: 1.5rem;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 0;
     background-size: cover;
     margin-top: 0.2rem;
@@ -64,15 +60,11 @@
   }
 
   &__edit-button {
+    @include icon-button;
     background-color: $primary-color;
     border-radius: 50%;
     height: 2.25rem;
     width: 2.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    cursor: pointer;
 
     @include tablet {
       border-radius: 1.25rem;
