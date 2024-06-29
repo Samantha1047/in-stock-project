@@ -109,7 +109,7 @@ const InventoryList = ({ showWarehouse, inventoryList, onDeleteItem }) => {
                 quantity,
               } = item;
               return (
-                <article key={`${itemId}-${item_name}`}>
+                <article key={`${itemId}-${item_name}`} className="inventory-list__table-row--highlight" >
                   <div className={`${numOfColumns}`}>
                     <div className="inventory-list__table-cell">
                       <p className="inventory-list__header--mobile">
