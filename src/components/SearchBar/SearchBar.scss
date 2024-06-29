@@ -1,5 +1,5 @@
-@use "../../styles/partials/variables" as *;
-@use "../../styles/partials/mixins" as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
 
 .search {
   position: relative;
@@ -25,19 +25,19 @@
     padding: 0.5rem 1rem;
     @include mobile-h3-labels-links-buttons;
   }
-}
 
-&__icon {
-  position: absolute;
-  right: 38px;
-  top: 91px;
+  &__icon {
+    position: absolute;
+    right: 38px;
+    top: 91px;
 
-  @include tablet {
-    right: 238px;
-    top: 40px;
-  }
+    @include tablet {
+      right: 238px;
+      top: 40px;
+    }
 
-  @include desktop {
-    right: 245px;
+    @include desktop {
+      right: 245px;
+    }
   }
 }
