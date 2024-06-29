@@ -3,6 +3,7 @@ import "./Warehouse.scss";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
 import searchIcon from "../../assets/icons/search-24px.svg";
 import { useNavigate } from "react-router-dom";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 const Warehouse = ({ warehouses, handleWarehouseDelete }) => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Warehouse = ({ warehouses, handleWarehouseDelete }) => {
       <div className="warehouse__header">
         <h1 className="warehouse__title">Warehouses</h1>
         <div>
-          <input
+          {/* <input
             type="text"
             placeholder="Search..."
             className="warehouse__search"
@@ -21,7 +22,8 @@ const Warehouse = ({ warehouses, handleWarehouseDelete }) => {
             className="warehouse__search-icon"
             src={searchIcon}
             alt="search icon"
-          />
+          /> */}
+          <SearchBar />
           <button
             onClick={() => navigate("/add")}
             className="warehouse__button"

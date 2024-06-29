@@ -2,6 +2,7 @@ import "./Inventory.scss";
 import InventoryList from "../../components/InventoryList/InventoryList";
 import searchIcon from "../../assets/icons/search-24px.svg";
 import { useNavigate } from "react-router-dom";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 const Inventory = ({ inventoryList, onDeleteItem }) => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Inventory = ({ inventoryList, onDeleteItem }) => {
       <div className="inventory__header">
         <h1 className="inventory__title">Inventory</h1>
         <div>
-          <input
+          {/* <input
             type="text"
             placeholder="Search..."
             className="inventory__search"
@@ -20,7 +21,8 @@ const Inventory = ({ inventoryList, onDeleteItem }) => {
             className="inventory__search-icon"
             src={searchIcon}
             alt="search icon"
-          />
+          /> */}
+          <SearchBar />
           <button
             onClick={() => navigate("/inventory/add")}
             className="inventory__button"

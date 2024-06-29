@@ -2,11 +2,11 @@
 @use "../../styles/partials/mixins" as *;
 
 .inventory-detail {
+  @include card-shadow;
   margin: 0 1rem;
   background-color: $primary-light;
   position: relative;
   top: -3.5rem;
-  @include card-shadow;
   border-radius: 2px;
 
   @include tablet {
