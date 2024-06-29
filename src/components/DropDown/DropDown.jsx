@@ -29,7 +29,7 @@ const DropDown = ({
         name={name}
         id="dropdown"
       >
-        <option value="" disabled selected>
+        <option value="" disabled defaultValue>
           Please Select
         </option>
         {categoryList.map((option) => (
