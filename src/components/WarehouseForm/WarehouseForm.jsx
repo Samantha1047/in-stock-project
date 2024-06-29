@@ -3,8 +3,6 @@ import FormField from "../FormField/FormField";
 import FormButtons from "../FormButtons/FormButtons";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
-const API_URL = import.meta.env.VITE_APP_API_URL;
 import "./WarehouseForm.scss";
 import "../../App.scss";
 
@@ -19,7 +17,7 @@ const initialValues = {
   contact_email: "",
 };
 
-const WarehouseForm = ({ mode }) => {
+const WarehouseForm = ({ mode, warehouses, handleWarehouseSubmit }) => {
   const [formValues, setFormValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
@@ -40,12 +38,9 @@ const WarehouseForm = ({ mode }) => {
   };
 
   useEffect(() => {
-    const fetchWarehouses = async () => {
+    const fetchWarehouses = async (warehouses) => {
       try {
-        const response = await axios.get(`${API_URL}/api/warehouses`);
-        const item = response.data.find((item) => item.id == warehouseId);
-
-        console.log(item);
+        const item = warehouses.find((item) => item.id == warehouseId);
         setFormValues({
           warehouse_name: item.warehouse_name,
           address: item.address,
@@ -61,8 +56,8 @@ const WarehouseForm = ({ mode }) => {
       }
     };
 
-    if (warehouseId) {
-      fetchWarehouses();
+    if (warehouseId && warehouses) {
+      fetchWarehouses(warehouses);
     }
   }, [warehouseId]);
 
@@ -72,12 +67,7 @@ const WarehouseForm = ({ mode }) => {
   };
 
   const submitWarehouseData = async (data, url, method) => {
-    try {
-      const response = await axios[method](`${API_URL}${url}`, data);
-      return response.data;
-    } catch (error) {
-      console.error(error + "Error submitting form data");
-    }
+    handleWarehouseSubmit(data, url, method);
   };
 
   const validateEmail = (email) => {
@@ -137,7 +127,8 @@ const WarehouseForm = ({ mode }) => {
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit(formValues);
-      }}>
+      }}
+    >
       <div className="warehouse-form__fields">
         <section className="warehouse-form__details-section">
           <div className="wrapper">
@@ -162,9 +153,25 @@ const WarehouseForm = ({ mode }) => {
               error={errors.address}
             />
 
-            <FormField label="City" type="text" name="city" value={formValues.city} onChange={handleInputChange} placeholder="City" error={errors.city} />
+            <FormField
+              label="City"
+              type="text"
+              name="city"
+              value={formValues.city}
+              onChange={handleInputChange}
+              placeholder="City"
+              error={errors.city}
+            />
 
-            <FormField label="Country" type="text" name="country" value={formValues.country} onChange={handleInputChange} placeholder="Country" error={errors.country} />
+            <FormField
+              label="Country"
+              type="text"
+              name="country"
+              value={formValues.country}
+              onChange={handleInputChange}
+              placeholder="Country"
+              error={errors.country}
+            />
           </div>
         </section>
         <section className="warehouse-form__contact-section">
@@ -219,7 +226,6 @@ const WarehouseForm = ({ mode }) => {
         handleSubmit={() => handleWarehouseFormSubmit(formValues)}
         handleBack={() => navigate("/")}
       />
-
     </form>
   );
 };
