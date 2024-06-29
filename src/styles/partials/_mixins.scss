@@ -94,3 +94,14 @@
   max-width: 63.75rem;
   margin: 0 auto;
 }
+
+@mixin form-position {
+  margin-inline: 1rem;
+  position: relative;
+  top: -3.5625rem;
+
+  @include tablet {
+    margin-inline: 2rem;
+    top: -5.5625rem;
+  }
+}
