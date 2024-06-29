@@ -118,6 +118,9 @@
   height: 2.25rem;
   border-radius: $border-radius;
   border: $border-default;
+  &::placeholder {
+    color: $secondary-dark;
+  }
   &:focus {
     outline: $border-active;
   }
@@ -134,7 +137,7 @@
 @mixin input-label {
   @include h3-labels-links-buttons;
   margin-bottom: 0.25rem;
-  margin-top: 1rem;
+  margin-top: $gap-small;
   font-weight: 600;
 }
 

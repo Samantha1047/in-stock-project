@@ -5,14 +5,13 @@
   @include card-shadow;
   @include section-max-width;
   background-color: $primary-light;
-  // box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1);
-  // border-radius: 2px;
+
   &__inputs {
     @include tablet {
       @include section-max-width;
       display: flex;
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+      padding-top: $gap-large;
+      padding-bottom: $gap-large;
     }
   }
 
@@ -34,43 +33,39 @@
 
   &__title {
     @include mobile-h2-subheader;
-    margin-bottom: 0.5rem;
+    margin-bottom: $gap-x-small;
 
     @include tablet {
       margin-bottom: 1rem;
     }
   }
   &__input-container {
-    border: none;
-    margin-bottom: 0.25rem;
-    // margin-top: 1rem;
     display: flex;
     flex-direction: column;
+    border: none;
+    margin-bottom: 0.25rem;
   }
 
   &__label {
-    @include h3-labels-links-buttons;
-    margin-bottom: 0.25rem;
-    margin-top: 1rem;
-    font-weight: 600;
+    @include input-label;
   }
 
   &__radio-container {
     display: flex;
-    gap: 1.5rem;
     align-items: center;
-    margin-bottom: 0.5rem;
+    gap: $gap-medium;
+    margin-bottom: $gap-x-small;
   }
 
   &__radio {
-    margin-right: 0.5rem;
+    margin-right: $gap-x-small;
     cursor: pointer;
   }
 
   &__input {
     @include input-style;
     width: 100%;
-    padding-left: 1rem;
+    padding-left: $gap-small;
     margin-top: 0.25rem;
 
     @include desktop {
