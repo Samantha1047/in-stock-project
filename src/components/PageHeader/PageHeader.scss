@@ -24,6 +24,10 @@
 
   &__title {
     @include mobile-h1-page-header;
+
+    @include tablet {
+      @include h1-page-header;
+    }
   }
 
   &__button {
