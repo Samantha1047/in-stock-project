@@ -21,6 +21,8 @@ body {
   @include desktop {
     margin: 0 8.125rem;
     top: -5.8125rem;
+    height: 42rem;
+    @include section-max-width;
   }
 
   &__header {
