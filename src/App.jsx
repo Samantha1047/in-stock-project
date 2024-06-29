@@ -9,7 +9,6 @@ import Inventory from "./pages/Inventory/Inventory";
 import InventoryAdd from "./pages/InventoryAdd/InventoryAdd";
 import InventoryDetails from "./pages/InventoryDetails/InventoryDetails";
 import InventoryEdit from "./pages/InventoryEdit/InventoryEdit";
-
 import Footer from "./components/Footer/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -17,6 +16,8 @@ const API_URL = import.meta.env.VITE_APP_API_URL;
 
 function App() {
   const [inventoryList, setInventoryList] = useState([]);
+  const [warehouses, setWarehouses] = useState([]);
+
   const fetchInventories = async () => {
     try {
       const response = await axios.get(`${API_URL}/api/Inventories`);
@@ -34,9 +35,31 @@ function App() {
       console.error("Error fetching inventory data: ", error);
     }
   };
+
+  const fetchWarehouses = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/api/warehouses`);
+      setWarehouses(response.data);
+    } catch (error) {
+      console.error(error + "Error fetching warehouse data");
+    }
+  };
+
+  const handleInventorySubmit = async (data, url, method) => {
+    try {
+      const response = await axios[method](`${API_URL}${url}`, data);
+      fetchInventories();
+      return response.data;
+    } catch (error) {
+      console.error(error + "Error submitting form data");
+    }
+  };
+
   useEffect(() => {
     fetchInventories();
+    fetchWarehouses();
   }, []);
+
   const handleDeleteItem = async (itemId) => {
     console.log("Deleting item with id:", itemId);
     try {
@@ -58,8 +81,6 @@ function App() {
             <Route path="/add" element={<WarehouseAdd />} />
             <Route path="/:warehouseId" element={<WarehouseDetails />} />
             <Route path="/:warehouseId/edit" element={<WarehouseEdit />} />
-            <Route path="/inventory/add" element={<InventoryAdd />} />
-            <Route path="/inventory/:itemId/edit" element={<InventoryEdit />} />
             <Route
               path="/inventory"
               element={
@@ -70,8 +91,21 @@ function App() {
               }
             />
             <Route
+              path="/inventory/add"
+              element={<InventoryAdd warehouses={warehouses} />}
+            />
+            <Route
               path="/inventory/:itemId"
               element={<InventoryDetails inventoryList={inventoryList} />}
+            />
+            <Route
+              path="/inventory/:itemId/edit"
+              element={
+                <InventoryEdit
+                  warehouses={warehouses}
+                  handleInventorySubmit={handleInventorySubmit}
+                />
+              }
             />
           </Routes>
         </div>
