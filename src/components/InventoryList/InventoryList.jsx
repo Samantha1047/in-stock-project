@@ -33,12 +33,16 @@ const InventoryList = ({ showWarehouse, inventoryList, onDeleteItem }) => {
     "ACTIONS",
   ].filter(Boolean);
 
+  if (!inventoryList) {
+    return <div>Loading</div>;
+  }
+
   return (
     <section className="inventory-list">
       <div className="inventory-list__table">
         <div className="inventory-list__table-headers inventory-list__table-headers--hidden">
-          {tableHeaders.map((header, index) => (
-            <div key={index} className="inventory-list__header-column">
+          {tableHeaders.map((header) => (
+            <div key={header} className="inventory-list__header-column">
               <p>{header}</p>
               <img
                 className="inventory-list__sort-icon"
@@ -60,7 +64,10 @@ const InventoryList = ({ showWarehouse, inventoryList, onDeleteItem }) => {
             } = item;
 
             return (
-              <article key={itemId} className="inventory-list__table-row">
+              <article
+                key={`${itemId}-${item_name}`}
+                className="inventory-list__table-row"
+              >
                 <div className="inventory-list__information">
                   <div className="inventory-list__table-cell--left">
                     <div className="inventory-list__table-cell inventory-list__table-cell--tablet">
