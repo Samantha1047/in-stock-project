@@ -32,6 +32,7 @@ const Warehouse = ({ warehouses, handleWarehouseDelete }) => {
       </div>
       <WarehouseList
         warehouses={warehouses}
+        handleWarehouseDelete={handleWarehouseDelete}
       />
     </main>
   );

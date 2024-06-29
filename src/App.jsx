@@ -73,6 +73,16 @@ function App() {
     }
   };
 
+  const handleWarehouseDelete = async (warehouseId) => {
+    try {
+      await axios.delete(`${API_URL}/api/warehouses/${warehouseId}`);
+      setInventoryList(inventoryList.filter((item) => item.id !== warehouseId));
+      fetchInventories();
+    } catch (err) {
+      console.error("Failed to delete the warehouse:", err);
+    }
+  };
+
   return (
     <div className="app-container">
       <BrowserRouter>
@@ -84,6 +94,7 @@ function App() {
               element={
                 <Warehouse
                   warehouses={warehouses}
+                  handleWarehouseDelete={handleWarehouseDelete}
                 />
               }
             />
