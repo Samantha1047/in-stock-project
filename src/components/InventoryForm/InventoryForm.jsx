@@ -103,7 +103,7 @@ const InventoryForm = ({ mode, warehouses, handleInventorySubmit }) => {
   };
 
   const submitData = async (data, url, method) => {
-    handleInventorySubmit(data, url, method);
+    await handleInventorySubmit(data, url, method);
   };
 
   const validateForm = () => {
@@ -117,8 +117,9 @@ const InventoryForm = ({ mode, warehouses, handleInventorySubmit }) => {
     return newErrors;
   };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     const newErrors = validateForm();
+    console.log("newErrors", newErrors);
     if (Object.keys(newErrors).length === 0) {
       const modeConfig = {
         add: {
@@ -131,11 +132,17 @@ const InventoryForm = ({ mode, warehouses, handleInventorySubmit }) => {
         },
       };
       const { url, method } = modeConfig[mode];
-      submitData(values, url, method);
-      navigate("/inventory");
-      setFormValues(initialValues);
+      try {
+        console.log("values", values);
+        await submitData(values, url, method);
+        navigate("/inventory");
+        window.scrollTo(0, 0);
+        setFormValues(initialValues);
+      } catch (error) {
+        console.error("Error submitting inventory data:", error);
+      }
     } else {
-      console.error("Form has errors", newErrors);
+      console.error("Inventory Form has errors", newErrors);
     }
   };
 
@@ -149,8 +156,6 @@ const InventoryForm = ({ mode, warehouses, handleInventorySubmit }) => {
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit(formValues);
-        navigate("/inventory");
-        window.scrollTo(0, 0);
       }}
     >
       <div className="inventory-form__inputs">
@@ -165,7 +170,7 @@ const InventoryForm = ({ mode, warehouses, handleInventorySubmit }) => {
               value={formValues.item_name}
               onChange={handleInputChange}
               placeholder="Item Name"
-              error={errors.item_Name}
+              error={errors.item_name}
             />
 
             <FormField

@@ -67,7 +67,7 @@ const WarehouseForm = ({ mode, warehouses, handleWarehouseSubmit }) => {
   };
 
   const submitWarehouseData = async (data, url, method) => {
-    handleWarehouseSubmit(data, url, method);
+    await handleWarehouseSubmit(data, url, method);
   };
 
   const validateEmail = (email) => {
@@ -96,7 +96,7 @@ const WarehouseForm = ({ mode, warehouses, handleWarehouseSubmit }) => {
     return newErrors;
   };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     const newErrors = validateForm();
     if (Object.keys(newErrors).length === 0) {
       const modeConfig = {
@@ -110,9 +110,14 @@ const WarehouseForm = ({ mode, warehouses, handleWarehouseSubmit }) => {
         },
       };
       const { url, method } = modeConfig[mode];
-      submitWarehouseData(values, url, method);
-      navigate("/");
-      setFormValues(initialValues);
+
+      try {
+        await submitWarehouseData(values, url, method);
+        navigate("/");
+        setFormValues(initialValues);
+      } catch (error) {
+        console.error("Error submitting warehouse data:", error);
+      }
     } else {
       console.error("Form has errors", newErrors);
     }
