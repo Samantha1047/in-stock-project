@@ -89,7 +89,6 @@ const WarehouseList = ({ warehouses, handleWarehouseDelete }) => {
 
             return (
               <article key={`${id}-${warehouse_name}`} className='warehouse-list__table-row'>
-                {/* <div className='warehouse-list__table'> */}
                 <div className='warehouse-list__information'>
                   <div className='warehouse-list__table-cell--left'>
                     <div className='warehouse-list__table-cell warehouse-list__table-cell--tablet'>
@@ -130,7 +129,6 @@ const WarehouseList = ({ warehouses, handleWarehouseDelete }) => {
                     </div>
                   </div>
                 </div>
-
                 <div className="warehouse-list__table-cell--bottom">
                   <button
                     className="warehouse-list__delete-button"
@@ -144,7 +142,6 @@ const WarehouseList = ({ warehouses, handleWarehouseDelete }) => {
                   >
                     <img src={editIcon} alt="Edit" />
                   </button>
-                  {/* </div> */}
                 </div>
               </article>
             );
