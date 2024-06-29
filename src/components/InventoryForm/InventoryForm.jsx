@@ -87,6 +87,7 @@ const InventoryForm = ({ mode, warehouses, handleInventorySubmit }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     let updatedValue = value;
+
     if (name === "quantity") {
       updatedValue = value === "" ? "" : Number(value);
     }

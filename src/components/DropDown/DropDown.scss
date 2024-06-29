@@ -1,35 +1,35 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .drop-down {
   position: relative;
 
   &__icon {
     position: absolute;
-    right: 1rem;
+    right: $gap-small;
     top: 30%;
     cursor: none;
     pointer-events: none;
   }
 
   &__input {
-    position: absolute;
     width: 100%;
+    height: 2.25rem;
+    position: relative;
+    justify-content: space-between;
+    margin-top: 0.125rem;
+    margin-top: 0.25rem;
+    padding-left: $gap-small;
+    border: $border-default;
+    border-radius: $border-radius;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    margin-top: 2px;
-    margin-top: 0.25rem;
-    border: $border-default;
-    border-radius: 1.25rem;
-    position: relative;
-    justify-content: space-between;
-    height: 2.375rem;
-    padding-left: 1rem;
     cursor: pointer;
 
-    // option:first-child {
-    //   color: $secondary-dark;
-    // }
+    @include tablet {
+      height: 2.375rem;
+    }
 
     &:hover {
       cursor: pointer;
