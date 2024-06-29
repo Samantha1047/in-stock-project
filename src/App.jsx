@@ -18,6 +18,11 @@ function App() {
   const [inventoryList, setInventoryList] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
 
+  useEffect(() => {
+    fetchInventories();
+    fetchWarehouses();
+  }, []);
+
   const fetchInventories = async () => {
     try {
       const response = await axios.get(`${API_URL}/api/Inventories`);
@@ -40,6 +45,7 @@ function App() {
     try {
       const response = await axios.get(`${API_URL}/api/warehouses`);
       setWarehouses(response.data);
+      fetchWarehouses();
     } catch (error) {
       console.error(error + "Error fetching warehouse data");
     }
@@ -51,14 +57,10 @@ function App() {
       fetchInventories();
       return response.data;
     } catch (error) {
-      console.error(error + "Error submitting form data");
+      console.error(error + "Error submitting Inventory form data");
     }
   };
 
-  useEffect(() => {
-    fetchInventories();
-    fetchWarehouses();
-  }, []);
 
   const handleDeleteItem = async (itemId) => {
     console.log("Deleting item with id:", itemId);
@@ -77,10 +79,34 @@ function App() {
         <Header />
         <div className="page-content">
           <Routes>
-            <Route path="/" element={<Warehouse />} />
-            <Route path="/add" element={<WarehouseAdd />} />
-            <Route path="/:warehouseId" element={<WarehouseDetails />} />
-            <Route path="/:warehouseId/edit" element={<WarehouseEdit />} />
+            <Route
+              path="/"
+              element={
+                <Warehouse
+                  warehouses={warehouses}
+                />
+              }
+            />
+            <Route
+              path="/add"
+              element={
+                <WarehouseAdd
+                  warehouses={warehouses}
+                />
+              }
+            />
+            <Route
+              path="/:warehouseId"
+              element={<WarehouseDetails warehouses={warehouses} />}
+            />
+            <Route
+              path="/:warehouseId/edit"
+              element={
+                <WarehouseEdit
+                  warehouses={warehouses}
+                />
+              }
+            />
             <Route
               path="/inventory"
               element={
