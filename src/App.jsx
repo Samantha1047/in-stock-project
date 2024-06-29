@@ -45,7 +45,6 @@ function App() {
     try {
       const response = await axios.get(`${API_URL}/api/warehouses`);
       setWarehouses(response.data);
-      fetchWarehouses();
     } catch (error) {
       console.error(error + "Error fetching warehouse data");
     }
@@ -64,7 +63,7 @@ function App() {
   const handleWarehouseSubmit = async (data, url, method) => {
     try {
       const response = await axios[method](`${API_URL}${url}`, data);
-      fetchInventories();
+      fetchWarehouses();
       return response.data;
     } catch (error) {
       console.error(error + "Error submitting Warehouse form data");
@@ -85,8 +84,8 @@ function App() {
   const handleWarehouseDelete = async (warehouseId) => {
     try {
       await axios.delete(`${API_URL}/api/warehouses/${warehouseId}`);
-      setInventoryList(inventoryList.filter((item) => item.id !== warehouseId));
-      fetchInventories();
+      setWarehouses(warehouses.filter((item) => item.id !== warehouseId));
+      fetchWarehouses();
     } catch (err) {
       console.error("Failed to delete the warehouse:", err);
     }
@@ -116,10 +115,7 @@ function App() {
                 />
               }
             />
-            <Route
-              path="/:warehouseId"
-              element={<WarehouseDetails warehouses={warehouses} />}
-            />
+            <Route path="/:warehouseId" element={<WarehouseDetails />} />
             <Route
               path="/:warehouseId/edit"
               element={
