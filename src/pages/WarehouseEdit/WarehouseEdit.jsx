@@ -9,6 +9,7 @@ const WarehouseEdit = ({ warehouses, handleWarehouseSubmit }) => {
       <WarehouseForm
         mode="edit"
         warehouses={warehouses}
+        handleWarehouseSubmit={handleWarehouseSubmit}
       />
     </article>
   );

@@ -61,6 +61,15 @@ function App() {
     }
   };
 
+  const handleWarehouseSubmit = async (data, url, method) => {
+    try {
+      const response = await axios[method](`${API_URL}${url}`, data);
+      fetchInventories();
+      return response.data;
+    } catch (error) {
+      console.error(error + "Error submitting Warehouse form data");
+    }
+  };
 
   const handleDeleteItem = async (itemId) => {
     console.log("Deleting item with id:", itemId);
@@ -103,6 +112,7 @@ function App() {
               element={
                 <WarehouseAdd
                   warehouses={warehouses}
+                  handleWarehouseSubmit={handleWarehouseSubmit}
                 />
               }
             />
@@ -115,6 +125,7 @@ function App() {
               element={
                 <WarehouseEdit
                   warehouses={warehouses}
+                  handleWarehouseSubmit={handleWarehouseSubmit}
                 />
               }
             />
