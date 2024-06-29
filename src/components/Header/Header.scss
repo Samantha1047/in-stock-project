@@ -5,10 +5,10 @@
   background-color: $background-dark;
 
   &__logo {
-    padding: 1.5rem 1.5rem 0.9rem 1.5rem;
+    padding: $gap-medium $gap-medium 0.9rem $gap-medium;
 
     @include tablet {
-      padding: 2rem 0;
+      padding: $gap-large 0;
     }
   }
 
@@ -23,7 +23,7 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 0 2rem;
+      padding: 0 $gap-large;
     }
 
     @include desktop {
@@ -36,7 +36,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin-bottom: 1.5rem;
+    margin-bottom: $gap-medium;
 
     @include tablet {
       align-items: center;
@@ -44,14 +44,12 @@
     }
 
     &-link {
-      text-decoration: none;
-      @include mobile-h3-labels-links-buttons;
-      color: $secondary-light;
-      padding: 0.5rem;
-      border-radius: 2rem;
+      @include text-link-style;
       width: 10rem;
       text-align: center;
-      cursor: pointer;
+      padding: $gap-x-small;
+      border-radius: $gap-large;
+      color: $secondary-light;
 
       @include tablet {
         @include h3-labels-links-buttons;
@@ -64,7 +62,6 @@
       }
 
       &:hover {
-        text-decoration: underline;
         color: $primary-light;
       }
     }
