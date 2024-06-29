@@ -31,55 +31,45 @@ const categoryOptions = [
   { name: "Health", id: uuidv4() },
 ];
 
-const InventoryForm = ({ mode }) => {
+const InventoryForm = ({ mode, warehouses, handleInventorySubmit }) => {
   const [formValues, setFormValues] = useState(initialValues);
-  const [warehouses, setWarehouses] = useState([]);
+
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const { itemId } = useParams();
 
-  useEffect(() => {
-    const fetchItemData = async () => {
-      try {
-        const { data } = await axios.get(
-          `${API_URL}/api/inventories/${itemId}`
-        );
-        const item = data[0];
-        const findMatchingWarehouse = warehouses.find(
-          (warehouse) => warehouse.warehouse_name === item.warehouse_name
-        );
+  const fetchItemData = async (warehouses) => {
+    try {
+      const { data } = await axios.get(`${API_URL}/api/inventories/${itemId}`);
+      const item = data[0];
+      const findMatchingWarehouse = warehouses.find(
+        (warehouse) => warehouse.warehouse_name === item.warehouse_name
+      );
 
-        console.log(findMatchingWarehouse);
-        setFormValues({
-          warehouse_id: findMatchingWarehouse?.id,
-          item_name: item.item_name,
-          description: item.description,
-          category: item.category,
-          status: item.status,
-          quantity: item.quantity,
-        });
-      } catch (error) {
-        console.error(error + " Error fetching item data");
-      }
-    };
-    if (itemId) {
-      fetchItemData();
+      setFormValues({
+        warehouse_id: findMatchingWarehouse?.id,
+        item_name: item.item_name,
+        description: item.description,
+        category: item.category,
+        status: item.status,
+        quantity: item.quantity,
+      });
+    } catch (error) {
+      console.error(error + " Error fetching item data");
     }
-  }, [itemId, warehouses]);
+  };
 
   useEffect(() => {
-    const fetchWarehouses = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/api/warehouses`);
-        setWarehouses(response.data);
-      } catch (error) {
-        console.error(error + "Error fetching warehouse data");
-      }
-    };
-    fetchWarehouses();
-  }, []);
+    if (itemId && warehouses) {
+      fetchItemData(warehouses);
+    }
+  }, [itemId]);
 
-  const warehouseNames = warehouses.map((warehouse) => ({
+  if (!warehouses) {
+    return <div>Loading Form...</div>;
+  }
+
+  const warehouseNames = warehouses?.map((warehouse) => ({
     name: warehouse.warehouse_name,
     id: warehouse.id,
   }));
@@ -113,12 +103,7 @@ const InventoryForm = ({ mode }) => {
   };
 
   const submitData = async (data, url, method) => {
-    try {
-      const response = await axios[method](`${API_URL}${url}`, data);
-      return response.data;
-    } catch (error) {
-      console.error(error + "Error submitting form data");
-    }
+    handleInventorySubmit(data, url, method);
   };
 
   const validateForm = () => {
