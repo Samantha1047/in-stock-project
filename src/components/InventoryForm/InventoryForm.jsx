@@ -134,9 +134,8 @@ const InventoryForm = ({ mode, warehouses, handleInventorySubmit }) => {
       };
       const { url, method } = modeConfig[mode];
       try {
-        console.log("values", values);
         await submitData(values, url, method);
-        navigate("/inventory");
+        navigate(-1);
         window.scrollTo(0, 0);
         setFormValues(initialValues);
       } catch (error) {

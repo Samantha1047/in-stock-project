@@ -1,0 +1,51 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.page-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-bottom: 1px solid $secondary-light;
+    height: 12.25rem;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    position: static;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      height: 5.875rem;
+      padding: 2rem 2rem 1.5rem 2rem;
+      border-bottom: none;
+    }
+
+    @include desktop {
+      padding: 2rem 2.5rem 1.5rem 2.5rem;
+    }
+
+  &__title {
+    @include mobile-h1-page-header;
+  }
+
+  &__button {
+    border-radius: 1.25rem;
+    color: $primary-light;
+    background-color: $primary-color;
+    border: none;
+    height: 2.25rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    width: 100%;
+
+    &:hover {
+      background-color: $primary-dark;
+    }
+
+    @include tablet {
+      width: 10.5rem;
+      height: 2.375rem;
+      padding: 0;
+      margin: 0 0.5rem;
+      @include h3-labels-links-buttons;
+    }
+  }
+}

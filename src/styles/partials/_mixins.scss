@@ -165,8 +165,8 @@
 @mixin text-link-style {
   @include mobile-h3-labels-links-buttons;
   text-decoration: none;
-  font-weight: 600;
-  color: $primary-color;
+  cursor: pointer;
+
   &:hover {
     text-decoration: underline;
   }
