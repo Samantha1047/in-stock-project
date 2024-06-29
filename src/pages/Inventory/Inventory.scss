@@ -48,47 +48,6 @@
     @include mobile-h1-page-header;
   }
 
-  // &__search {
-  //   position: relative;
-  //   border-radius: 1.25rem;
-  //   border: 1px solid $secondary-light;
-  //   height: 2.25rem;
-  //   margin: 1rem auto;
-  //   width: 100%;
-
-  //   @include tablet {
-  //     width: 11.5625rem;
-  //     height: 2.375rem;
-  //     margin: 0 0.5rem;
-  //   }
-
-  //   @include desktop {
-  //     width: 17.125rem;
-  //     margin: 0 0.5rem;
-  //   }
-
-  //   &::placeholder {
-  //     color: $secondary-dark;
-  //     padding: 0.5rem 1rem;
-  //     @include mobile-h3-labels-links-buttons;
-  //   }
-  // }
-
-  // &__search-icon {
-  //   position: absolute;
-  //   right: 38px;
-  //   top: 91px;
-
-  //   @include tablet {
-  //     right: 238px;
-  //     top: 40px;
-  //   }
-
-  //   @include desktop {
-  //     right: 245px;
-  //   }
-  // }
-
   &__button {
     border-radius: 1.25rem;
     color: $primary-light;

@@ -27,12 +27,6 @@
     &:focus {
       outline: $border-active;
     }
-
-    &--small {
-      @include desktop {
-        width: 7.625rem;
-      }
-    }
   }
   &--textarea {
     height: 7.5rem;
