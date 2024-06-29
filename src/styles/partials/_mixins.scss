@@ -95,7 +95,6 @@
   margin: 0 auto;
 }
 
-
 @mixin form-position {
   margin-inline: 1rem;
   position: relative;
@@ -109,18 +108,78 @@
 
 // Inventory List Grid
 @mixin inventory-grid($warehouse: false, $with-border: true) {
-    padding-left: 2.2rem;
-    padding-right: 1.5rem;
-    padding-top: 1rem;
-    display: grid;
-    grid-template-columns: minmax(150px, 1.5fr) 1.3fr 1.6fr 1fr 1fr;
-    
-    @if $with-border {
-      border-bottom: 1px solid $secondary-light;
-    }
+  padding-left: 2.2rem;
+  padding-right: 1.5rem;
+  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: minmax(150px, 1.5fr) 1.3fr 1.6fr 1fr 1fr;
 
-    @if $warehouse {
-      grid-template-columns: minmax(150px, 1.4fr) 1.2fr 1.2fr 1fr 1fr 1fr;
-    }
+  @if $with-border {
+    border-bottom: 1px solid $secondary-light;
   }
 
+  @if $warehouse {
+    grid-template-columns: minmax(150px, 1.4fr) 1.2fr 1.2fr 1fr 1fr 1fr;
+  }
+}
+
+@mixin input-style {
+  height: 2.25rem;
+  border-radius: $border-radius;
+  border: $border-default;
+  &:focus {
+    outline: $border-active;
+  }
+}
+
+@mixin stock-label-style {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  background-color: rgba(21, 132, 99, 0.07);
+  border-radius: $border-radius;
+  padding: 0.25rem 0.5rem;
+}
+
+@mixin input-label {
+  @include h3-labels-links-buttons;
+  margin-bottom: 0.25rem;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+@mixin header-to-top-distance {
+  top: -4.0625rem;
+}
+
+@mixin icon-buttons {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin default-button-styling {
+  height: 2.25rem;
+  border-radius: $border-default;
+  width: 100%;
+  cursor: pointer;
+
+  @include tablet {
+    height: 2.375rem;
+  }
+}
+
+@mixin text-link-style {
+  @include mobile-h3-labels-links-buttons;
+  text-decoration: none;
+  font-weight: 600;
+  color: $primary-color;
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @include tablet {
+    @include h3-labels-links-buttons;
+  }
+}
