@@ -20,15 +20,8 @@ const InventoryDetail = () => {
       });
   }, [itemId]);
 
-  const {
-    id,
-    warehouse_name,
-    item_name,
-    description,
-    category,
-    status,
-    quantity,
-  } = inventory;
+  const { warehouse_name, item_name, description, category, status, quantity } =
+    inventory;
 
   if (!inventory) {
     return <div>Loading...</div>;

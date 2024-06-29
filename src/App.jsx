@@ -92,7 +92,12 @@ function App() {
             />
             <Route
               path="/inventory/add"
-              element={<InventoryAdd warehouses={warehouses} />}
+              element={
+                <InventoryAdd
+                  warehouses={warehouses}
+                  handleInventorySubmit={handleInventorySubmit}
+                />
+              }
             />
             <Route
               path="/inventory/:itemId"
