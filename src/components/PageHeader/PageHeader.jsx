@@ -13,7 +13,7 @@ const PageHeader = ({ title, link, buttonTitle }) => {
             <div>
                 <SearchBar />
                 <button
-                    onClick={() => navigate({ link })}
+                    onClick={() => navigate(link)}
                     className="page-header__button"
                 >
                     {buttonTitle}
