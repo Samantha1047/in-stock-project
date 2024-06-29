@@ -2,36 +2,51 @@
 @use "../../styles/partials/mixins" as *;
 
 .inventory-list {
-  overflow: auto;
-  height: 98rem;
-
   &__table-headers {
+    @include inventory-grid(false, false);
     color: $secondary-dark;
+    text-transform: uppercase;
+    background-color: $background-light;
+    height: 2.5rem;
+    @include h4-table-header;
+    padding-top: 0;
+
+    &--warehouse {
+      @include inventory-grid(true, false);
+      padding-top: 0;
+    }
+
     &--hidden {
       display: none;
 
       @include tablet {
-        display: flex;
-        justify-content: space-evenly;
-        background-color: $background-light;
-        @include h4-table-header;
-        height: 2.5rem;
+        display: grid;
       }
     }
   }
 
   &__header-column {
     @include tablet {
-      width: 15%;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding-left: 2rem;
       font-weight: 600;
+      flex: 1;
     }
 
-    @include desktop {
+
+    &--actions {
       justify-content: center;
+    }
+  }
+
+  &__header--mobile {
+    color: $secondary-dark;
+    @include mobile-h4-table-header;
+    padding-bottom: 0.25rem;
+    padding-top: 1rem;
+
+    @include tablet {
+      display: none;
     }
   }
 
@@ -41,7 +56,6 @@
   }
 
   &__table-row {
-    padding: 0.5rem;
     border-bottom: 1px solid $secondary-light;
 
     @include tablet {
@@ -57,14 +71,15 @@
       width: 85%;
     }
   }
-
+&__table {
+  overflow: auto;
+  height: 98rem;
+}
   &__table-cell {
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
 
     @include tablet {
-      width: 50%;
       justify-content: flex-start;
     }
     &--tablet {
@@ -76,11 +91,12 @@
     &--bottom {
       display: flex;
       flex-direction: row;
-      padding: 0 1.5rem;
+      padding: 0 1.5rem 1.5rem 1.5rem;
       justify-content: space-between;
 
       @include tablet {
-        width: 10%;
+        justify-content: center;
+        padding: 0;
 
         img {
           padding: 0.5rem;
@@ -110,16 +126,6 @@
         flex-direction: row;
         width: 85%;
       }
-    }
-  }
-
-  &__header--mobile {
-    color: $secondary-dark;
-    @include mobile-h4-table-header;
-    padding: 0.25rem 0;
-
-    @include tablet {
-      display: none;
     }
   }
 
@@ -153,9 +159,6 @@
       @include mobile-h4-table-header;
       text-transform: uppercase;
       font-weight: 600;
-
-      @include tablet {
-      }
     }
 
     &--green {
@@ -194,5 +197,13 @@
     border: none;
     background: none;
     cursor: pointer;
+  }
+
+  &__record {
+    @include inventory-grid(false);
+
+    &--warehouse {
+      @include inventory-grid(true);
+    }
   }
 }

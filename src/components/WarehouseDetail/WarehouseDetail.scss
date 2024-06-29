@@ -78,7 +78,14 @@
 
   &__details {
     padding: 1rem 2.5rem;
-    border-bottom: 1px solid $secondary-light;
+
+    &--mobile {
+      border-bottom: 1px solid $secondary-light;
+      
+      @include tablet {
+        display: none;
+      }
+    }
 
     @include tablet {
       display: flex;
@@ -113,7 +120,7 @@
     padding-bottom: 2rem;
 
     @include tablet {
-      width: 35vh;
+      width: 15vh;
       padding-bottom: 0;
     }
   }
