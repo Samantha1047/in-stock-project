@@ -27,17 +27,13 @@ const InventoryList = ({ currentInventoryList, showWarehouse }) => {
     console.log("button clicked!");
   };
 
-  const headerClassName = showWarehouse
+  const numOfHeaders = showWarehouse
     ? "inventory-list__table-headers--warehouse"
     : "inventory-list__table-headers";
 
   const numOfColumns = showWarehouse
     ? "inventory-list__record--warehouse"
     : "inventory-list__record";
-
-  const numOfHeaders = showWarehouse
-    ? "inventory-list__header2--warehouse"
-    : "inventory-list__header2--no-warehouse";
 
   const handleDelete = async () => {
     try {
@@ -77,7 +73,7 @@ const InventoryList = ({ currentInventoryList, showWarehouse }) => {
   return (
     <section className='inventory-list'>
       <div className='inventory-list__table'>
-        <div className={`inventory-list__table-headers inventory-list__table-headers--hidden ${headerClassName}`}>
+        <div className={`inventory-list__table-headers inventory-list__table-headers--hidden ${numOfHeaders}`}>
           <div className='inventory-list__header-column'>
             <p>Inventory Name</p>
             <img

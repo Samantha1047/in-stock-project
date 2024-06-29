@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import editIcon from '../../assets/icons/edit-24px.svg'
 import chevRight from '../../assets/icons/chevron_right-24px.svg'
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg'
-import searchIcon from '../../assets/icons/search-24px.svg'
 import sortIcon from '../../assets/icons/sort-24px.svg'
 import DeleteModal from '../DeleteModal/DeleteModal'
 import './WarehouseList.scss'
@@ -118,8 +117,10 @@ const WarehouseList = () => {
               contact_phone,
               contact_email
             } = item
+
             return (
               <article key={warehouseId} className='warehouse-list__table-row'>
+                {/* <div className='warehouse-list__table'> */}
                 <div className='warehouse-list__information'>
                   <div className='warehouse-list__table-cell--left'>
                     <div className='warehouse-list__table-cell warehouse-list__table-cell--tablet'>
@@ -152,7 +153,7 @@ const WarehouseList = () => {
                       </p>
                       <p className='warehouse-list__item'>{contact_name}</p>
                     </div>
-                    <div className='warehouse-list__table-cell'>
+                    <div className='warehouse-list__table-cell warehouse-list__table-cell--contact'>
                       <p className='warehouse-list__header--mobile'>
                         CONTACT INFORMATION
                       </p>
@@ -175,6 +176,7 @@ const WarehouseList = () => {
                   >
                     <img src={editIcon} alt='Edit' />
                   </button>
+                  {/* </div> */}
                 </div>
               </article>
             )

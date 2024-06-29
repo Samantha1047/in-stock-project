@@ -79,6 +79,14 @@
   &__details {
     padding: 1rem 2.5rem;
 
+    &--mobile {
+      border-bottom: 1px solid $secondary-light;
+      
+      @include tablet {
+        display: none;
+      }
+    }
+
     @include tablet {
       display: flex;
       justify-content: space-between;
