@@ -84,7 +84,10 @@ const WarehouseList = ({ warehouses, handleWarehouseDelete }) => {
               contact_email,
             } = item;
             return (
-              <article key={id} className="warehouse-list__table-row">
+              <article
+                key={`${id}-${warehouse_name}`}
+                className="warehouse-list__table-row"
+              >
                 <div className="warehouse-list__information">
                   <div className="warehouse-list__table-cell--left">
                     <div className="warehouse-list__table-cell warehouse-list__table-cell--tablet">
