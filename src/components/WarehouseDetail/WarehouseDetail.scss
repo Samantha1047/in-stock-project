@@ -19,6 +19,10 @@
       border-bottom: none;
     }
 
+    @include desktop {
+      padding: 1.5rem 2.5rem;
+    }
+
     h4 {
       @include mobile-h4-table-header;
       color: $secondary-dark;
