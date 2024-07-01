@@ -1,14 +1,11 @@
 import "./ErrorText.scss";
 import errorIcon from "../../assets/icons/error-24px.svg";
 
-
-const ErrorText = ({ text }) => {
-  const errorText = text ? text : "This field is required";
+const ErrorText = () => {
   return (
-    <div className={`error-text `}>
+    <div className="error-text">
       <img className="error-text__icon" src={errorIcon} alt="error icon" />
-      <p className="error-text__body">{errorText}</p>
-
+      <p className="error-text__body">This field is required</p>
     </div>
   );
 };

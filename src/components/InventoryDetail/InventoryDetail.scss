@@ -7,7 +7,7 @@
   background-color: $primary-light;
   position: relative;
   top: -3.5rem;
-  border-radius: 2px;
+  border-radius: $border-radius-small;
 
   @include tablet {
     margin: 0 2rem;
@@ -22,7 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid $secondary-light;
+    border-bottom: $border-default;
     padding: 1.5rem 2.25rem;
 
     @include tablet {
@@ -31,9 +31,7 @@
   }
 
   &__title-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
 
     h1 {
       @include mobile-h1-page-header;
@@ -61,6 +59,7 @@
 
   &__edit-button {
     @include icon-button;
+    @include flex-center;
     background-color: $primary-color;
     border-radius: 50%;
     height: 2.25rem;
@@ -157,7 +156,7 @@
         font-weight: 600;
         color: $success-color;
         background-color: rgba(21, 132, 99, 0.07);
-        border-radius: 1.25rem;
+        border-radius: $border-radius;
         padding: 0.25rem 0.5rem;
       }
     }
@@ -169,7 +168,7 @@
         font-weight: 600;
         color: $error-color;
         background-color: rgba(201, 69, 21, 0.07);
-        border-radius: 1.25rem;
+        border-radius: $border-radius;
         padding: 0.25rem 0.5rem;
       }
     }

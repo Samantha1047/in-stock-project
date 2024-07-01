@@ -3,11 +3,9 @@
 
 .footer {
   @include mobile-p3-body-small;
+  @include flex-center;
   color: $secondary-dark;
   background-color: $background-light;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding-bottom: 2.5rem;
   text-align: center;
 
