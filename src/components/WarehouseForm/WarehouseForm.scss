@@ -3,13 +3,11 @@
 
 .warehouse-form {
   @include card-shadow;
-  @include section-max-width;
   background-color: $primary-light;
   border-radius: $border-radius-small;
 
   &__fields {
     @include tablet {
-      @include section-max-width;
       display: flex;
       padding-top: $gap-large;
       padding-bottom: $gap-large;

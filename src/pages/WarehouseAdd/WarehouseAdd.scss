@@ -2,4 +2,8 @@
 
 .warehouse-add {
   @include form-position;
+  @include desktop {
+    @include section-max-width;
+    margin: auto;
+  }
 }
