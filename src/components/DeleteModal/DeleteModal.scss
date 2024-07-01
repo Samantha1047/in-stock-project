@@ -33,11 +33,11 @@
     }
   }
 
-  h1 {
+  &__title {
     @include mobile-h1-page-header;
   }
 
-  p {
+  &__body {
     @include mobile-p1-body-large;
     font-size: 0.9375rem;
     padding: 1rem 0;
@@ -51,22 +51,13 @@
   &__buttons {
     width: 100%;
     display: flex;
-    gap: 1rem;
+    gap: $gap-small;
 
     @include tablet {
-      justify-content: flex-end;
       width: auto;
       position: absolute;
       right: 4rem;
       bottom: 2rem;
-
-      p {
-        padding: 0;
-      }
-
-      .button {
-        width: 4.4375rem;
-      }
     }
   }
 
