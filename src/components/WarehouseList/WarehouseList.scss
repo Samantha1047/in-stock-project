@@ -72,10 +72,10 @@
     @include desktop {
       padding: 1rem 0 1rem 2.5rem;
     }
-    
+
     &:hover {
       @include desktop {
-      background-color: $row-hover;
+        background-color: $row-hover;
       }
     }
   }

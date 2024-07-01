@@ -64,7 +64,7 @@
 
     &--highlight:hover {
       @include desktop {
-      background-color: $row-hover;
+        background-color: $row-hover;
       }
     }
   }
@@ -76,10 +76,10 @@
       width: 85%;
     }
   }
-&__table {
-  overflow: auto;
-  height: 98rem;
-}
+  &__table {
+    overflow: auto;
+    height: 98rem;
+  }
   &__table-cell {
     display: flex;
     flex-direction: column;
