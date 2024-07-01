@@ -6,9 +6,7 @@
     padding: 1rem 1.5rem;
 
     &--mobile {
-
       border-bottom: $border-default;
-
 
       @include tablet {
         display: none;
@@ -70,6 +68,7 @@
       padding-left: 3rem;
       border-left: 1px solid $secondary-light;
       height: auto;
+      min-width: 9.375rem;
     }
 
     @include desktop {

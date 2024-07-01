@@ -9,7 +9,6 @@
     border-bottom: $border-default;
     padding: 1.5rem 1.5rem;
     background-color: $primary-light;
-
     border-top-right-radius: $border-radius-small;
     border-top-left-radius: $border-radius-small;
 
@@ -59,7 +58,7 @@
     background-color: $primary-color;
     border-radius: 50%;
     height: 2.25rem;
-    width: 2.25rem;
+    min-width: 2.25rem;
 
     @include tablet {
       border-radius: 1.25rem;
