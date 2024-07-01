@@ -148,7 +148,6 @@
 }
 
 @mixin icon-button {
-  @include flex-center;
   border: none;
   cursor: pointer;
 }

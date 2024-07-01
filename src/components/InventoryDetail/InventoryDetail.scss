@@ -31,9 +31,7 @@
   }
 
   &__title-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
 
     h1 {
       @include mobile-h1-page-header;
@@ -61,6 +59,7 @@
 
   &__edit-button {
     @include icon-button;
+    @include flex-center;
     background-color: $primary-color;
     border-radius: 50%;
     height: 2.25rem;

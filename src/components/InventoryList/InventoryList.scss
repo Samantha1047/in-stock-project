@@ -159,10 +159,8 @@
     color: $primary-dark;
 
     &--status {
+      @include flex-center;
       border-radius: 1.25rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       @include mobile-h4-table-header;
       text-transform: uppercase;
       font-weight: 600;
