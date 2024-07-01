@@ -15,84 +15,21 @@
   }
 
   @include desktop {
-    margin: 0 8.125rem;
-  }
-
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid $secondary-light;
-    padding: 1.5rem 2.25rem;
-
-    @include tablet {
-      padding: 1.5rem 4rem;
-    }
-  }
-
-  &__title-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    h1 {
-      @include mobile-h1-page-header;
-      padding: 0 0.5rem;
-
-      @include tablet {
-        @include h1-page-header;
-      }
-    }
-  }
-
-  &__back-button {
-    @include icon-button;
-    background: url("../../assets/icons/arrow_back-24px.svg") no-repeat center;
-    height: 1.5rem;
-    width: 1.5rem;
-    padding: 0;
-    background-size: cover;
-    margin-top: 0.2rem;
-
-    @include tablet {
-      margin-left: 0;
-    }
-  }
-
-  &__edit-button {
-    @include icon-button;
-    background-color: $primary-color;
-    border-radius: 50%;
-    height: 2.25rem;
-    width: 2.25rem;
-
-    @include tablet {
-      border-radius: 1.25rem;
-      height: 2.375rem;
-      width: 5.0625rem;
-    }
-
-    span {
-      display: none;
-
-      @include tablet {
-        display: inline;
-        color: $primary-light;
-        margin-left: 0.2rem;
-        font-weight: 600;
-      }
-    }
+    @include section-max-width;
   }
 
   &__details {
-    padding: 1rem 2.25rem;
-    border-bottom: 1px solid $secondary-light;
+    padding: 1rem 1.5rem;
+    border-bottom: $border-default;
 
     @include tablet {
       display: flex;
       justify-content: space-between;
-      padding: 1.5rem 4rem;
+      padding: 1.5rem 2rem;
       gap: 3rem;
+    }
+    @include desktop {
+      padding: 1.5rem 2.5rem;
     }
 
     h4 {
