@@ -1,8 +1,7 @@
 import "./TitleNav.scss";
 import { useNavigate } from "react-router-dom";
-const TitleNav = ({ title, page, edit }) => {
+const TitleNav = ({ title, page, edit, handleEdit }) => {
   const navigate = useNavigate();
-  const titleText = title ? title : "Washington";
   const backUrl = page == "Warehouse" ? "/" : "/inventory";
 
   const handleBack = () => {
@@ -16,11 +15,11 @@ const TitleNav = ({ title, page, edit }) => {
           className="title-nav__back-button"
           onClick={handleBack}
         ></button>
-        <h1>{titleText}</h1>
+        <h1>{title}</h1>
       </div>
 
       {edit && (
-        <button className="title-nav__edit-button">
+        <button className="title-nav__edit-button" onClick={handleEdit}>
           <svg
             width="24"
             height="24"
