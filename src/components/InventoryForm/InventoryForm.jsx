@@ -195,7 +195,6 @@ const InventoryForm = ({ mode, warehouses, handleInventorySubmit }) => {
                 categoryList={categoryOptions}
                 valueKey="name"
               />
-              {errors.category && <ErrorText />}
             </fieldset>
           </div>
         </section>
