@@ -112,6 +112,12 @@
   top: -4.0625rem;
 }
 
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 //===========Buttons==========
 
 @mixin input-style {
@@ -144,9 +150,6 @@
 @mixin icon-button {
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 @mixin default-button-styling {

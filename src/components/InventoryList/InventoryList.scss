@@ -33,7 +33,6 @@
       flex: 1;
     }
 
-
     &--actions {
       justify-content: center;
     }
@@ -63,10 +62,9 @@
       flex-direction: row;
     }
 
-
     &--highlight:hover {
       @include desktop {
-      background-color: $row-hover;
+        background-color: $row-hover;
       }
     }
   }
@@ -78,10 +76,10 @@
       width: 85%;
     }
   }
-&__table {
-  overflow: auto;
-  height: 98rem;
-}
+  &__table {
+    overflow: auto;
+    height: 98rem;
+  }
   &__table-cell {
     display: flex;
     flex-direction: column;
@@ -159,10 +157,8 @@
     color: $primary-dark;
 
     &--status {
+      @include flex-center;
       border-radius: 1.25rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       @include mobile-h4-table-header;
       text-transform: uppercase;
       font-weight: 600;
@@ -195,15 +191,13 @@
   }
 
   &__edit-button {
-    border: none;
+    @include icon-button;
     background: none;
-    cursor: pointer;
   }
 
   &__delete-button {
-    border: none;
+    @include icon-button;
     background: none;
-    cursor: pointer;
   }
 
   &__record {

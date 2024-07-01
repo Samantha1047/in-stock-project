@@ -1,10 +1,10 @@
-@use '../../styles/partials/variables' as *;
-@use '../../styles/partials/mixins' as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .search {
   position: relative;
-  border-radius: 1.25rem;
-  border: 1px solid $secondary-light;
+  border-radius: $border-radius;
+  border: $border-default;
   height: 2.25rem;
   margin: 1rem auto;
   width: 100%;

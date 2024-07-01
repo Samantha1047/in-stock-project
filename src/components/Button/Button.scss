@@ -2,14 +2,15 @@
 @use "../../styles/partials/mixins" as *;
 
 .button {
-  height: 2.25rem;
-  width: 8.75rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include default-button-styling;
+  @include flex-center;
   border: none;
-  border-radius: 1.25rem;
   cursor: pointer;
+  @include tablet {
+    padding-right: $gap-small;
+    padding-left: $gap-small;
+    width: auto;
+  }
 
   &__text {
     @include h3-labels-links-buttons;
@@ -34,19 +35,12 @@
   }
 
   &--form {
-    height: 2.25rem;
     min-width: 8.75rem;
-    width: 100%;
+
     @include tablet {
       width: auto;
-      height: 2.375rem;
-      padding: 0.5rem 1rem;
+      padding: $gap-x-small $gap-small;
     }
-  }
-
-  &--default {
-    height: 2.25rem;
-    width: 8.75rem;
   }
 
   &__icon {

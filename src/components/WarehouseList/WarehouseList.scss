@@ -72,10 +72,10 @@
     @include desktop {
       padding: 1rem 0 1rem 2.5rem;
     }
-    
+
     &:hover {
       @include desktop {
-      background-color: $row-hover;
+        background-color: $row-hover;
       }
     }
   }
@@ -142,7 +142,7 @@
       @include tablet {
         justify-content: center;
         padding: 0;
-      
+
         flex: 1;
 
         @include desktop {
@@ -200,14 +200,12 @@
   }
 
   &__edit-button {
-    border: none;
+    @include icon-button;
     background: none;
-    cursor: pointer;
   }
 
   &__delete-button {
-    border: none;
+    @include icon-button;
     background: none;
-    cursor: pointer;
   }
 }

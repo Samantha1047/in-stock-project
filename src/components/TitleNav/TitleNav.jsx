@@ -1,6 +1,8 @@
 import "./TitleNav.scss";
 import { useNavigate } from "react-router-dom";
+
 const TitleNav = ({ title, page, edit, handleEdit }) => {
+
   const navigate = useNavigate();
   const backUrl = page == "Warehouse" ? "/" : "/inventory";
 
@@ -18,6 +20,7 @@ const TitleNav = ({ title, page, edit, handleEdit }) => {
         <h1>{title}</h1>
       </div>
 
+
       {edit && (
         <button className="title-nav__edit-button" onClick={handleEdit}>
           <svg
@@ -32,6 +35,7 @@ const TitleNav = ({ title, page, edit, handleEdit }) => {
           <span>Edit</span>
         </button>
       )}
+
     </div>
   );
 };

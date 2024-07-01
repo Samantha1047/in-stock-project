@@ -33,6 +33,7 @@ const WarehouseDetail = () => {
       });
   }, [warehouseId]);
 
+
   if (!warehouse) {
     return <div>Loading...</div>;
   }

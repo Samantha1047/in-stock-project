@@ -6,7 +6,9 @@
     padding: 1rem 1.5rem;
 
     &--mobile {
+
       border-bottom: $border-default;
+
 
       @include tablet {
         display: none;
