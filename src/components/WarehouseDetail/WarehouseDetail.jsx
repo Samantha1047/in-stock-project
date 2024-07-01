@@ -5,7 +5,7 @@ import "./WarehouseDetail.scss";
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
-const WarehouseDetail = ({ warehouses }) => {
+const WarehouseDetail = () => {
   const [warehouse, setWarehouse] = useState({});
   const { warehouseId } = useParams();
 
@@ -29,7 +29,6 @@ const WarehouseDetail = ({ warehouses }) => {
     contact_name,
     contact_position,
     contact_phone,
-
     contact_email,
   } = warehouse;
 
@@ -45,7 +44,7 @@ const WarehouseDetail = ({ warehouses }) => {
   };
 
   const handleEdit = () => {
-    //need to navigate to corresponding warehouse edit page, may need to update
+    //need to navigate to corresponding warehouse edit page
     navigate(`/${warehouseId}/edit`);
   };
 
