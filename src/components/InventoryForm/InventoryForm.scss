@@ -3,12 +3,10 @@
 
 .inventory-form {
   @include card-shadow;
-  @include section-max-width;
   background-color: $primary-light;
 
   &__inputs {
     @include tablet {
-      @include section-max-width;
       display: flex;
       padding-top: $gap-large;
       padding-bottom: $gap-large;
@@ -39,6 +37,7 @@
       margin-bottom: 1rem;
     }
   }
+
   &__input-container {
     display: flex;
     flex-direction: column;

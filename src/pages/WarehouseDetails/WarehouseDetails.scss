@@ -1,5 +1,5 @@
-@use '../../styles/partials/variables' as *;
-@use '../../styles/partials/mixins' as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 main {
   background-color: $background-light;
@@ -18,6 +18,7 @@ main {
   }
 
   @include desktop {
-    margin: 0 8.125rem;
+    @include section-max-width;
+    margin: 0 auto;
   }
 }

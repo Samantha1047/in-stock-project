@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./InventoryDetail.scss";
+import TitleNav from "../TitleNav/TitleNav";
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -22,51 +23,24 @@ const InventoryDetail = () => {
 
   const { warehouse_name, item_name, description, category, status, quantity } =
     inventory;
+  const navigate = useNavigate();
 
   if (!inventory) {
     return <div>Loading...</div>;
   }
 
-  const navigate = useNavigate();
-
-  const handleBack = () => {
-    //navigate back to home page
-    navigate("/inventory");
-  };
-
   const handleEdit = () => {
-    //need to navigate to corresponding warehouse edit page, may need to update
     navigate(`/inventory/${itemId}/edit`);
   };
 
   return (
     <section className="inventory-detail">
-      <div className="inventory-detail__header">
-        <div className="inventory-detail__title-wrap">
-          <button
-            onClick={handleBack}
-            className="inventory-detail__back-button"
-            aria-label="Go back"
-          ></button>
-          <h1>{item_name}</h1>
-        </div>
-        <button
-          onClick={handleEdit}
-          className="inventory-detail__edit-button"
-          aria-label="Edit inventory details"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="white"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M3 17.25V21H6.75L17.81 9.94L14.06 6.19L3 17.25ZM20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C17.98 2.9 17.35 2.9 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04V7.04Z" />
-          </svg>
-          <span>Edit</span>
-        </button>
-      </div>
+      <TitleNav
+        title={item_name}
+        edit={true}
+        page="Inventory"
+        handleEdit={handleEdit}
+      />
 
       <section className="inventory-detail__details">
         <div className="inventory-detail__details-info">

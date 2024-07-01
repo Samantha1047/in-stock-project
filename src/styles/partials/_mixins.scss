@@ -106,6 +106,10 @@
     margin-inline: 2rem;
     top: -5.5625rem;
   }
+  @include desktop {
+    @include section-max-width;
+    margin: auto;
+  }
 }
 
 @mixin header-to-top-distance {

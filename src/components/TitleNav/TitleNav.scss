@@ -11,12 +11,16 @@
     background-color: $primary-light;
     border-top-right-radius: $border-radius-small;
     border-top-left-radius: $border-radius-small;
+
     box-shadow: -5px 0 5px -5px rgba(19, 24, 44, 0.1),
       5px 0 5px -5px rgba(19, 24, 44, 0.1);
 
     @include tablet {
       padding: 1.5rem 2rem;
+    }
+    @include desktop {
       @include section-max-width;
+      padding: 1.5rem 2.5rem;
     }
   }
 
@@ -45,6 +49,32 @@
 
     @include tablet {
       margin-left: 0;
+    }
+  }
+
+  &__edit-button {
+    @include icon-button;
+    @include flex-center;
+    background-color: $primary-color;
+    border-radius: 50%;
+    height: 2.25rem;
+    min-width: 2.25rem;
+
+    @include tablet {
+      border-radius: 1.25rem;
+      height: 2.375rem;
+      width: 5.0625rem;
+    }
+
+    span {
+      display: none;
+
+      @include tablet {
+        display: inline;
+        color: $primary-light;
+        margin-left: 0.2rem;
+        font-weight: 600;
+      }
     }
   }
 }
