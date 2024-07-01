@@ -35,6 +35,10 @@ body {
   @include tablet {
     padding: 0 $gap-large;
   }
+
+  @include desktop {
+    padding: 0 2.5rem;
+  }
 }
 
 .text-inactive {
