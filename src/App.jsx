@@ -71,7 +71,6 @@ function App() {
   };
 
   const handleDeleteItem = async (itemId) => {
-    console.log("Deleting item with id:", itemId);
     try {
       await axios.delete(`${API_URL}/api/inventories/${itemId}`);
       setInventoryList(inventoryList.filter((item) => item.id !== itemId));
