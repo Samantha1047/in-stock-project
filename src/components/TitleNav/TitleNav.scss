@@ -20,9 +20,7 @@
   }
 
   &__title-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
 
     h1 {
       @include mobile-h1-page-header;
@@ -35,17 +33,13 @@
   }
 
   &__back-button {
+    @include flex-center;
+    @include icon-button;
     background: url("../../assets/icons/arrow_back-24px.svg") no-repeat center;
     height: 1.5rem;
     width: 1.5rem;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 0;
     background-size: cover;
-    // margin-left: 1.5rem;
     margin-top: 0.2rem;
 
     @include tablet {

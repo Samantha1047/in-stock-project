@@ -33,7 +33,6 @@
       flex: 1;
     }
 
-
     &--actions {
       justify-content: center;
     }
@@ -62,7 +61,6 @@
       display: flex;
       flex-direction: row;
     }
-
 
     &--highlight:hover {
       @include desktop {
@@ -193,15 +191,13 @@
   }
 
   &__edit-button {
-    border: none;
+    @include icon-button;
     background: none;
-    cursor: pointer;
   }
 
   &__delete-button {
-    border: none;
+    @include icon-button;
     background: none;
-    cursor: pointer;
   }
 
   &__record {
