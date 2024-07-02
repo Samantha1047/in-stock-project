@@ -84,48 +84,58 @@ const InventoryForm = ({ mode, warehouses, handleInventorySubmit }) => {
   const outOfStockInput =
     formValues.status === INVENTORY_STOCK.IN_STOCK ? "input-inactive " : "";
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-
+  const updateStatusAndQuantity = (name, value, prevValues) => {
     if (name === "status") {
-      setFormValues((prevValues) => ({
+      let newQuantity;
+      if (value === INVENTORY_STOCK.OUT_OF_STOCK) {
+        newQuantity = 0;
+      } else if (
+        value === INVENTORY_STOCK.IN_STOCK &&
+        prevValues.quantity === 0
+      ) {
+        newQuantity = 1;
+      } else {
+        newQuantity = prevValues.quantity;
+      }
+
+      return {
         ...prevValues,
         status: value,
-        quantity:
-          value === INVENTORY_STOCK.OUT_OF_STOCK ? 0 : prevValues.quantity,
-      }));
-      return;
+        quantity: newQuantity,
+      };
     }
 
     if (name === "quantity") {
       const numericValue = Number(value);
+      const isInvalidNumber =
+        value === "" || isNaN(numericValue) || numericValue < 0;
+      const newStatus =
+        numericValue > 0
+          ? INVENTORY_STOCK.IN_STOCK
+          : INVENTORY_STOCK.OUT_OF_STOCK;
 
-      if (value === "" || isNaN(numericValue) || numericValue < 0) {
-        setFormValues((prevValues) => ({
-          ...prevValues,
-          quantity: value,
-          status: prevValues.status,
-        }));
-      } else if (numericValue > 0) {
-        setFormValues((prevValues) => ({
-          ...prevValues,
-          quantity: numericValue,
-          status: INVENTORY_STOCK.IN_STOCK,
-        }));
-      } else {
-        setFormValues((prevValues) => ({
-          ...prevValues,
-          quantity: numericValue,
-          status: INVENTORY_STOCK.OUT_OF_STOCK,
-        }));
-      }
-      return;
+      return {
+        ...prevValues,
+        quantity: isInvalidNumber ? value : numericValue,
+        status: isInvalidNumber ? prevValues.status : newStatus,
+      };
     }
 
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
+    return null;
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    const updatedValues = updateStatusAndQuantity(name, value, formValues);
+
+    if (updatedValues) {
+      setFormValues(updatedValues);
+    } else {
+      setFormValues({
+        ...formValues,
+        [name]: value,
+      });
+    }
 
     setErrors({
       ...errors,
