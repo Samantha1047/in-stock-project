@@ -20,7 +20,7 @@ const initialValues = {
   description: "",
   category: "",
   status: INVENTORY_STOCK.OUT_OF_STOCK,
-  quantity: 0,
+  quantity: "",
 };
 
 const categoryOptions = [
