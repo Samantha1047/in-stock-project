@@ -86,15 +86,45 @@ const InventoryForm = ({ mode, warehouses, handleInventorySubmit }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    let updatedValue = value;
+
+    if (name === "status") {
+      setFormValues((prevValues) => ({
+        ...prevValues,
+        status: value,
+        quantity:
+          value === INVENTORY_STOCK.OUT_OF_STOCK ? 0 : prevValues.quantity,
+      }));
+      return;
+    }
 
     if (name === "quantity") {
-      updatedValue = value === "" ? "" : Number(value);
+      const numericValue = Number(value);
+
+      if (value === "" || isNaN(numericValue) || numericValue < 0) {
+        setFormValues((prevValues) => ({
+          ...prevValues,
+          quantity: value,
+          status: prevValues.status,
+        }));
+      } else if (numericValue > 0) {
+        setFormValues((prevValues) => ({
+          ...prevValues,
+          quantity: numericValue,
+          status: INVENTORY_STOCK.IN_STOCK,
+        }));
+      } else {
+        setFormValues((prevValues) => ({
+          ...prevValues,
+          quantity: numericValue,
+          status: INVENTORY_STOCK.OUT_OF_STOCK,
+        }));
+      }
+      return;
     }
 
     setFormValues({
       ...formValues,
-      [name]: updatedValue,
+      [name]: value,
     });
 
     setErrors({
