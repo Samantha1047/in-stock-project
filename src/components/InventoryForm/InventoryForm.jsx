@@ -20,7 +20,7 @@ const initialValues = {
   description: "",
   category: "",
   status: INVENTORY_STOCK.OUT_OF_STOCK,
-  quantity: 0,
+  quantity: "",
 };
 
 const categoryOptions = [
@@ -84,18 +84,58 @@ const InventoryForm = ({ mode, warehouses, handleInventorySubmit }) => {
   const outOfStockInput =
     formValues.status === INVENTORY_STOCK.IN_STOCK ? "input-inactive " : "";
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    let updatedValue = value;
+  const updateStatusAndQuantity = (name, value, prevValues) => {
+    if (name === "status") {
+      let newQuantity;
+      if (value === INVENTORY_STOCK.OUT_OF_STOCK) {
+        newQuantity = 0;
+      } else if (
+        value === INVENTORY_STOCK.IN_STOCK &&
+        prevValues.quantity === 0
+      ) {
+        newQuantity = 1;
+      } else {
+        newQuantity = prevValues.quantity;
+      }
 
-    if (name === "quantity") {
-      updatedValue = value === "" ? "" : Number(value);
+      return {
+        ...prevValues,
+        status: value,
+        quantity: newQuantity,
+      };
     }
 
-    setFormValues({
-      ...formValues,
-      [name]: updatedValue,
-    });
+    if (name === "quantity") {
+      const numericValue = Number(value);
+      const isInvalidNumber =
+        value === "" || isNaN(numericValue) || numericValue < 0;
+      const newStatus =
+        numericValue > 0
+          ? INVENTORY_STOCK.IN_STOCK
+          : INVENTORY_STOCK.OUT_OF_STOCK;
+
+      return {
+        ...prevValues,
+        quantity: isInvalidNumber ? value : numericValue,
+        status: isInvalidNumber ? prevValues.status : newStatus,
+      };
+    }
+
+    return null;
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    const updatedValues = updateStatusAndQuantity(name, value, formValues);
+
+    if (updatedValues) {
+      setFormValues(updatedValues);
+    } else {
+      setFormValues({
+        ...formValues,
+        [name]: value,
+      });
+    }
 
     setErrors({
       ...errors,
