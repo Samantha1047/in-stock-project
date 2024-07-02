@@ -1,0 +1,123 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.inventory-detail {
+  @include card-shadow;
+  margin: 0 1rem;
+  background-color: $primary-light;
+  position: relative;
+  top: -3.5rem;
+  border-radius: $border-radius-small;
+
+  @include tablet {
+    margin: 0 2rem;
+    top: -5.5rem;
+  }
+
+  @include desktop {
+    @include section-max-width;
+
+  }
+
+  &__details {
+    padding: 1rem 1.5rem;
+    border-bottom: $border-default;
+
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.5rem 2rem;
+      gap: 3rem;
+    }
+    @include desktop {
+      padding: 1.5rem 2.5rem;
+    }
+
+    h4 {
+      @include mobile-h4-table-header;
+      color: $secondary-dark;
+      padding-bottom: 0.3rem;
+      font-weight: 600;
+      font-size: 0.6875rem;
+
+      @include tablet {
+        @include h4-table-header;
+      }
+    }
+
+    p {
+      @include mobile-p2-body-medium;
+      color: $primary-dark;
+      font-weight: 400;
+
+      @include tablet {
+        @include p2-body-medium;
+      }
+    }
+  }
+
+  &__details-info {
+    @include tablet {
+      flex: 1;
+    }
+  }
+
+  &__description {
+    padding-bottom: 1rem;
+  }
+
+  &__category {
+    padding-bottom: 1rem;
+  }
+
+  &__stock-info {
+    display: flex;
+
+    @include tablet {
+      flex: 1;
+      padding-left: 2rem;
+      border-left: $border-default;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+    }
+  }
+
+  &__status {
+    &--green {
+      margin-bottom: 1rem;
+      span {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        color: $success-color;
+        background-color: rgba(21, 132, 99, 0.07);
+        border-radius: $border-radius;
+        padding: 0.25rem 0.5rem;
+      }
+    }
+
+    &--red {
+      margin-bottom: 1rem;
+      span {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        color: $error-color;
+        background-color: rgba(201, 69, 21, 0.07);
+        border-radius: $border-radius;
+        padding: 0.25rem 0.5rem;
+      }
+    }
+  }
+  &__warehouse {
+    padding-bottom: 1rem;
+  }
+
+  &__quantity {
+    flex: 1;
+    margin-left: 1.5rem;
+  }
+}

@@ -1,0 +1,79 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.warehouse-detail {
+  &__details {
+    padding: 1rem 1.5rem;
+
+    &--mobile {
+      border-bottom: $border-default;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    @include tablet {
+      display: flex;
+      padding: 1.5rem 2rem;
+      border-bottom: none;
+    }
+
+    @include desktop {
+      padding: 1.5rem 2.5rem;
+    }
+
+    h4 {
+      @include mobile-h4-table-header;
+      color: $secondary-dark;
+      padding-bottom: 0.3rem;
+      font-weight: 600;
+
+      @include tablet {
+        @include h4-table-header;
+      }
+    }
+
+    p {
+      @include mobile-p2-body-medium;
+      color: $primary-dark;
+      font-weight: 400;
+
+      @include tablet {
+        @include p2-body-medium;
+      }
+    }
+  }
+
+  &__details-address {
+    padding-bottom: 2rem;
+
+    @include tablet {
+      padding-bottom: 0;
+      flex-basis: 37%;
+    }
+  }
+  &__address {
+    @include tablet {
+      width: 15vh;
+    }
+  }
+
+  &__contact-info {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      gap: 3.5rem;
+      padding-left: 3rem;
+      border-left: 1px solid $secondary-light;
+      height: auto;
+      min-width: 9.375rem;
+    }
+
+    @include desktop {
+      gap: 6.5rem;
+      padding-right: 13rem;
+    }
+  }
+}

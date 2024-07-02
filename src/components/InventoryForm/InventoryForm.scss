@@ -1,0 +1,74 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.inventory-form {
+  @include card-shadow;
+  background-color: $primary-light;
+
+  &__inputs {
+    @include tablet {
+      display: flex;
+      padding-top: $gap-large;
+      padding-bottom: $gap-large;
+    }
+  }
+
+  &__item-section {
+    border-bottom: $border-default;
+
+    @include tablet {
+      flex-basis: 50%;
+      border-right: $border-default;
+      border-bottom: none;
+    }
+  }
+
+  &__availability-section {
+    @include tablet {
+      flex-basis: 50%;
+    }
+  }
+
+  &__title {
+    @include mobile-h2-subheader;
+    margin-bottom: $gap-x-small;
+
+    @include tablet {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    margin-bottom: 0.25rem;
+  }
+
+  &__label {
+    @include input-label;
+  }
+
+  &__radio-container {
+    display: flex;
+    align-items: center;
+    gap: $gap-medium;
+    margin-bottom: $gap-x-small;
+  }
+
+  &__radio {
+    margin-right: $gap-x-small;
+    cursor: pointer;
+  }
+
+  &__input {
+    @include input-style;
+    width: 100%;
+    padding-left: $gap-small;
+    margin-top: 0.25rem;
+
+    @include desktop {
+      width: 7.625rem;
+    }
+  }
+}

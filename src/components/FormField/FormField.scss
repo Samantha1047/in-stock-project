@@ -1,0 +1,32 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.form-field {
+  &__input-container {
+    border: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input-label {
+    @include input-label;
+  }
+
+  &__input {
+    @include input-style;
+    padding-right: $gap-small;
+    padding-left: $gap-small;
+    padding-top: $gap-x-small;
+    resize: none;
+  }
+
+  &--textarea {
+    height: 7.5rem;
+    position: relative;
+  }
+}
+
+.error-border {
+  border: $border-error;
+}

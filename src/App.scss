@@ -1,0 +1,62 @@
+@use "./styles/partials/mixins" as *;
+@use "./styles/partials/variables" as *;
+@use "./styles/partials/typography" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Titillium Web", sans-serif;
+}
+
+#root,
+.app-container {
+  background-color: $background-light;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: $primary-dark;
+}
+
+.wrapper {
+  padding: $gap-medium;
+
+  @include tablet {
+    padding: 0 $gap-large;
+  }
+
+  @include desktop {
+    padding: 0 2.5rem;
+  }
+}
+
+.text-inactive {
+  color: $secondary-light;
+}
+
+.input-inactive {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  box-shadow: 0 0 0 1px $secondary-light;
+}
+
+.button {
+  &--primary {
+    @include default-button-styling;
+    background-color: $primary-color;
+    color: $primary-light;
+  }
+}

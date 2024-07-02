@@ -1,0 +1,69 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  background-color: $background-dark;
+
+  &__logo {
+    padding: $gap-medium $gap-medium 0.9rem $gap-medium;
+
+    @include tablet {
+      padding: $gap-large 0;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 12.5rem;
+
+    @include tablet {
+      height: 11.625rem;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 $gap-large;
+    }
+
+    @include desktop {
+      @include section-max-width;
+      padding: 0;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: $gap-medium;
+
+    @include tablet {
+      align-items: center;
+      margin-top: 1.6875rem;
+    }
+
+    &-link {
+      @include text-link-style;
+      width: 10rem;
+      text-align: center;
+      padding: $gap-x-small;
+      border-radius: $gap-large;
+      color: $secondary-light;
+
+      @include tablet {
+        @include h3-labels-links-buttons;
+        width: 7rem;
+      }
+
+      &--active {
+        background-color: $primary-dark;
+        color: $primary-light;
+      }
+
+      &:hover {
+        color: $primary-light;
+      }
+    }
+  }
+}

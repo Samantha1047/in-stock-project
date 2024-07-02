@@ -1,0 +1,5 @@
+@use "../../styles/partials/mixins" as *;
+
+.inventory-edit {
+  @include form-position;
+}

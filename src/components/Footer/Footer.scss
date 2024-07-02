@@ -1,0 +1,15 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.footer {
+  @include mobile-p3-body-small;
+  @include flex-center;
+  color: $secondary-dark;
+  background-color: $background-light;
+  padding-bottom: 2.5rem;
+  text-align: center;
+
+  @include tablet {
+    @include p3-body-small;
+  }
+}

@@ -1,0 +1,27 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+body {
+  background-color: $background-light;
+}
+.warehouse {
+  margin: 0 1rem;
+  position: relative;
+  top: -4.0625rem;
+  background-color: white;
+  box-shadow: 0 2px 5px 0 rgba(44, 25, 19, 0.1);
+  border-radius: 2px;
+  overflow: auto;
+
+  @include tablet {
+    margin: 0 2rem;
+    top: -5.875rem;
+  }
+
+  @include desktop {
+    margin: 0 8.125rem;
+    top: -5.8125rem;
+    height: 42rem;
+    @include section-max-width;
+  }
+}

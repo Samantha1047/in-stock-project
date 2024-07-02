@@ -1,0 +1,56 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.button {
+  @include default-button-styling;
+  @include flex-center;
+  border: none;
+  cursor: pointer;
+  @include tablet {
+    padding-right: $gap-small;
+    padding-left: $gap-small;
+    width: auto;
+  }
+
+  &__text {
+    @include h3-labels-links-buttons;
+  }
+
+  &--primary {
+    background-color: $primary-color;
+    color: $primary-light;
+    &:hover {
+      background-color: $background-dark;
+    }
+  }
+
+  &--secondary {
+    border: $border-default;
+    background-color: $primary-light;
+    color: $secondary-dark;
+    &:hover {
+      border: $border-active;
+      color: $primary-color;
+    }
+  }
+
+  &--form {
+    min-width: 8.75rem;
+
+    @include tablet {
+      width: auto;
+      padding: $gap-x-small $gap-small;
+    }
+  }
+
+  &__icon {
+    @include icon-button;
+    background-color: $primary-light;
+
+    &--DeleteModal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+  }
+}

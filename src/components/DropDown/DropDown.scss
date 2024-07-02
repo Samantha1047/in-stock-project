@@ -1,0 +1,55 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.drop-down {
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    right: $gap-small;
+    top: 30%;
+    cursor: none;
+    pointer-events: none;
+  }
+
+  &__input {
+    @include default-button-styling;
+    position: relative;
+    justify-content: space-between;
+    margin-top: 0.125rem;
+    margin-top: 0.25rem;
+    padding-left: $gap-small;
+    border: $border-default;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.focused {
+    border: $border-active;
+  }
+
+  &[disabled] {
+    color: red;
+  }
+}
+
+select {
+  color: $secondary-dark;
+}
+
+select:focus {
+  color: $primary-dark;
+}
+
+#dropdown option:checked {
+  color: $primary-dark;
+}
